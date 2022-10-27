@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>S02-01 Populate Nodes</name>
+    <name>P01-02 Populate Sites</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/07 12:49:20.511</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/10/07 16:00:16.208</modified_date>
+    <modified_date>2022/10/26 10:48:46.923</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -503,13 +503,13 @@
   </connection>
   <order>
     <hop>
-      <from>Nodes</from>
-      <to>Insert / update</to>
+      <from>Sites</from>
+      <to>Insert / update Sites</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Insert / update</name>
+    <name>Insert / update Sites</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -523,11 +523,17 @@
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
-      <schema>dbo</schema>
-      <table>Nodes</table>
+      <schema>codes</schema>
+      <table>Sites</table>
       <key>
         <name>NodeId</name>
         <field>NodeId</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>SiteId</name>
+        <field>SiteId</field>
         <condition>=</condition>
         <name2/>
       </key>
@@ -537,13 +543,13 @@
         <update>N</update>
       </value>
       <value>
-        <name>NodeName</name>
-        <rename>NodeName</rename>
-        <update>Y</update>
+        <name>SiteId</name>
+        <rename>SiteId</rename>
+        <update>N</update>
       </value>
       <value>
-        <name>NodeDescription</name>
-        <rename>NodeDescription</rename>
+        <name>SiteName</name>
+        <rename>SiteName</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -562,7 +568,7 @@
     </GUI>
   </step>
   <step>
-    <name>Nodes</name>
+    <name>Sites</name>
     <type>DataGrid</type>
     <description/>
     <distribute>Y</distribute>
@@ -586,8 +592,8 @@
         <field_null_if/>
       </field>
       <field>
-        <name>NodeName</name>
-        <type>String</type>
+        <name>SiteId</name>
+        <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
@@ -598,7 +604,7 @@
         <field_null_if/>
       </field>
       <field>
-        <name>NodeDescription</name>
+        <name>SiteName</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -612,24 +618,24 @@
     </fields>
     <data>
       <line>
-        <item>1</item>
-        <item>Agincourt</item>
-        <item/>
-      </line>
-      <line>
-        <item>2</item>
-        <item>DIMAMO</item>
-        <item/>
-      </line>
-      <line>
-        <item>3</item>
-        <item>AHRI</item>
-        <item>Africa Health Research Institute</item>
+        <item>4</item>
+        <item>100</item>
+        <item>Atteridgeville</item>
       </line>
       <line>
         <item>4</item>
-        <item>GRT-INSPIRED</item>
-        <item/>
+        <item>110</item>
+        <item>Hillbrow North</item>
+      </line>
+      <line>
+        <item>4</item>
+        <item>120</item>
+        <item>Melusi</item>
+      </line>
+      <line>
+        <item>4</item>
+        <item>130</item>
+        <item>Hillbrow South</item>
       </line>
     </data>
     <attributes/>

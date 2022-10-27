@@ -17,3 +17,22 @@ Save repository element : Saprin Ops : Modification by user
 Rename transformation : Renamed from S01-06 Populate Sites to S02-01 Populate Sites
 Rename transformation : Renamed from S01-07 Populate SubPlaces to S02-02 Populate SubPlaces
 Rename transformation : Renamed from S01-08 Populate Buildings to S02-03 Populate Buildings
+Rename transformation : Renamed from S02-04 Populate Locations to S02-05 Populate Locations
+Rename transformation : Renamed from S02-03 Populate Buildings to S02-04 Populate Buildings
+Rename transformation : Renamed from S02-02 Populate SubPlaces to S02-03 Populate SubPlaces
+Rename transformation : Renamed from S02-01 Populate Sites to S02-02 Populate Sites
+Rename job : Renamed from S02 Populate Tables to S01 Populate Location Tables
+Rename transformation : Renamed from S02-01 Populate Nodes to S01-01 Populate Nodes
+Rename transformation : Renamed from S02-02 Populate Sites to S01-02 Populate Sites
+Rename transformation : Renamed from S02-03 Populate SubPlaces to S01-03 Populate SubPlaces
+Rename transformation : Renamed from S02-04 Populate Buildings to S01-04 Populate Buildings
+Rename transformation : Renamed from S02-05 Populate Locations to S01-05 Populate Locations
+Rename transformation : Renamed from S01-03 Prepare Mapping Data to S02 Prepare Mapping Data
+Rename job : Renamed from S01 Populate Location Tables to P01 Populate Location Tables
+Rename transformation : Renamed from S01-01 Populate Nodes to P01-01 Populate Nodes
+Rename transformation : Renamed from S01-02 Populate Sites to P01-02 Populate Sites
+Rename transformation : Renamed from S01-03 Populate SubPlaces to P01-03 Populate SubPlaces
+Rename transformation : Renamed from S01-04 Populate Buildings to P01-04 Populate Buildings
+Rename transformation : Renamed from S01-05 Populate Locations to P01-05 Populate Locations
+Rename transformation : Renamed from S01-02 Prepare SS Interviews to H01-01 Prepare SS Interviews
+Rename job : Renamed from P02 Populate Staffmeber Tables to P02 Populate Staffmember Tables

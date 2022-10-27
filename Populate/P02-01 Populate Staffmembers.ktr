@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>S02-01 Populate Sites</name>
+    <name>P02-01 Populate Staffmembers</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,10 +426,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/10/07 12:49:20.511</created_date>
+    <created_date>2022/10/26 15:55:00.628</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/10/07 16:03:12.559</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2022/10/26 16:12:07.287</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -503,13 +503,63 @@
   </connection>
   <order>
     <hop>
-      <from>Nodes</from>
-      <to>Insert / update</to>
+      <from>Insert / update StaffMembers</from>
+      <to>Blocking step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Blocking step</from>
+      <to>Split Fullname</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split Fullname</from>
+      <to>String operations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Interviewers.cube</from>
+      <to>Insert / update StaffMembers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>Surname null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Surname null</from>
+      <to>Set Surname -> Unknown</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Surname null</from>
+      <to>First Name null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>First Name null</from>
+      <to>Insert / update ProtectedStaffMembers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set Surname -> Unknown</from>
+      <to>First Name null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>First Name null</from>
+      <to>FirstNames -> Unknown</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>FirstNames -> Unknown</from>
+      <to>Insert / update ProtectedStaffMembers</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Insert / update</name>
+    <name>Insert / update StaffMembers</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -524,26 +574,26 @@
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>dbo</schema>
-      <table>Nodes</table>
+      <table>StaffMembers</table>
       <key>
-        <name>NodeId</name>
-        <field>NodeId</field>
+        <name>FieldworkerUid</name>
+        <field>StaffMemberUid</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>NodeId</name>
-        <rename>NodeId</rename>
+        <name>StaffMemberUid</name>
+        <rename>FieldworkerUid</rename>
         <update>N</update>
       </value>
       <value>
-        <name>NodeName</name>
-        <rename>NodeName</rename>
+        <name>IsActive</name>
+        <rename>IsActive</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>NodeDescription</name>
-        <rename>NodeDescription</rename>
+        <name>NodeId</name>
+        <rename>NodeId</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -556,14 +606,104 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>96</yloc>
+      <xloc>272</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Nodes</name>
-    <type>DataGrid</type>
+    <name>Blocking step</name>
+    <type>BlockingStep</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <pass_all_rows>Y</pass_all_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>block</prefix>
+    <cache_size>5000</cache_size>
+    <compress>Y</compress>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Split Fullname</name>
+    <type>FieldSplitter</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <splitfield>FieldworkerName</splitfield>
+    <delimiter>,</delimiter>
+    <enclosure/>
+    <fields>
+      <field>
+        <name>Surname</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+      </field>
+      <field>
+        <name>FirstNames</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>String operations</name>
+    <type>StringOperations</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -574,64 +714,120 @@
     </partitioning>
     <fields>
       <field>
-        <name>NodeId</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
+        <in_stream_name>Surname</in_stream_name>
+        <out_stream_name/>
+        <trim_type/>
+        <lower_upper>lower</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>Y</init_cap>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
       </field>
       <field>
-        <name>NodeName</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-      <field>
-        <name>NodeDescription</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
+        <in_stream_name>FirstNames</in_stream_name>
+        <out_stream_name/>
+        <trim_type/>
+        <lower_upper>lower</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>Y</init_cap>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
       </field>
     </fields>
-    <data>
-      <line>
-        <item>1</item>
-        <item>Agincourt</item>
-        <item/>
-      </line>
-      <line>
-        <item>2</item>
-        <item>DIMAMO</item>
-        <item/>
-      </line>
-      <line>
-        <item>3</item>
-        <item>AHRI</item>
-        <item>Africa Health Research Institute</item>
-      </line>
-      <line>
-        <item>4</item>
-        <item>GRT-INSPIRED</item>
-        <item/>
-      </line>
-    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update ProtectedStaffMembers</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>dbo</schema>
+      <table>ProtectedStaffMembers</table>
+      <key>
+        <name>FieldworkerUid</name>
+        <field>StaffMemberUid</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>StaffMemberUid</name>
+        <rename>FieldworkerUid</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>UserId</name>
+        <rename>FieldworkerId</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Surname</name>
+        <rename>Surname</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>FirstName</name>
+        <rename>FirstNames</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Interviewers.cube</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Interviewers.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -642,7 +838,145 @@
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>96</yloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Surname null</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set Surname -> Unknown</send_true_to>
+    <send_false_to>First Name null</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Surname</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set Surname -> Unknown</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>Surname</name>
+        <value>Unknown</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>First Name null</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>FirstNames -> Unknown</send_true_to>
+    <send_false_to>Insert / update ProtectedStaffMembers</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>FirstNames</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>FirstNames -> Unknown</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>FirstNames</name>
+        <value>Unknown</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
