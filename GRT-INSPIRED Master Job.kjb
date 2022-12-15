@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2022/10/05 14:34:37.784</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2022/10/27 08:06:24.675</modified_date>
+  <modified_date>2022/12/04 16:28:28.744</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -343,7 +343,7 @@
         </field>
         <field>
           <variable_name>Mapping</variable_name>
-          <variable_value>N</variable_value>
+          <variable_value>Y</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -360,7 +360,7 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Step S01</name>
+      <name>Step S02</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <attributes/>
@@ -369,7 +369,7 @@
       <variablename>NextStep</variablename>
       <fieldtype>string</fieldtype>
       <mask/>
-      <comparevalue>S01</comparevalue>
+      <comparevalue>S02</comparevalue>
       <minvalue/>
       <maxvalue/>
       <successcondition>equal</successcondition>
@@ -380,11 +380,11 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
-      <yloc>64</yloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Harmonise</name>
+      <name>S01 Harmonise Interview Data</name>
       <description/>
       <type>JOB</type>
       <attributes/>
@@ -417,7 +417,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>64</yloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -453,11 +453,11 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>560</xloc>
-      <yloc>64</yloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Step S02</name>
+      <name>Step S01</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <attributes/>
@@ -466,7 +466,7 @@
       <variablename>NextStep</variablename>
       <fieldtype>string</fieldtype>
       <mask/>
-      <comparevalue>S02</comparevalue>
+      <comparevalue>S01</comparevalue>
       <minvalue/>
       <maxvalue/>
       <successcondition>equal</successcondition>
@@ -477,7 +477,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
-      <yloc>176</yloc>
+      <yloc>64</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -501,7 +501,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>560</xloc>
-      <yloc>176</yloc>
+      <yloc>64</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -541,7 +541,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>176</yloc>
+      <yloc>64</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -640,7 +640,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>880</xloc>
-      <yloc>64</yloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -654,7 +654,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>880</xloc>
-      <yloc>176</yloc>
+      <yloc>64</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -683,16 +683,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Set variables</from>
-      <to>Step S01</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Step S01</from>
+      <from>Step S02</from>
       <to>Harmonise?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -702,47 +693,11 @@
     </hop>
     <hop>
       <from>Harmonise?</from>
-      <to>Harmonise</to>
+      <to>S01 Harmonise Interview Data</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Step S01</from>
-      <to>Step S02</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Step S02</from>
-      <to>Mapping?</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Mapping?</from>
-      <to>S02 Prepare Mapping Data</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Step S02</from>
-      <to>Step S03</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
@@ -764,17 +719,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Harmonise</from>
+      <from>S01 Harmonise Interview Data</from>
       <to>Failed</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>S02 Prepare Mapping Data</from>
-      <to>Failed 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -809,8 +755,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Harmonise</from>
-      <to>Mapping?</to>
+      <from>Set variables</from>
+      <to>Step S01</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -818,17 +764,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Harmonise?</from>
+      <from>Step S01</from>
       <to>Mapping?</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>S02 Prepare Mapping Data</from>
-      <to>Populate?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -837,6 +774,69 @@
     </hop>
     <hop>
       <from>Mapping?</from>
+      <to>S02 Prepare Mapping Data</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>S02 Prepare Mapping Data</from>
+      <to>Failed 2</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>S02 Prepare Mapping Data</from>
+      <to>Harmonise?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Mapping?</from>
+      <to>Harmonise?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S01</from>
+      <to>Step S02</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S02</from>
+      <to>Step S03</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>S01 Harmonise Interview Data</from>
+      <to>Populate?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Harmonise?</from>
       <to>Populate?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

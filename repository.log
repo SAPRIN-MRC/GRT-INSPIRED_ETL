@@ -36,3 +36,7 @@ Rename transformation : Renamed from S01-04 Populate Buildings to P01-04 Populat
 Rename transformation : Renamed from S01-05 Populate Locations to P01-05 Populate Locations
 Rename transformation : Renamed from S01-02 Prepare SS Interviews to H01-01 Prepare SS Interviews
 Rename job : Renamed from P02 Populate Staffmeber Tables to P02 Populate Staffmember Tables
+Rename job : Renamed from P02 Populate Observation Table to P03 Populate Observation Table
+Rename transformation : Renamed from H01-02 Prepare Interviewers to H01-03 Prepare Interviewers
+Rename transformation : Renamed from H01-03 Prepare BS Visits to H01-04 Prepare BS Visits
+Rename transformation : Renamed from H01-04 Prepare completed actions to H01-02 Prepare completed actions

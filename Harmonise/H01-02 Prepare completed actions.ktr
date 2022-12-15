@@ -1,11 +1,11 @@
 <transformation>
   <info>
-    <name>P02-01 Populate Staffmembers</name>
+    <name>H01-02 Prepare completed actions</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <directory>/Populate</directory>
+    <directory>/Harmonise</directory>
     <parameters>
     </parameters>
     <log>
@@ -426,170 +426,43 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/10/26 15:55:00.628</created_date>
+    <created_date>2022/11/20 12:38:19.936</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/10/27 09:02:24.541</modified_date>
+    <modified_date>2022/11/20 12:58:51.641</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
-  <connection>
-    <name>Saprin Ops</name>
-    <server>SAPRIN-VM</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>Saprin_Ops_Structure</database>
-    <port>1433</port>
-    <username/>
-    <password>Encrypted </password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQLNATIVE.encrypt</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQLNATIVE.trustServerCertificate</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQLUseIntegratedSecurity</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>1433</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
-      <from>Insert / update StaffMembers</from>
-      <to>Blocking step</to>
+      <from>Completed</from>
+      <to>Other actions</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Blocking step</from>
-      <to>Split Fullname</to>
+      <from>Completed</from>
+      <to>﻿interview__key date time</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Interviewers.cube</from>
-      <to>Insert / update StaffMembers</to>
+      <from>interview__actions</from>
+      <to>Completed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Surname null</from>
-      <to>Set Surname -> Unknown</to>
+      <from>﻿interview__key date time</from>
+      <to>completed_nr</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split Fullname</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Surname null</from>
-      <to>First Name null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>First Name null</from>
-      <to>Insert / update ProtectedStaffMembers</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set Surname -> Unknown</from>
-      <to>First Name null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>String operations</from>
-      <to>Surname null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>First Name null</from>
-      <to>FirstNames -> Unknown</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>FirstNames -> Unknown</from>
-      <to>Insert / update ProtectedStaffMembers</to>
+      <from>completed_nr</from>
+      <to>completed_actions</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Blocking step</name>
-    <type>BlockingStep</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <pass_all_rows>Y</pass_all_rows>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>block</prefix>
-    <cache_size>5000</cache_size>
-    <compress>Y</compress>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>First Name null</name>
+    <name>Completed</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -599,14 +472,23 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>FirstNames -> Unknown</send_true_to>
-    <send_false_to>Insert / update ProtectedStaffMembers</send_false_to>
+    <send_true_to>﻿interview__key date time</send_true_to>
+    <send_false_to>Other actions</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>FirstNames</leftvalue>
-        <function>IS NULL</function>
+        <leftvalue>action</leftvalue>
+        <function>=</function>
         <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>3</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
       </condition>
     </compare>
     <attributes/>
@@ -618,14 +500,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>80</yloc>
+      <xloc>288</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>FirstNames -> Unknown</name>
-    <type>SetValueConstant</type>
+    <name>Other actions</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -634,15 +516,6 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>FirstNames</name>
-        <value>Unknown</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -652,125 +525,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>192</yloc>
+      <xloc>288</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Insert / update ProtectedStaffMembers</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>dbo</schema>
-      <table>ProtectedStaffMembers</table>
-      <key>
-        <name>FieldworkerUid</name>
-        <field>StaffMemberUid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>StaffMemberUid</name>
-        <rename>FieldworkerUid</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>UserId</name>
-        <rename>FieldworkerId</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>Surname</name>
-        <rename>Surname</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>FirstName</name>
-        <rename>FirstNames</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1152</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update StaffMembers</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>dbo</schema>
-      <table>StaffMembers</table>
-      <key>
-        <name>FieldworkerUid</name>
-        <field>StaffMemberUid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>StaffMemberUid</name>
-        <rename>FieldworkerUid</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>IsActive</name>
-        <rename>IsActive</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>NodeId</name>
-        <rename>NodeId</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Interviewers.cube</name>
-    <type>CubeInput</type>
+    <name>completed_actions</name>
+    <type>CubeOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -780,10 +542,270 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${OutputDirectory}\Interviewers.cube</name>
+      <name>${OutputDirectory}\completed_actions.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview__actions</name>
+    <type>TextFileInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <accept_filenames>N</accept_filenames>
+    <passing_through_fields>N</passing_through_fields>
+    <accept_field/>
+    <accept_stepname/>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_breaks>N</enclosure_breaks>
+    <escapechar/>
+    <header>Y</header>
+    <nr_headerlines>1</nr_headerlines>
+    <footer>N</footer>
+    <nr_footerlines>1</nr_footerlines>
+    <line_wrapped>N</line_wrapped>
+    <nr_wraps>1</nr_wraps>
+    <layout_paged>N</layout_paged>
+    <nr_lines_per_page>80</nr_lines_per_page>
+    <nr_lines_doc_header>0</nr_lines_doc_header>
+    <noempty>Y</noempty>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <rownumByFile>N</rownumByFile>
+    <rownum_field/>
+    <format>DOS</format>
+    <encoding>UTF-8</encoding>
+    <length>Characters</length>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>zip:${DataDirectory}\BSR_2021_7_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_8_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_9_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_10_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_11_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_12_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_13_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_14_Tabular_ApprovedByHeadquarters.zip!/interview__actions.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <type>CSV</type>
+      <compression>None</compression>
+    </file>
+    <filters>
+    </filters>
+    <fields>
+      <field>
+        <name>﻿interview__key</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>11</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>interview__id</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>32</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>date</name>
+        <type>Date</type>
+        <format>yyyy-MM-dd</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>time</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>8</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>action</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>originator</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>role</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>responsible__name</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>16</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>responsible__role</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
     <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field/>
+    <file_error_message_field/>
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field/>
+    <error_fields_field/>
+    <error_text_field/>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>en_ZA</date_format_locale>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -793,14 +815,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>80</yloc>
+      <xloc>128</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set Surname -> Unknown</name>
-    <type>SetValueConstant</type>
+    <name>﻿interview__key date time</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -809,13 +831,37 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>Surname</name>
-        <value>Unknown</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>﻿interview__key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>date</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>time</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
     </fields>
     <attributes/>
@@ -827,14 +873,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>192</yloc>
+      <xloc>464</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Split Fullname</name>
-    <type>FieldSplitter</type>
+    <name>completed_nr</name>
+    <type>FieldsChangeSequence</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -843,92 +889,12 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <splitfield>FieldworkerName</splitfield>
-    <delimiter> </delimiter>
-    <enclosure/>
+    <start>1</start>
+    <increment>1</increment>
+    <resultfieldName>completed_nr</resultfieldName>
     <fields>
       <field>
-        <name>Surname</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
-      </field>
-      <field>
-        <name>FirstNames</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>Surname</in_stream_name>
-        <out_stream_name/>
-        <trim_type/>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>FirstNames</in_stream_name>
-        <out_stream_name/>
-        <trim_type/>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
+        <name>﻿interview__key</name>
       </field>
     </fields>
     <attributes/>
@@ -941,42 +907,7 @@
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Surname null</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set Surname -> Unknown</send_true_to>
-    <send_false_to>First Name null</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>Surname</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>80</yloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
