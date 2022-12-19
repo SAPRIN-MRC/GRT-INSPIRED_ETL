@@ -1,0 +1,12 @@
+Data Folders
+SSDataExports
+D:\Data\GRT-I\SSDataExports
+\\146.141.8.60\e$\SAPRIN DATASETS\SSDataExports
+
+OutputDirectory:	C:\Data\ETLOutput
+MappingData:		C:\Data\Mapping
+
+OutputDirectory:	C:\Data\ETLOutput
+MappingData:		C:\Data\Mapping
+OutputDirectory:	D:\Data\GRT-I\ETLOutput
+MappingData:		D:\Data\GRT-I\Mapping

@@ -1,0 +1,171 @@
+bs_types
+1	Homestead	
+2	Creche	
+3	Primary School	
+4	Secondary School	
+5	Clinic	
+6	Health Care Centre	
+7	Hospital	
+8	Church	
+9	Police Station	
+10	Bar, Restaurant	
+11	Shop	
+13	Workshop	
+14	Social Service Office	
+15	Home affairs office	
+16	Other	
+
+bs_types_new
+Residential	1
+Health service	2
+Personal services	3
+Retail	4
+Entertainment	5
+Industrial	6
+Offices	7
+Education	8
+Travel related	9
+Public services	10
+Outbuilding	11
+Inaccessible	12
+Open spaces	13
+
+bs_types_residential
+Flats	1
+Informal dwelling	2
+Formal dwelling	3
+Cluster housing	4
+Hostels	5
+Security villages	6
+Gated compounds	7
+
+bs_types_health
+Clinic	1
+Health centre	2
+Hospital	3
+Drop-in centre	4
+Place of safety	5
+Alternative therapy	6
+Traditional healers	7
+Hospice	8
+
+bs_types_personal
+Salon	1
+Nail bar	2
+Health and beauty	3
+Spa	4
+Reflexology	5
+
+bs_types_retail
+Shops	1
+Food stores	2
+Pharmacy	3
+
+bs_types_shops
+Shopping mall	1
+Retail outlets for clothing	2
+Housewares	3
+Showrooms	4
+Electronic and domestic appliances	5
+Communications equipment	6
+Data	7
+Hardware	8
+
+bs_types_food_store
+Butchery	1
+Bakery	2
+Grocery	3
+Supermarket	4
+Convenience store	5
+
+bs_types_entertain
+Social	1
+Sports	2
+
+bs_types_social
+Restaurants	1
+Bars	2
+Takeaways	3
+Clubs	4
+Cinemas	5
+
+bs_types_sports
+Gymnasia	1
+Sports clubs	2
+Swimming pools	3
+Stadiums	4
+
+bs_types_industrial
+Factory	1
+Workshop	2
+
+bs_types_workshop
+Repair	1
+Maintenance	2
+
+bs_types_offices
+Commercial space	1
+Professional services (engineers, solicitors)	2
+
+bs_types_education
+Creche	1
+Primary and secondary schools	2
+University	3
+
+bs_types_travel
+Transport	1
+Short stay residential	2
+
+bs_types_transport
+Petrol stations	1
+Bus and taxi stands	2
+Parking garages	3
+Airlines	4
+
+bs_types_short_stay
+Bed and breakfast	1
+Formal hotel	2
+Campsite	3
+Lodges	4
+Guest house	5
+
+bs_types_public
+Other government services	1
+Parastatal	2
+Community services	3
+Stadium	4
+
+bs_types_other_gvt
+Police	1
+Social services	2
+Licensing	3
+Crematoria	4
+Post office	5
+
+bs_types_parastatal
+Water	1
+Electricity	2
+Refuse disposal	3
+Correctional services	4
+
+bs_types_community
+Churches	1
+Libraries	2
+Community hall	3
+
+bs_types_outbuilding
+Garage	1
+Carport	2
+External toilet	3
+Shed	4
+
+bs_types_inaccess
+Claimed	1
+Captured	2
+Derelict	3
+
+bs_types_open_spaces
+Parks	1
+Public open spaces	2
+Building site	3
+Playground	4

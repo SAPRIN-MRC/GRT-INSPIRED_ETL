@@ -1,6 +1,6 @@
   <connection>
     <name>Saprin Ops</name>
-    <server>SAPRIN-VM</server>
+    <server>localhost</server>
     <type>MSSQLNATIVE</type>
     <access>Native</access>
     <database>Saprin_Ops_Structure</database>
