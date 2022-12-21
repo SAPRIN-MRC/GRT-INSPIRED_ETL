@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>Tmp</name>
+    <name>H01-06c Prepare BSTypes v11-14</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/07 12:10:41.290</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/20 12:45:05.145</modified_date>
+    <modified_date>2022/12/20 12:51:05.564</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -863,11 +863,6 @@
     <hop>
       <from>type = 2800</from>
       <to>Select values 5</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 5</from>
-      <to>Memory group by</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -2433,6 +2428,11 @@
     <hop>
       <from>type = 13400</from>
       <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>bstypes_v11_14</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -5762,7 +5762,7 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>4016</yloc>
+      <yloc>3232</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9092,7 +9092,7 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>4112</yloc>
+      <yloc>3328</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12437,7 +12437,7 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>4208</yloc>
+      <yloc>3424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -15767,7 +15767,7 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>4320</yloc>
+      <yloc>3536</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -16239,7 +16239,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>4016</yloc>
+      <yloc>3232</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -16600,7 +16600,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>4112</yloc>
+      <yloc>3328</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -16961,7 +16961,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>4208</yloc>
+      <yloc>3424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -17433,7 +17433,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>4320</yloc>
+      <yloc>3536</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -17472,7 +17472,7 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>4208</yloc>
+      <yloc>3424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -19232,45 +19232,6 @@
     </GUI>
   </step>
   <step>
-    <name>Memory group by</name>
-    <type>MemoryGroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>type</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>n</aggregate>
-        <subject/>
-        <type>COUNT_ANY</type>
-        <valuefield/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2496</xloc>
-      <yloc>6288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>health not specified</name>
     <type>FilterRows</type>
     <description/>
@@ -20148,8 +20109,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2352</xloc>
-      <yloc>6288</yloc>
+      <xloc>2384</xloc>
+      <yloc>3424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -29328,6 +29289,36 @@
     <GUI>
       <xloc>1520</xloc>
       <yloc>6896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bstypes_v11_14</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\bstypes_v11_14.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2528</xloc>
+      <yloc>3424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

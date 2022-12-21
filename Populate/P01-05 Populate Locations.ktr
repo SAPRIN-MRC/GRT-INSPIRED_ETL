@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/07 15:23:19.433</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/17 12:48:06.951</modified_date>
+    <modified_date>2022/12/21 10:29:00.868</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -503,61 +503,6 @@
   </connection>
   <order>
     <hop>
-      <from>Sites</from>
-      <to>SiteName</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Mappings</from>
-      <to>Site</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Site</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>SiteName</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>String operations</from>
-      <to>SiteId BuildingName 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Buildings</from>
-      <to>SiteId BuildingName</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>SiteId BuildingName 2</from>
-      <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>SiteId BuildingName</from>
-      <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add LocationTypeId</from>
-      <to>Generate LocationUid</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Generate LocationUid</from>
-      <to>Valid coordinate</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Valid coordinate</from>
       <to>Execute SQL script</to>
       <enabled>Y</enabled>
@@ -578,13 +523,38 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SubPlaceName</from>
-      <to>Merge join 3</to>
+      <from>Execute SQL script</from>
+      <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SubPlace</from>
-      <to>Merge join 3</to>
+      <from>Add LocationTypeId</from>
+      <to>Geocode 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Buildings</from>
+      <to>SiteId BuildingName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Geocode</from>
+      <to>Merge join 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Geocode 2</from>
+      <to>Merge join 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mappings</from>
+      <to>Site</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join</from>
+      <to>String operations</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -598,13 +568,78 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Merge join 4</from>
+      <to>Regex Unit</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Owners</from>
+      <to>Geocode</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Site</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SiteId BuildingName</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SiteId BuildingName 2</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SiteName</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sites</from>
+      <to>SiteName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>SiteId BuildingName 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SubPlace</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SubPlaceName</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>SubPlaces</from>
       <to>SubPlaceName</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Execute SQL script</from>
-      <to>Text file output</to>
+      <from>Regex Unit</from>
+      <to>Regex Floor</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Regex Floor</from>
+      <to>Map Floor</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Floor</from>
+      <to>Formula</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Formula</from>
+      <to>Valid coordinate</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -654,8 +689,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
-      <yloc>64</yloc>
+      <xloc>1152</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -763,8 +798,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>160</yloc>
+      <xloc>432</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -822,8 +857,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1664</xloc>
-      <yloc>64</yloc>
+      <xloc>2080</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -874,14 +909,14 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1520</xloc>
-      <yloc>160</yloc>
+      <xloc>1936</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Generate LocationUid</name>
-    <type>RandomValue</type>
+    <name>Formula</name>
+    <type>Formula</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -890,10 +925,62 @@ FROM codes.Buildings
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <formula>
+      <field_name>f</field_name>
+      <formula_string>IF(ISBLANK([Floor]);[Floor_alt];[Floor])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>Floor</replace_field>
+    </formula>
+    <formula>
+      <field_name>u</field_name>
+      <formula_string>IF(ISBLANK([Unit]);[Unit_alt];[Unit])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>Unit</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1808</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Geocode</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>LocationUid</name>
-        <type>random uuid</type>
+        <name>Geocode</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
     </fields>
     <attributes/>
@@ -905,8 +992,136 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1360</xloc>
-      <yloc>64</yloc>
+      <xloc>1264</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Geocode 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>Geocode</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Floor</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>Floor_alt</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>G</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>I</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>GROU</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>Groufloor</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>GROU FLOOR</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>SECO</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>GROUFLOOR</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>RT</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>HOUSE</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>FIR</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ROOFTOP</source_value>
+        <target_value>Roof</target_value>
+      </field>
+      <field>
+        <source_value>GROU FLOOR0</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>Grou floor</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>NULL</source_value>
+        <target_value/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1696</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -935,8 +1150,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>64</yloc>
+      <xloc>48</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -969,8 +1184,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>64</yloc>
+      <xloc>320</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1005,8 +1220,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>64</yloc>
+      <xloc>736</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1039,8 +1254,72 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>64</yloc>
+      <xloc>1024</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join 4</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>Geocode 2</step1>
+    <step2>Geocode</step2>
+    <keys_1>
+      <key>Geocode</key>
+    </keys_1>
+    <keys_2>
+      <key>Geocode</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Owners</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Owners.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1093,6 +1372,22 @@ FROM codes.Buildings
         <column_name>BuildingId</column_name>
         <stream_name>BuildingId</stream_name>
       </field>
+      <field>
+        <column_name>CurrentOwner</column_name>
+        <stream_name>Owner</stream_name>
+      </field>
+      <field>
+        <column_name>Weekblock</column_name>
+        <stream_name>weekblock_1</stream_name>
+      </field>
+      <field>
+        <column_name>Floor</column_name>
+        <stream_name>Floor</stream_name>
+      </field>
+      <field>
+        <column_name>Unit</column_name>
+        <stream_name>Unit</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1103,8 +1398,140 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1664</xloc>
-      <yloc>160</yloc>
+      <xloc>2080</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Regex Floor</name>
+    <type>RegexEval</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <script>\A(.+)[.].*\z|\A(.+)\z</script>
+    <matcher>floor_number</matcher>
+    <resultfieldname>result</resultfieldname>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>Floor</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+      <field>
+        <name>Floor_alt</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1600</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Regex Unit</name>
+    <type>RegexEval</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <script>\A(.+)[.].*\z|\A(.+)\z</script>
+    <matcher>unit_number</matcher>
+    <resultfieldname>result</resultfieldname>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>Unit</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+      <field>
+        <name>Unit_alt</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1488</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1145,8 +1572,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>237</xloc>
-      <yloc>64</yloc>
+      <xloc>192</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1195,8 +1622,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>160</yloc>
+      <xloc>592</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1245,8 +1672,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>64</yloc>
+      <xloc>592</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1287,8 +1714,8 @@ FROM codes.Buildings
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>160</yloc>
+      <xloc>192</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1372,8 +1799,8 @@ FROM codes.Sites
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>160</yloc>
+      <xloc>48</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1412,8 +1839,8 @@ FROM codes.Sites
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>64</yloc>
+      <xloc>432</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1454,8 +1881,8 @@ FROM codes.Sites
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>64</yloc>
+      <xloc>880</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1496,8 +1923,8 @@ FROM codes.Sites
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>160</yloc>
+      <xloc>880</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1581,55 +2008,8 @@ FROM codes.SubPlaces
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Valid coordinate</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Execute SQL script</send_true_to>
-    <send_false_to>Execute SQL script 2</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>Longitude</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>Latitude</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1520</xloc>
-      <yloc>64</yloc>
+      <xloc>736</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1736,18 +2116,6 @@ FROM codes.SubPlaces
         <precision>0</precision>
       </field>
       <field>
-        <name>WeekBlock</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>SubPlace</name>
         <type>String</type>
         <format/>
@@ -1818,6 +2186,54 @@ FROM codes.SubPlaces
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
+      </field>
+      <field>
+        <name>floor_number</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>unit_number</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>weekblock_1</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>weekblock_2</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
       </field>
       <field>
         <name>SiteId</name>
@@ -1928,6 +2344,42 @@ FROM codes.SubPlaces
         <precision>0</precision>
       </field>
       <field>
+        <name>Geocode_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>﻿interview__key</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>11</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Owner</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>LocationUid</name>
         <type>String</type>
         <format/>
@@ -1949,8 +2401,55 @@ FROM codes.SubPlaces
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1808</xloc>
-      <yloc>64</yloc>
+      <xloc>2224</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Valid coordinate</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Execute SQL script</send_true_to>
+    <send_false_to>Execute SQL script 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Longitude</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Latitude</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1936</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
