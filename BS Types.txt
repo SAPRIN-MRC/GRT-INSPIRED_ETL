@@ -1,3 +1,20 @@
+bs_types
+1	Homestead	
+2	Creche	
+3	Primary School	
+4	Secondary School	
+5	Clinic	
+6	Health Care Centre	
+7	Hospital	
+8	Church	
+9	Police Station	
+10	Bar, Restaurant	
+11	Shop	
+13	Workshop	
+14	Social Service Office	
+15	Home affairs office	
+16	Other	
+
 bs_types_new
 Residential	1
 Health service	2
@@ -12,7 +29,6 @@ Public services	10
 Outbuilding	11
 Inaccessible	12
 Open spaces	13
-Other	14
 
 bs_types_residential
 Flats	1
