@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2022/12/18 14:47:40.661</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/20 15:45:56.135</modified_date>
-    <key_for_session_key/>
+    <modified_date>2022/12/23 05:47:08.969</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -511,7 +511,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>bstypes_v8_10.cube 2</from>
+      <from>bstypes_v11_14.cube</from>
       <to>String operations</to>
       <enabled>Y</enabled>
     </hop>
@@ -522,8 +522,8 @@
     </hop>
   </order>
   <step>
-    <name>bstypes_v7.cube</name>
-    <type>CubeInput</type>
+    <name>Flat</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -532,11 +532,67 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\bstypes_v7.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <send_true_to>type = 1100</send_true_to>
+    <send_false_to>Open space</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <conditions>
+              <condition>
+                <negated>N</negated>
+                <leftvalue>bs_type_other</leftvalue>
+                <function>CONTAINS</function>
+                <rightvalue/>
+                <value>
+                  <name>constant</name>
+                  <type>String</type>
+                  <text>Flat</text>
+                  <length>-1</length>
+                  <precision>-1</precision>
+                  <isnull>N</isnull>
+                  <mask/>
+                </value>
+              </condition>
+              <condition>
+                <negated>N</negated>
+                <operator>OR</operator>
+                <leftvalue>bs_type_other</leftvalue>
+                <function>=</function>
+                <rightvalue/>
+                <value>
+                  <name>constant</name>
+                  <type>String</type>
+                  <text>Flat</text>
+                  <length>-1</length>
+                  <precision>-1</precision>
+                  <isnull>N</isnull>
+                  <mask/>
+                </value>
+              </condition>
+            </conditions>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>14000</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -546,44 +602,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>bstypes_v8_10.cube</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\bstypes_v8_10.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
+      <xloc>592</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>bstypes_v8_10.cube 2</name>
-    <type>CubeInput</type>
+    <name>Open space</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -592,11 +618,72 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\bstypes_v11_14.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <send_true_to>type = 13000</send_true_to>
+    <send_false_to>Shack</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <conditions>
+              <condition>
+                <negated>N</negated>
+                <conditions>
+                  <condition>
+                    <negated>N</negated>
+                    <leftvalue>bs_type_other</leftvalue>
+                    <function>CONTAINS</function>
+                    <rightvalue/>
+                    <value>
+                      <name>constant</name>
+                      <type>String</type>
+                      <text>Open</text>
+                      <length>-1</length>
+                      <precision>-1</precision>
+                      <isnull>N</isnull>
+                      <mask/>
+                    </value>
+                  </condition>
+                  <condition>
+                    <negated>N</negated>
+                    <operator>OR</operator>
+                    <leftvalue>bs_type_other</leftvalue>
+                    <function>=</function>
+                    <rightvalue/>
+                    <value>
+                      <name>constant</name>
+                      <type>String</type>
+                      <text>Space</text>
+                      <length>-1</length>
+                      <precision>-1</precision>
+                      <isnull>N</isnull>
+                      <mask/>
+                    </value>
+                  </condition>
+                </conditions>
+              </condition>
+            </conditions>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>14000</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -606,8 +693,99 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>224</yloc>
+      <xloc>736</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Shack</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>type = 1200</send_true_to>
+    <send_false_to>﻿interview__key</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <conditions>
+              <condition>
+                <negated>N</negated>
+                <conditions>
+                  <condition>
+                    <negated>N</negated>
+                    <leftvalue>bs_type_other</leftvalue>
+                    <function>CONTAINS</function>
+                    <rightvalue/>
+                    <value>
+                      <name>constant</name>
+                      <type>String</type>
+                      <text>Shack</text>
+                      <length>-1</length>
+                      <precision>-1</precision>
+                      <isnull>N</isnull>
+                      <mask/>
+                    </value>
+                  </condition>
+                  <condition>
+                    <negated>N</negated>
+                    <operator>OR</operator>
+                    <leftvalue>bs_type_other</leftvalue>
+                    <function>CONTAINS</function>
+                    <rightvalue/>
+                    <value>
+                      <name>constant</name>
+                      <type>String</type>
+                      <text>Shach</text>
+                      <length>-1</length>
+                      <precision>-1</precision>
+                      <isnull>N</isnull>
+                      <mask/>
+                    </value>
+                  </condition>
+                </conditions>
+              </condition>
+            </conditions>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>14000</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -717,8 +895,8 @@
     </GUI>
   </step>
   <step>
-    <name>type = 1500</name>
-    <type>SetValueConstant</type>
+    <name>bstypes</name>
+    <type>CubeOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -727,15 +905,11 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>type</name>
-        <value>1500</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <file>
+      <name>${OutputDirectory}\bstypes.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -745,14 +919,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>304</yloc>
+      <xloc>1136</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Flat</name>
-    <type>FilterRows</type>
+    <name>bstypes_v7.cube</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -761,67 +935,11 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>type = 1100</send_true_to>
-    <send_false_to>Open space</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>bs_type_other</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>Flat</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>bs_type_other</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>Flat</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <file>
+      <name>${OutputDirectory}\bstypes_v7.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -831,8 +949,68 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>96</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bstypes_v8_10.cube</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\bstypes_v8_10.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bstypes_v11_14.cube</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\bstypes_v11_14.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -871,8 +1049,8 @@
     </GUI>
   </step>
   <step>
-    <name>Open space</name>
-    <type>FilterRows</type>
+    <name>type = 1200</name>
+    <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -881,72 +1059,15 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>type = 13000</send_true_to>
-    <send_false_to>Shack</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <conditions>
-                  <condition>
-                    <negated>N</negated>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>CONTAINS</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Open</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                  <condition>
-                    <negated>N</negated>
-                    <operator>OR</operator>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>=</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Space</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                </conditions>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>type</name>
+        <value>1200</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -956,8 +1077,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>144</yloc>
+      <xloc>848</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -996,98 +1117,7 @@
     </GUI>
   </step>
   <step>
-    <name>Shack</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>type = 1200</send_true_to>
-    <send_false_to>﻿interview__key</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <conditions>
-                  <condition>
-                    <negated>N</negated>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>CONTAINS</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Shack</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                  <condition>
-                    <negated>N</negated>
-                    <operator>OR</operator>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>CONTAINS</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Shach</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                </conditions>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>type = 1200</name>
+    <name>type = 1500</name>
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
@@ -1101,7 +1131,7 @@
     <fields>
       <field>
         <name>type</name>
-        <value>1200</value>
+        <value>1500</value>
         <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
@@ -1115,8 +1145,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>256</yloc>
+      <xloc>464</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1158,36 +1188,6 @@
     </remotesteps>
     <GUI>
       <xloc>992</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>bstypes</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\bstypes.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
