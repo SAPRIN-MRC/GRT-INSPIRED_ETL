@@ -428,12 +428,79 @@
     <created_user>-</created_user>
     <created_date>2022/12/23 17:43:14.367</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/24 07:15:40.147</modified_date>
+    <modified_date>2022/12/25 09:34:51.750</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>Saprin Ops</name>
+    <server>localhost</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>Saprin_Ops_Structure</database>
+    <port>1433</port>
+    <username/>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MSSQLNATIVE.encrypt</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MSSQLNATIVE.trustServerCertificate</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>1433</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>BSR_2021_v13-14</from>
@@ -533,6 +600,11 @@
     <hop>
       <from>Map Country</from>
       <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add Provider</from>
+      <to>Insert / update</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -8179,6 +8251,191 @@
     </GUI>
   </step>
   <step>
+    <name>DoB VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_civil_id_dob != null) {
+var dateStr=upper(hmr_civil_id_dob);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var dob=new Date(yr,mo,dy);
+}
+else {
+var dob = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>dob</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1488</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Dummy (do nothing)</name>
     <type>Dummy</type>
     <description/>
@@ -8199,6 +8456,55 @@
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix VPDates</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>b</field_name>
+      <formula_string>IF([hmr_civil_id_dob]="0000-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="9999-99-99";"19UU-UU-UU";IF([hmr_civil_id_dob]="1900-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="2000-UU-UU";"20UU-UU-UU";IF([hmr_civil_id_dob]="NOT_FOUND";"19UU-UU-UU";[hmr_civil_id_dob])))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_civil_id_dob</replace_field>
+    </formula>
+    <formula>
+      <field_name>m</field_name>
+      <formula_string>IF([hmr_maternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_maternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_maternal_dod]))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_maternal_dod</replace_field>
+    </formula>
+    <formula>
+      <field_name>p</field_name>
+      <formula_string>IF([hmr_paternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_paternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_paternal_dod]))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_paternal_dod</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -8245,6 +8551,373 @@
     </remotesteps>
     <GUI>
       <xloc>2352</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Country</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>hmr_place_of_birth</field_to_use>
+    <target_field>Nationality</target_field>
+    <non_match_default>??</non_match_default>
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>ZA</target_value>
+      </field>
+      <field>
+        <source_value>196</source_value>
+        <target_value>ZW</target_value>
+      </field>
+      <field>
+        <source_value>107</source_value>
+        <target_value>MW</target_value>
+      </field>
+      <field>
+        <source_value>122</source_value>
+        <target_value>MZ</target_value>
+      </field>
+      <field>
+        <source_value>131</source_value>
+        <target_value>NG</target_value>
+      </field>
+      <field>
+        <source_value>99</source_value>
+        <target_value>LS</target_value>
+      </field>
+      <field>
+        <source_value>41</source_value>
+        <target_value>CD</target_value>
+      </field>
+      <field>
+        <source_value>174</source_value>
+        <target_value>TZ</target_value>
+      </field>
+      <field>
+        <source_value>195</source_value>
+        <target_value>ZM</target_value>
+      </field>
+      <field>
+        <source_value>24</source_value>
+        <target_value>BW</target_value>
+      </field>
+      <field>
+        <source_value>168</source_value>
+        <target_value>SZ</target_value>
+      </field>
+      <field>
+        <source_value>31</source_value>
+        <target_value>CM</target_value>
+      </field>
+      <field>
+        <source_value>59</source_value>
+        <target_value>ET</target_value>
+      </field>
+      <field>
+        <source_value>183</source_value>
+        <target_value>UG</target_value>
+      </field>
+      <field>
+        <source_value>-999999999</source_value>
+        <target_value>??</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>AO</target_value>
+      </field>
+      <field>
+        <source_value>67</source_value>
+        <target_value>GH</target_value>
+      </field>
+      <field>
+        <source_value>162</source_value>
+        <target_value>SO</target_value>
+      </field>
+      <field>
+        <source_value>146</source_value>
+        <target_value>RW</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>AF</target_value>
+      </field>
+      <field>
+        <source_value>40</source_value>
+        <target_value>CG</target_value>
+      </field>
+      <field>
+        <source_value>89</source_value>
+        <target_value>KE</target_value>
+      </field>
+      <field>
+        <source_value>15</source_value>
+        <target_value>BD</target_value>
+      </field>
+      <field>
+        <source_value>20</source_value>
+        <target_value>BJ</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>DZ</target_value>
+      </field>
+      <field>
+        <source_value>28</source_value>
+        <target_value>BF</target_value>
+      </field>
+      <field>
+        <source_value>29</source_value>
+        <target_value>BI</target_value>
+      </field>
+      <field>
+        <source_value>124</source_value>
+        <target_value>NA</target_value>
+      </field>
+      <field>
+        <source_value>134</source_value>
+        <target_value>PK</target_value>
+      </field>
+      <field>
+        <source_value>154</source_value>
+        <target_value>SN</target_value>
+      </field>
+      <field>
+        <source_value>43</source_value>
+        <target_value>CI</target_value>
+      </field>
+      <field>
+        <source_value>84</source_value>
+        <target_value>IT</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>AL</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>AD</target_value>
+      </field>
+      <field>
+        <source_value>25</source_value>
+        <target_value>BR</target_value>
+      </field>
+      <field>
+        <source_value>110</source_value>
+        <target_value>ML</target_value>
+      </field>
+      <field>
+        <source_value>163</source_value>
+        <target_value>SS</target_value>
+      </field>
+      <field>
+        <source_value>187</source_value>
+        <target_value>US</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2000</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Maternal DoD VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_maternal_dod != null) {
+var dateStr=upper(hmr_maternal_dod);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var maternalDoD=new Date(yr,mo,dy);
+}
+else {
+var maternalDoD = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>maternalDoD</name>
+        <rename>maternalDoD</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1648</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -8484,6 +9157,230 @@
     </remotesteps>
     <GUI>
       <xloc>1024</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Paternal DoD VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_paternal_dod != null) {
+var dateStr=upper(hmr_paternal_dod);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var paternalDoD=new Date(yr,mo,dy);
+}
+else {
+var paternalDoD = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>paternalDoD</name>
+        <rename>paternalDoD</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1840</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Random DoB values</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>rYear</name>
+        <type>random number</type>
+      </field>
+      <field>
+        <name>rMonth</name>
+        <type>random number</type>
+      </field>
+      <field>
+        <name>rDay</name>
+        <type>random number</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1344</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -10311,57 +11208,8 @@
     </GUI>
   </step>
   <step>
-    <name>Fix VPDates</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>b</field_name>
-      <formula_string>IF([hmr_civil_id_dob]="0000-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="9999-99-99";"19UU-UU-UU";IF([hmr_civil_id_dob]="1900-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="2000-UU-UU";"20UU-UU-UU";IF([hmr_civil_id_dob]="NOT_FOUND";"19UU-UU-UU";[hmr_civil_id_dob])))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_civil_id_dob</replace_field>
-    </formula>
-    <formula>
-      <field_name>m</field_name>
-      <formula_string>IF([hmr_maternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_maternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_maternal_dod]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_maternal_dod</replace_field>
-    </formula>
-    <formula>
-      <field_name>p</field_name>
-      <formula_string>IF([hmr_paternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_paternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_paternal_dod]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_paternal_dod</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1152</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Random DoB values</name>
-    <type>RandomValue</type>
+    <name>Add Provider</name>
+    <type>DataGrid</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -10372,388 +11220,36 @@
     </partitioning>
     <fields>
       <field>
-        <name>rYear</name>
-        <type>random number</type>
-      </field>
-      <field>
-        <name>rMonth</name>
-        <type>random number</type>
-      </field>
-      <field>
-        <name>rDay</name>
-        <type>random number</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1344</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>DoB VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_civil_id_dob != null) {
-var dateStr=upper(hmr_civil_id_dob);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var dob=new Date(yr,mo,dy);
-}
-else {
-var dob = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>dob</rename>
-        <type>Date</type>
+        <name>ProviderId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1488</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Maternal DoD VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_maternal_dod != null) {
-var dateStr=upper(hmr_maternal_dod);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var maternalDoD=new Date(yr,mo,dy);
-}
-else {
-var maternalDoD = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
       <field>
-        <name>maternalDoD</name>
-        <rename>maternalDoD</rename>
-        <type>Date</type>
-        <length>-1</length>
+        <name>ProviderName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>50</length>
         <precision>-1</precision>
-        <replace>N</replace>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
       </field>
     </fields>
+    <data>
+      <line>
+        <item>6</item>
+        <item>Rain</item>
+      </line>
+    </data>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -10763,14 +11259,14 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1648</xloc>
-      <yloc>160</yloc>
+      <xloc>96</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Paternal DoD VPDate</name>
-    <type>ScriptValueMod</type>
+    <name>Insert / update</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -10779,166 +11275,29 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_paternal_dod != null) {
-var dateStr=upper(hmr_paternal_dod);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var paternalDoD=new Date(yr,mo,dy);
-}
-else {
-var paternalDoD = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>paternalDoD</name>
-        <rename>paternalDoD</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
+    <connection>Saprin Ops</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>codes</schema>
+      <table>MobileServiceProviders</table>
+      <key>
+        <name>ProviderId</name>
+        <field>ProviderId</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>ProviderId</name>
+        <rename>ProviderId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>ProviderName</name>
+        <rename>ProviderName</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -10948,190 +11307,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1840</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Country</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_place_of_birth</field_to_use>
-    <target_field>Nationality</target_field>
-    <non_match_default>??</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>ZA</target_value>
-      </field>
-      <field>
-        <source_value>196</source_value>
-        <target_value>ZW</target_value>
-      </field>
-      <field>
-        <source_value>107</source_value>
-        <target_value>MW</target_value>
-      </field>
-      <field>
-        <source_value>122</source_value>
-        <target_value>MZ</target_value>
-      </field>
-      <field>
-        <source_value>131</source_value>
-        <target_value>NG</target_value>
-      </field>
-      <field>
-        <source_value>99</source_value>
-        <target_value>LS</target_value>
-      </field>
-      <field>
-        <source_value>41</source_value>
-        <target_value>CD</target_value>
-      </field>
-      <field>
-        <source_value>174</source_value>
-        <target_value>TZ</target_value>
-      </field>
-      <field>
-        <source_value>195</source_value>
-        <target_value>ZM</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
-        <target_value>BW</target_value>
-      </field>
-      <field>
-        <source_value>168</source_value>
-        <target_value>SZ</target_value>
-      </field>
-      <field>
-        <source_value>31</source_value>
-        <target_value>CM</target_value>
-      </field>
-      <field>
-        <source_value>59</source_value>
-        <target_value>ET</target_value>
-      </field>
-      <field>
-        <source_value>183</source_value>
-        <target_value>UG</target_value>
-      </field>
-      <field>
-        <source_value>-999999999</source_value>
-        <target_value>??</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>AO</target_value>
-      </field>
-      <field>
-        <source_value>67</source_value>
-        <target_value>GH</target_value>
-      </field>
-      <field>
-        <source_value>162</source_value>
-        <target_value>SO</target_value>
-      </field>
-      <field>
-        <source_value>146</source_value>
-        <target_value>RW</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>AF</target_value>
-      </field>
-      <field>
-        <source_value>40</source_value>
-        <target_value>CG</target_value>
-      </field>
-      <field>
-        <source_value>89</source_value>
-        <target_value>KE</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>BD</target_value>
-      </field>
-      <field>
-        <source_value>20</source_value>
-        <target_value>BJ</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>DZ</target_value>
-      </field>
-      <field>
-        <source_value>28</source_value>
-        <target_value>BF</target_value>
-      </field>
-      <field>
-        <source_value>29</source_value>
-        <target_value>BI</target_value>
-      </field>
-      <field>
-        <source_value>124</source_value>
-        <target_value>NA</target_value>
-      </field>
-      <field>
-        <source_value>134</source_value>
-        <target_value>PK</target_value>
-      </field>
-      <field>
-        <source_value>154</source_value>
-        <target_value>SN</target_value>
-      </field>
-      <field>
-        <source_value>43</source_value>
-        <target_value>CI</target_value>
-      </field>
-      <field>
-        <source_value>84</source_value>
-        <target_value>IT</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>AL</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>AD</target_value>
-      </field>
-      <field>
-        <source_value>25</source_value>
-        <target_value>BR</target_value>
-      </field>
-      <field>
-        <source_value>110</source_value>
-        <target_value>ML</target_value>
-      </field>
-      <field>
-        <source_value>163</source_value>
-        <target_value>SS</target_value>
-      </field>
-      <field>
-        <source_value>187</source_value>
-        <target_value>US</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2000</xloc>
-      <yloc>160</yloc>
+      <xloc>288</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
