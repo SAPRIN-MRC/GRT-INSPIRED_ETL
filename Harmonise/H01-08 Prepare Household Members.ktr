@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/23 17:43:14.367</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/28 16:44:50.384</modified_date>
+    <modified_date>2022/12/29 08:00:34.953</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -613,11 +613,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Null values</from>
-      <to>Select values 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Current Employment</from>
       <to>EmploymentType</to>
       <enabled>Y</enabled>
@@ -718,7 +713,32 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Null values</from>
+      <to>First = Second name</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>First = Second name</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>First = Second name</from>
+      <to>secondname = null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>secondname = null</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Select values 4</from>
+      <to>﻿interview__key</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>﻿interview__key</from>
       <to>HouseholdMembers</to>
       <enabled>Y</enabled>
     </hop>
@@ -8659,7 +8679,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>1376</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -9628,489 +9648,411 @@ Alert(str2);</jsScript_script>
     <fields>
       <field>
         <name>﻿interview__key</name>
+        <rename/>
       </field>
       <field>
         <name>interview__id</name>
+        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
+        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
+        <rename/>
       </field>
       <field>
         <name>hhr_members_list</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_tempid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_first_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_second_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_detail</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_dob</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_age</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_age_str</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gender</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_has_maiden_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maiden_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_primary_tel</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_prim_tel_provider</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_alt_tel</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_atl_tel_provider</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_place_of_birth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_nationalty</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_citizenship</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_head_relationship</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_nights_spend</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_is_mem_resident</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_member</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_firstname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_secondname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_status</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dod</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_member</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_Surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_firstname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_secondname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_status</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dod</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_highest_grade</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_tertiary_education</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_current_education</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employed</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_self_employed</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employer</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employment_sector</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_oth_sector</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_not_working</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_oth_not_working</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gvt_grant</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__99</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_old_age_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_disability_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_child_supp_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_care_dep_date</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_foster_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_war_vet_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_grant_in_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_social_belief_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_education_grant_start</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__0</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__10</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__11</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__12</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__13</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__14</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__15</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__16</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__17</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__18</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__19</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__20</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__21</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__22</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__23</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__24</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__25</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__26</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__27</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__28</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__29</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__30</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__31</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__32</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__33</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__34</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__35</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__36</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__37</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__38</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__39</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__40</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__41</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__42</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__43</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__44</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__45</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__46</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__47</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__48</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__49</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_marital_state</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_partnership_pattern</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_pattern</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_pregnant</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_reg_partner</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_partner_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_new_crr_date</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_married</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_births</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_children</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_daughters</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_sons</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth_die</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_birth_die</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_girls</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_boys</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_had_stillbirth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__3</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_abortion_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth_fin</name>
+        <rename/>
       </field>
       <field>
         <name>var_hmr_pgh_total_births</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__0</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__3</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__4</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__5</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__6</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__7</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__8</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__9</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -10142,489 +10084,411 @@ Alert(str2);</jsScript_script>
     <fields>
       <field>
         <name>﻿interview__key</name>
+        <rename/>
       </field>
       <field>
         <name>interview__id</name>
+        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
+        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
+        <rename/>
       </field>
       <field>
         <name>hhr_members_list</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_tempid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_first_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_second_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_detail</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_dob</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_age</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_age_str</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gender</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_has_maiden_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maiden_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_primary_tel</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_prim_tel_provider</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_alt_tel</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_atl_tel_provider</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_place_of_birth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_nationalty</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_citizenship</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_head_relationship</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_nights_spend</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_is_mem_resident</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_member</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_firstname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_secondname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_status</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dod</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_member</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_Surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_firstname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_secondname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_status</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dod</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_highest_grade</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_tertiary_education</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_current_education</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employed</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_self_employed</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employer</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employment_sector</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_oth_sector</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_not_working</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_oth_not_working</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gvt_grant</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__99</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_old_age_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_disability_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_child_supp_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_care_dep_date</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_foster_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_war_vet_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_grant_in_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_social_belief_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_education_grant_start</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__0</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__10</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__11</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__12</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__13</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__14</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__15</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__16</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__17</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__18</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__19</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__20</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__21</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__22</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__23</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__24</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__25</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__26</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__27</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__28</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__29</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__30</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__31</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__32</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__33</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__34</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__35</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__36</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__37</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__38</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__39</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__40</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__41</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__42</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__43</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__44</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__45</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__46</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__47</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__48</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__49</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_marital_state</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_partnership_pattern</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_pattern</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_pregnant</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_reg_partner</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_partner_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_new_crr_date</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_married</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_births</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_children</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_daughters</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_sons</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth_die</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_birth_die</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_girls</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_boys</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_had_stillbirth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__3</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_abortion_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth_fin</name>
+        <rename/>
       </field>
       <field>
         <name>var_hmr_pgh_total_births</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__0</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__3</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__4</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__5</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__6</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__7</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__8</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__9</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -10656,489 +10520,411 @@ Alert(str2);</jsScript_script>
     <fields>
       <field>
         <name>﻿interview__key</name>
+        <rename/>
       </field>
       <field>
         <name>interview__id</name>
+        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
+        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
+        <rename/>
       </field>
       <field>
         <name>hhr_members_list</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_tempid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_first_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_second_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_detail</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_dob</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_age</name>
+        <rename/>
       </field>
       <field>
         <name>var_reg_mem_age_str</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gender</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_has_maiden_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maiden_name</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_primary_tel</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_prim_tel_provider</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_alt_tel</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_atl_tel_provider</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_place_of_birth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_nationalty</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_citizenship</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_head_relationship</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_nights_spend</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_is_mem_resident</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_member</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_firstname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_secondname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_status</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dod</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_member</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_Surname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_firstname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_secondname</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_status</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dod</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_highest_grade</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_tertiary_education</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_current_education</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employed</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_self_employed</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employer</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_employment_sector</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_oth_sector</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_not_working</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_oth_not_working</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gvt_grant</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__99</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_old_age_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_disability_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_child_supp_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_care_dep_date</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_foster_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_war_vet_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_grant_in_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_social_belief_start</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_education_grant_start</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__0</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__10</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__11</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__12</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__13</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__14</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__15</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__16</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__17</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__18</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__19</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__20</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__21</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__22</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__23</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__24</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__25</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__26</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__27</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__28</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__29</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__30</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__31</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__32</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__33</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__34</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__35</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__36</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__37</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__38</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__39</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__40</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__41</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__42</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__43</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__44</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__45</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__46</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__47</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__48</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__49</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_marital_state</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_partnership_pattern</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_pattern</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_pregnant</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_reg_partner</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_partner_dsid</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_new_crr_date</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_married</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_births</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_children</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_daughters</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_sons</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth_die</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_birth_die</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_girls</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_live_die_boys</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_had_stillbirth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__3</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_abortion_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth_fin</name>
+        <rename/>
       </field>
       <field>
         <name>var_hmr_pgh_total_births</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__0</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__1</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__2</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__3</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__4</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__5</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__6</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__7</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__8</name>
+        <rename/>
       </field>
       <field>
         <name>hmr_list_preg__9</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -11697,7 +11483,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
+      <xloc>1184</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -11738,7 +11524,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
+      <xloc>1376</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -12653,7 +12439,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2384</xloc>
+      <xloc>2624</xloc>
       <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
@@ -13308,7 +13094,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
+      <xloc>1184</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -13523,7 +13309,134 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2576</xloc>
+      <xloc>2944</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>First = Second name</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>secondname = null</send_true_to>
+    <send_false_to>Select values 4</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_first_name</leftvalue>
+        <function>=</function>
+        <rightvalue>hmr_second_name</rightvalue>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2352</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>secondname = null</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>hmr_second_name</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2352</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>﻿interview__key</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>﻿interview__key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2768</xloc>
       <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>

@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/11/20 12:18:54.456</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/23 05:40:00.089</modified_date>
+    <modified_date>2022/12/30 05:12:13.059</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -489,7 +489,7 @@
       </attribute>
       <attribute>
         <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>N</attribute>
+        <attribute>Y</attribute>
       </attribute>
       <attribute>
         <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
@@ -578,16 +578,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Multiway merge join 4</from>
-      <to>Generate EventUid</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Generate EventUid</from>
-      <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add constants</from>
       <to>Calculator</to>
       <enabled>Y</enabled>
@@ -619,11 +609,11 @@
     </hop>
     <hop>
       <from>Calculator</from>
-      <to>Map RespindentType</to>
+      <to>Map RespondentType</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map RespindentType</from>
+      <from>Map RespondentType</from>
       <to>ObservationType</to>
       <enabled>Y</enabled>
     </hop>
@@ -670,6 +660,11 @@
     <hop>
       <from>Observations output</from>
       <to>ObservationInsertErrors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Multiway merge join 4</from>
+      <to>Add constants</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -743,7 +738,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1752</xloc>
+      <xloc>1464</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -773,7 +768,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2788</xloc>
+      <xloc>2528</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -829,7 +824,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1900</xloc>
+      <xloc>1616</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -951,7 +946,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
+      <xloc>1168</xloc>
       <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1074,7 +1069,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2640</xloc>
+      <xloc>2376</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1117,37 +1112,6 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Generate EventUid</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>EventUid</name>
-        <type>random uuid</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1604</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1368,13 +1332,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>896</xloc>
       <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Map RespindentType</name>
+    <name>Map RespondentType</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -1418,7 +1382,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2048</xloc>
+      <xloc>1768</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1581,7 +1545,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1456</xloc>
+      <xloc>1312</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1806,7 +1770,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2936</xloc>
+      <xloc>2680</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1847,7 +1811,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2196</xloc>
+      <xloc>1920</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1927,7 +1891,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2936</xloc>
+      <xloc>2680</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1967,7 +1931,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2492</xloc>
+      <xloc>2224</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2102,7 +2066,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2344</xloc>
+      <xloc>2072</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2259,7 +2223,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
+      <xloc>1024</xloc>
       <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2343,7 +2307,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1456</xloc>
+      <xloc>1312</xloc>
       <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>

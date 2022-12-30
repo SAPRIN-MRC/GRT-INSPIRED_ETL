@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/05 14:51:19.571</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/21 11:55:39.459</modified_date>
+    <modified_date>2022/12/30 05:06:51.110</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -762,6 +762,37 @@
     <GUI>
       <xloc>400</xloc>
       <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Generate LocationUid</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>LocationUid</name>
+        <type>random uuid</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1176</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1944,67 +1975,51 @@
     <fields>
       <field>
         <name>RecId</name>
-        <rename/>
       </field>
       <field>
         <name>LocationUid</name>
-        <rename/>
       </field>
       <field>
         <name>Geocode</name>
-        <rename/>
       </field>
       <field>
         <name>InterviewKey</name>
-        <rename/>
       </field>
       <field>
         <name>Site</name>
-        <rename/>
       </field>
       <field>
         <name>FCA</name>
-        <rename/>
       </field>
       <field>
         <name>SubPlace</name>
-        <rename/>
       </field>
       <field>
         <name>BuildingName</name>
-        <rename/>
       </field>
       <field>
         <name>DwellingType</name>
-        <rename/>
       </field>
       <field>
         <name>ImageDate</name>
-        <rename/>
       </field>
       <field>
         <name>Longitude</name>
-        <rename/>
       </field>
       <field>
         <name>Latitude</name>
-        <rename/>
       </field>
       <field>
         <name>floor_number</name>
-        <rename/>
       </field>
       <field>
         <name>unit_number</name>
-        <rename/>
       </field>
       <field>
         <name>weekblock_1</name>
-        <rename/>
       </field>
       <field>
         <name>weekblock_2</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2017,7 +2032,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1248</xloc>
+      <xloc>1332</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2211,7 +2226,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1408</xloc>
+      <xloc>1488</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2271,7 +2286,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1020</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2315,37 +2330,6 @@
     <GUI>
       <xloc>864</xloc>
       <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Generate LocationUid</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>LocationUid</name>
-        <type>random uuid</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
