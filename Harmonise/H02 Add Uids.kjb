@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2022/12/30 05:41:13.476</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2022/12/30 10:08:51.651</modified_date>
+  <modified_date>2022/12/30 10:37:05.968</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -402,7 +402,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>560</xloc>
-      <yloc>592</yloc>
+      <yloc>704</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -597,6 +597,70 @@
       <yloc>447</yloc>
       <attributes_kjc/>
     </entry>
+    <entry>
+      <name>Step S05</name>
+      <description/>
+      <type>SIMPLE_EVAL</type>
+      <attributes/>
+      <valuetype>variable</valuetype>
+      <fieldname/>
+      <variablename>NextStep</variablename>
+      <fieldtype>string</fieldtype>
+      <mask/>
+      <comparevalue>S05</comparevalue>
+      <minvalue/>
+      <maxvalue/>
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>false</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>560</xloc>
+      <yloc>544</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>H02-05 Add LocationUid to bstypes</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>rep_name</specification_method>
+      <trans_object_id/>
+      <filename/>
+      <transname>H02-05 Add LocationUid to bstypes</transname>
+      <directory>/Harmonise</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>832</xloc>
+      <yloc>544</yloc>
+      <attributes_kjc/>
+    </entry>
   </entries>
   <hops>
     <hop>
@@ -709,6 +773,33 @@
     </hop>
     <hop>
       <from>Step S04</from>
+      <to>Step S05</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S05</from>
+      <to>H02-05 Add LocationUid to bstypes</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>H02-04 Add Individual Uids to Pregnancies</from>
+      <to>H02-05 Add LocationUid to bstypes</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S05</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -717,7 +808,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>H02-04 Add Individual Uids to Pregnancies</from>
+      <from>H02-05 Add LocationUid to bstypes</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
