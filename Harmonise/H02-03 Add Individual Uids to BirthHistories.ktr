@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>H01-06 Prepare BSTypes</name>
+    <name>H02-03 Add Individual Uids to BirthHistories</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,109 +426,126 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/12/18 14:47:40.661</created_date>
+    <created_date>2022/12/30 05:44:25.032</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/30 10:12:57.570</modified_date>
+    <modified_date>2022/12/30 10:07:40.235</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Add ChildUid</note>
+      <xloc>1088</xloc>
+      <yloc>48</yloc>
+      <width>116</width>
+      <heigth>34</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Add MotherUid</note>
+      <xloc>1088</xloc>
+      <yloc>256</yloc>
+      <width>134</width>
+      <heigth>34</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
     <hop>
-      <from>Student</from>
-      <to>type = 1500</to>
+      <from>BirthHistories</from>
+      <to>interview_key hhr_register_roster__id hmr_pgh_registered_member</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Flat</from>
-      <to>type = 1100</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Student</from>
-      <to>Flat</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Open space</from>
-      <to>type = 13000</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Flat</from>
-      <to>Open space</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Shack</from>
-      <to>type = 1200</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Open space</from>
-      <to>Shack</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>String operations</from>
-      <to>Student</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Shack</from>
-      <to>﻿interview__key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>type = 1200</from>
-      <to>﻿interview__key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>type = 13000</from>
-      <to>﻿interview__key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>type = 1100</from>
-      <to>﻿interview__key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>type = 1500</from>
-      <to>﻿interview__key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>bstypes_v7.cube</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>bstypes_v8_10.cube</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>bstypes_v11_14.cube</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>﻿interview__key</from>
+      <from>HouseholdMembers 2</from>
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values</from>
-      <to>bstypes</to>
+      <to>interview_key hhr_register_roster__id register_members_roster__id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id hmr_pgh_registered_member</from>
+      <to>Join Child</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id register_members_roster__id</from>
+      <to>Join Child</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Child</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>interview_key hhr_register_roster__id register_members_roster__id 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>HouseholdMembers 3</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>interview_key hhr_register_roster__id register_members_roster__id 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>BirthHistories_withUids</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id register_members_roster__id 3</from>
+      <to>join mother</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>join mother</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id register_members_roster__id 2</from>
+      <to>join mother</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Flat</name>
-    <type>FilterRows</type>
+    <name>BirthHistories</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -537,67 +554,11 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>type = 1100</send_true_to>
-    <send_false_to>Open space</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>bs_type_other</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>Flat</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>bs_type_other</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>Flat</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <file>
+      <name>${OutputDirectory}\BirthHistories.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -607,300 +568,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>144</yloc>
+      <xloc>144</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Open space</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>type = 13000</send_true_to>
-    <send_false_to>Shack</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <conditions>
-                  <condition>
-                    <negated>N</negated>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>CONTAINS</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Open</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                  <condition>
-                    <negated>N</negated>
-                    <operator>OR</operator>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>=</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Space</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                </conditions>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Shack</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>type = 1200</send_true_to>
-    <send_false_to>﻿interview__key</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <conditions>
-                  <condition>
-                    <negated>N</negated>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>CONTAINS</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Shack</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                  <condition>
-                    <negated>N</negated>
-                    <operator>OR</operator>
-                    <leftvalue>bs_type_other</leftvalue>
-                    <function>CONTAINS</function>
-                    <rightvalue/>
-                    <value>
-                      <name>constant</name>
-                      <type>String</type>
-                      <text>Shach</text>
-                      <length>-1</length>
-                      <precision>-1</precision>
-                      <isnull>N</isnull>
-                      <mask/>
-                    </value>
-                  </condition>
-                </conditions>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>bs_type_other</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Student</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>type = 1500</send_true_to>
-    <send_false_to>Flat</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>bs_type_other</leftvalue>
-            <function>CONTAINS</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>Student</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>14000</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>bstypes</name>
+    <name>BirthHistories_withUids</name>
     <type>CubeOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -911,7 +585,7 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${OutputDirectory}\bstypes.cube</name>
+      <name>${OutputDirectory}\BirthHistories_withUids.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -924,13 +598,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
-      <yloc>416</yloc>
+      <xloc>1136</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>bstypes_v11_14.cube</name>
+    <name>HouseholdMembers 2</name>
     <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -941,7 +615,7 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${OutputDirectory}\bstypes_v11_14.cube</name>
+      <name>${OutputDirectory}\HouseholdMembers.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -954,13 +628,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>224</yloc>
+      <xloc>144</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>bstypes_v7.cube</name>
+    <name>HouseholdMembers 3</name>
     <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -971,7 +645,7 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${OutputDirectory}\bstypes_v7.cube</name>
+      <name>${OutputDirectory}\HouseholdMembers.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -984,14 +658,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>64</yloc>
+      <xloc>144</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>bstypes_v8_10.cube</name>
-    <type>CubeInput</type>
+    <name>Join Child</name>
+    <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1000,11 +674,19 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\bstypes_v8_10.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <join_type>LEFT OUTER</join_type>
+    <step1>interview_key hhr_register_roster__id hmr_pgh_registered_member</step1>
+    <step2>interview_key hhr_register_roster__id register_members_roster__id</step2>
+    <keys_1>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>hmr_pgh_dsid</key>
+    </keys_1>
+    <keys_2>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>register_members_roster__id</key>
+    </keys_2>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1014,14 +696,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>144</yloc>
+      <xloc>944</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>type = 1100</name>
-    <type>SetValueConstant</type>
+    <name>Select values</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1030,14 +712,20 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
     <fields>
       <field>
-        <name>type</name>
-        <value>1100</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>interview_key</name>
       </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1048,30 +736,82 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>288</yloc>
+      <xloc>304</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>type = 1200</name>
-    <type>SetValueConstant</type>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
     <fields>
       <field>
-        <name>type</name>
-        <value>1200</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>interview_key</name>
       </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>reg_pregnancies_roster__id</name>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hmr_pgh_date</name>
+      </field>
+      <field>
+        <name>hmr_pgh_gender</name>
+      </field>
+      <field>
+        <name>hmr_pgh_single_multiple</name>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+        <rename>ChildUid</rename>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_days</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+      </field>
+      <field>
+        <name>DeliveryDate</name>
+      </field>
+      <field>
+        <name>Duration</name>
+      </field>
+      <field>
+        <name>OutcomeEventUid</name>
+      </field>
+      <field>
+        <name>PregnancyUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1082,14 +822,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>256</yloc>
+      <xloc>1136</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>type = 13000</name>
-    <type>SetValueConstant</type>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1098,14 +838,20 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
     <fields>
       <field>
-        <name>type</name>
-        <value>13000</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>interview_key</name>
       </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1116,30 +862,85 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>272</yloc>
+      <xloc>304</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>type = 1500</name>
-    <type>SetValueConstant</type>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
     <fields>
       <field>
-        <name>type</name>
-        <value>1500</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>interview_key</name>
       </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+        <rename>MotherUid</rename>
+      </field>
+      <field>
+        <name>reg_pregnancies_roster__id</name>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hmr_pgh_date</name>
+      </field>
+      <field>
+        <name>hmr_pgh_gender</name>
+      </field>
+      <field>
+        <name>hmr_pgh_single_multiple</name>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+      </field>
+      <field>
+        <name>ChildUid</name>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_days</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+      </field>
+      <field>
+        <name>DeliveryDate</name>
+      </field>
+      <field>
+        <name>Duration</name>
+      </field>
+      <field>
+        <name>OutcomeEventUid</name>
+      </field>
+      <field>
+        <name>PregnancyUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1150,13 +951,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>304</yloc>
+      <xloc>1136</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>﻿interview__key</name>
+    <name>interview_key hhr_register_roster__id hmr_pgh_registered_member</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1175,7 +976,23 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>﻿interview__key</name>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -1192,14 +1009,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>416</yloc>
+      <xloc>640</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
+    <name>interview_key hhr_register_roster__id register_members_roster__id</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1208,28 +1025,38 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>﻿interview__key</name>
-        <rename>interview_key</rename>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
       <field>
-        <name>type</name>
-        <rename/>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
       <field>
-        <name>bs_type_other</name>
-        <rename/>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
-      <field>
-        <name>bs_current_state</name>
-        <rename/>
-      </field>
-      <field>
-        <name>bs_functional</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1240,8 +1067,162 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>416</yloc>
+      <xloc>640</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id register_members_roster__id 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id register_members_roster__id 3</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>join mother</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>interview_key hhr_register_roster__id register_members_roster__id 3</step1>
+    <step2>interview_key hhr_register_roster__id register_members_roster__id 2</step2>
+    <keys_1>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>register_members_roster__id</key>
+    </keys_1>
+    <keys_2>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>register_members_roster__id</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

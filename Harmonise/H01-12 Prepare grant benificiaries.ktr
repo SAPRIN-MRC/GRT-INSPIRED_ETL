@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>H01-08 Prepare Household Members</name>
+    <name>H01-12 Prepare grant benificiaries</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,87 +426,36 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/12/23 17:43:14.367</created_date>
+    <created_date>2022/12/20 07:21:06.182</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/30 05:57:21.026</modified_date>
+    <modified_date>2022/12/30 09:03:23.794</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Assume no more than 10 multi-selects</note>
+      <xloc>384</xloc>
+      <yloc>576</yloc>
+      <width>315</width>
+      <heigth>34</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
-  <connection>
-    <name>Saprin Ops</name>
-    <server>localhost</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>Saprin_Ops_Structure</database>
-    <port>1433</port>
-    <username/>
-    <password>Encrypted </password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQLNATIVE.encrypt</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQLNATIVE.trustServerCertificate</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQLUseIntegratedSecurity</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>1433</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
-    <hop>
-      <from>BSR_2021_v13-14</from>
-      <to>Add constants 2</to>
-      <enabled>Y</enabled>
-    </hop>
     <hop>
       <from>Add constants</from>
       <to>Select values</to>
@@ -523,8 +472,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>BSR_2021_v9-11</from>
-      <to>Add constants 3</to>
+      <from>BSR_2021_v13-14</from>
+      <to>Add constants 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -533,273 +482,196 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>String operations</from>
-      <to>Null if</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Random DoB values</from>
-      <to>DoB VPDate</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix VPDates</from>
-      <to>Random DoB values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>DoB VPDate</from>
-      <to>Maternal DoD VPDate</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Maternal DoD VPDate</from>
-      <to>Paternal DoD VPDate</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add Provider</from>
-      <to>Insert / update</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map Place of Birth</from>
-      <to>Map Nationality</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map Nationality</from>
-      <to>Nationality missing</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Nationality missing</from>
-      <to>Set field value</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Nationality missing</from>
-      <to>Map ResidentStatus</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value</from>
-      <to>Map ResidentStatus</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map ResidentStatus</from>
-      <to>Paternal Status</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Paternal Status</from>
-      <to>Map School Level</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map School Level</from>
-      <to>Map tertiary level</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map tertiary level</from>
-      <to>Current education</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Current education</from>
-      <to>Current Employment</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Current Employment</from>
-      <to>EmploymentType</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>EmploymentType</from>
-      <to>Employer</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Employer</from>
-      <to>Security</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Security</from>
-      <to>Sector = 15</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Security</from>
-      <to>Transport</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Transport</from>
-      <to>EmploymentSector</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sector = 15</from>
-      <to>Transport</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Transport</from>
-      <to>Sector = 8</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sector = 8</from>
-      <to>EmploymentSector</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>EmploymentSector</from>
-      <to>Unemployment</to>
+      <from>BSR_2021_v9-11</from>
+      <to>Add constants 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values</from>
-      <to>Generate Uids</to>
+      <to>Null if</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 3</from>
-      <to>Generate Uids</to>
+      <to>Null if</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 2</from>
-      <to>Generate Uids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Generate Uids</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unemployment</from>
-      <to>PartnershipStatus</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>PartnershipStatus</from>
-      <to>Null values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Paternal DoD VPDate</from>
-      <to>UnionStartDate VPDate</to>
+      <to>Null if</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Null if</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Fix VPDates</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>UnionStartDate VPDate</from>
-      <to>Map Place of Birth</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Null values</from>
-      <to>First = Second name</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>First = Second name</from>
-      <to>Select values 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>First = Second name</from>
-      <to>secondname = null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>secondname = null</from>
       <to>Select values 4</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 4</from>
-      <to>﻿interview__key</to>
+      <to>beneficiary_roster_id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>﻿interview__key</from>
-      <to>HouseholdMembers</to>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_0</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_0</from>
+      <to>Set to DSID_0</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_0</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_1</from>
+      <to>Set to DSID_1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_2</from>
+      <to>Set to DSID_2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_3</from>
+      <to>Set to DSID_3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_4</from>
+      <to>Set to DSID_4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_5</from>
+      <to>Set to DSID_5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_6</from>
+      <to>Set to DSID_6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_7</from>
+      <to>Set to DSID_7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_8</from>
+      <to>Set to DSID_8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DSID_9</from>
+      <to>Set to DSID_9</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_1</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_2</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_3</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_4</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_5</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_6</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_7</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_8</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>beneficiary_roster_id</from>
+      <to>DSID_9</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set to DSID_9</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>interview_key hhr_register_roster__id register_members_roster__id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id register_members_roster__id</from>
+      <to>GrantBenificiaries</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Add Provider</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>ProviderId</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-      <field>
-        <name>ProviderName</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>50</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>6</item>
-        <item>Rain</item>
-      </line>
-    </data>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -858,7 +730,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>304</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -909,7 +781,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>304</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -972,7 +844,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>304</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3359,7 +3231,7 @@
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -3404,7 +3276,7 @@
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -3467,7 +3339,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>112</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5554,7 +5426,7 @@
       </field>
       <field>
         <name>hmr_live_birth_die</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5569,7 +5441,7 @@
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5584,7 +5456,7 @@
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5614,7 +5486,7 @@
       </field>
       <field>
         <name>hmr_live_die_boys</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5689,7 +5561,7 @@
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5704,7 +5576,7 @@
       </field>
       <field>
         <name>hmr_abortion_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5719,7 +5591,7 @@
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5734,7 +5606,7 @@
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -5947,7 +5819,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>112</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -8044,7 +7916,7 @@
       </field>
       <field>
         <name>hmr_live_birth_die</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8059,7 +7931,7 @@
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8074,7 +7946,7 @@
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8104,7 +7976,7 @@
       </field>
       <field>
         <name>hmr_live_die_boys</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8179,7 +8051,7 @@
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8194,7 +8066,7 @@
       </field>
       <field>
         <name>hmr_abortion_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8209,7 +8081,7 @@
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8224,7 +8096,7 @@
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
-        <type>String</type>
+        <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
         <decimal>.</decimal>
@@ -8437,2475 +8309,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>112</xloc>
       <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Current Employment</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_employed</field_to_use>
-    <target_field>CurrentEmployment</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>15</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Current education</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_current_education</field_to_use>
-    <target_field>CurrentEducation</target_field>
-    <non_match_default>-1</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>7</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>8</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>9</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>10</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>11</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>12</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>13</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>14</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>16</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>17</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>18</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>19</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>20</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>21</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>22</source_value>
-        <target_value>3</target_value>
-      </field>
-      <field>
-        <source_value>23</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>DoB VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_civil_id_dob != null) {
-var dateStr=upper(hmr_civil_id_dob);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var dob=new Date(yr,mo,dy);
-}
-else {
-var dob = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>dob</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>832</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Employer</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_employer</field_to_use>
-    <target_field>Employer</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>301</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>302</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>303</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>304</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>305</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>306</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1312</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>EmploymentSector</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_employment_sector</field_to_use>
-    <target_field>EmploymentSector</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>101</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>102</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>103</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>104</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>105</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>106</target_value>
-      </field>
-      <field>
-        <source_value>7</source_value>
-        <target_value>107</target_value>
-      </field>
-      <field>
-        <source_value>8</source_value>
-        <target_value>108</target_value>
-      </field>
-      <field>
-        <source_value>9</source_value>
-        <target_value>109</target_value>
-      </field>
-      <field>
-        <source_value>10</source_value>
-        <target_value>110</target_value>
-      </field>
-      <field>
-        <source_value>11</source_value>
-        <target_value>111</target_value>
-      </field>
-      <field>
-        <source_value>12</source_value>
-        <target_value>112</target_value>
-      </field>
-      <field>
-        <source_value>13</source_value>
-        <target_value>113</target_value>
-      </field>
-      <field>
-        <source_value>14</source_value>
-        <target_value>114</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>115</target_value>
-      </field>
-      <field>
-        <source_value>16</source_value>
-        <target_value>116</target_value>
-      </field>
-      <field>
-        <source_value>98</source_value>
-        <target_value>100</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1728</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>EmploymentType</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_employer</field_to_use>
-    <target_field>EmploymentType</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>202</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>201</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1168</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>First = Second name</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>secondname = null</send_true_to>
-    <send_false_to>Select values 4</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_first_name</leftvalue>
-        <function>=</function>
-        <rightvalue>hmr_second_name</rightvalue>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2352</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix VPDates</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>b</field_name>
-      <formula_string>IF([hmr_civil_id_dob]="0000-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="9999-99-99";"19UU-UU-UU";IF([hmr_civil_id_dob]="1900-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="2000-UU-UU";"20UU-UU-UU";IF([hmr_civil_id_dob]="NOT_FOUND";"19UU-UU-UU";[hmr_civil_id_dob])))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_civil_id_dob</replace_field>
-    </formula>
-    <formula>
-      <field_name>m</field_name>
-      <formula_string>IF([hmr_maternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_maternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_maternal_dod]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_maternal_dod</replace_field>
-    </formula>
-    <formula>
-      <field_name>p</field_name>
-      <formula_string>IF([hmr_paternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_paternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_paternal_dod]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_paternal_dod</replace_field>
-    </formula>
-    <formula>
-      <field_name>c</field_name>
-      <formula_string>IF([hmr_new_crr_date]="0000-UU-UU";"19UU-UU-UU";IF([hmr_new_crr_date]="9999-99-99";"19UU-UU-UU";IF([hmr_new_crr_date]="1900-UU-UU";"19UU-UU-UU";IF([hmr_new_crr_date]="2000-UU-UU";"20UU-UU-UU";[hmr_new_crr_date]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_new_crr_date</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1376</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Generate Uids</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>IndividualUid</name>
-        <type>random uuid</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>672</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdMembers</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdMembers.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2944</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>codes</schema>
-      <table>MobileServiceProviders</table>
-      <key>
-        <name>ProviderId</name>
-        <field>ProviderId</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>ProviderId</name>
-        <rename>ProviderId</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>ProviderName</name>
-        <rename>ProviderName</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Nationality</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_place_of_birth</field_to_use>
-    <target_field>Nationality</target_field>
-    <non_match_default>??</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>ZA</target_value>
-      </field>
-      <field>
-        <source_value>196</source_value>
-        <target_value>ZW</target_value>
-      </field>
-      <field>
-        <source_value>107</source_value>
-        <target_value>MW</target_value>
-      </field>
-      <field>
-        <source_value>122</source_value>
-        <target_value>MZ</target_value>
-      </field>
-      <field>
-        <source_value>131</source_value>
-        <target_value>NG</target_value>
-      </field>
-      <field>
-        <source_value>99</source_value>
-        <target_value>LS</target_value>
-      </field>
-      <field>
-        <source_value>41</source_value>
-        <target_value>CD</target_value>
-      </field>
-      <field>
-        <source_value>174</source_value>
-        <target_value>TZ</target_value>
-      </field>
-      <field>
-        <source_value>195</source_value>
-        <target_value>ZM</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
-        <target_value>BW</target_value>
-      </field>
-      <field>
-        <source_value>168</source_value>
-        <target_value>SZ</target_value>
-      </field>
-      <field>
-        <source_value>31</source_value>
-        <target_value>CM</target_value>
-      </field>
-      <field>
-        <source_value>59</source_value>
-        <target_value>ET</target_value>
-      </field>
-      <field>
-        <source_value>183</source_value>
-        <target_value>UG</target_value>
-      </field>
-      <field>
-        <source_value>-999999999</source_value>
-        <target_value>??</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>AO</target_value>
-      </field>
-      <field>
-        <source_value>67</source_value>
-        <target_value>GH</target_value>
-      </field>
-      <field>
-        <source_value>162</source_value>
-        <target_value>SO</target_value>
-      </field>
-      <field>
-        <source_value>146</source_value>
-        <target_value>RW</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>AF</target_value>
-      </field>
-      <field>
-        <source_value>40</source_value>
-        <target_value>CG</target_value>
-      </field>
-      <field>
-        <source_value>89</source_value>
-        <target_value>KE</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>BD</target_value>
-      </field>
-      <field>
-        <source_value>20</source_value>
-        <target_value>BJ</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>DZ</target_value>
-      </field>
-      <field>
-        <source_value>28</source_value>
-        <target_value>BF</target_value>
-      </field>
-      <field>
-        <source_value>29</source_value>
-        <target_value>BI</target_value>
-      </field>
-      <field>
-        <source_value>124</source_value>
-        <target_value>NA</target_value>
-      </field>
-      <field>
-        <source_value>134</source_value>
-        <target_value>PK</target_value>
-      </field>
-      <field>
-        <source_value>154</source_value>
-        <target_value>SN</target_value>
-      </field>
-      <field>
-        <source_value>43</source_value>
-        <target_value>CI</target_value>
-      </field>
-      <field>
-        <source_value>84</source_value>
-        <target_value>IT</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>AL</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>AD</target_value>
-      </field>
-      <field>
-        <source_value>25</source_value>
-        <target_value>BR</target_value>
-      </field>
-      <field>
-        <source_value>110</source_value>
-        <target_value>ML</target_value>
-      </field>
-      <field>
-        <source_value>163</source_value>
-        <target_value>SS</target_value>
-      </field>
-      <field>
-        <source_value>187</source_value>
-        <target_value>US</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>832</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Place of Birth</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_place_of_birth</field_to_use>
-    <target_field>Nationality_2</target_field>
-    <non_match_default>??</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>ZA</target_value>
-      </field>
-      <field>
-        <source_value>196</source_value>
-        <target_value>ZW</target_value>
-      </field>
-      <field>
-        <source_value>107</source_value>
-        <target_value>MW</target_value>
-      </field>
-      <field>
-        <source_value>122</source_value>
-        <target_value>MZ</target_value>
-      </field>
-      <field>
-        <source_value>131</source_value>
-        <target_value>NG</target_value>
-      </field>
-      <field>
-        <source_value>99</source_value>
-        <target_value>LS</target_value>
-      </field>
-      <field>
-        <source_value>41</source_value>
-        <target_value>CD</target_value>
-      </field>
-      <field>
-        <source_value>174</source_value>
-        <target_value>TZ</target_value>
-      </field>
-      <field>
-        <source_value>195</source_value>
-        <target_value>ZM</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
-        <target_value>BW</target_value>
-      </field>
-      <field>
-        <source_value>168</source_value>
-        <target_value>SZ</target_value>
-      </field>
-      <field>
-        <source_value>31</source_value>
-        <target_value>CM</target_value>
-      </field>
-      <field>
-        <source_value>59</source_value>
-        <target_value>ET</target_value>
-      </field>
-      <field>
-        <source_value>183</source_value>
-        <target_value>UG</target_value>
-      </field>
-      <field>
-        <source_value>-999999999</source_value>
-        <target_value>??</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>AO</target_value>
-      </field>
-      <field>
-        <source_value>67</source_value>
-        <target_value>GH</target_value>
-      </field>
-      <field>
-        <source_value>162</source_value>
-        <target_value>SO</target_value>
-      </field>
-      <field>
-        <source_value>146</source_value>
-        <target_value>RW</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>AF</target_value>
-      </field>
-      <field>
-        <source_value>40</source_value>
-        <target_value>CG</target_value>
-      </field>
-      <field>
-        <source_value>89</source_value>
-        <target_value>KE</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>BD</target_value>
-      </field>
-      <field>
-        <source_value>20</source_value>
-        <target_value>BJ</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>DZ</target_value>
-      </field>
-      <field>
-        <source_value>28</source_value>
-        <target_value>BF</target_value>
-      </field>
-      <field>
-        <source_value>29</source_value>
-        <target_value>BI</target_value>
-      </field>
-      <field>
-        <source_value>124</source_value>
-        <target_value>NA</target_value>
-      </field>
-      <field>
-        <source_value>134</source_value>
-        <target_value>PK</target_value>
-      </field>
-      <field>
-        <source_value>154</source_value>
-        <target_value>SN</target_value>
-      </field>
-      <field>
-        <source_value>43</source_value>
-        <target_value>CI</target_value>
-      </field>
-      <field>
-        <source_value>84</source_value>
-        <target_value>IT</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>AL</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>AD</target_value>
-      </field>
-      <field>
-        <source_value>25</source_value>
-        <target_value>BR</target_value>
-      </field>
-      <field>
-        <source_value>110</source_value>
-        <target_value>ML</target_value>
-      </field>
-      <field>
-        <source_value>163</source_value>
-        <target_value>SS</target_value>
-      </field>
-      <field>
-        <source_value>187</source_value>
-        <target_value>US</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map ResidentStatus</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_nights_spend</field_to_use>
-    <target_field>ResidentStatus</target_field>
-    <non_match_default>-1</non_match_default>
-    <fields>
-      <field>
-        <source_value>1</source_value>
-        <target_value>0</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>40</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>110</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1184</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map School Level</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_highest_grade</field_to_use>
-    <target_field>HighestSchoolLevel</target_field>
-    <non_match_default>-1</non_match_default>
-    <fields>
-      <field>
-        <source_value>0</source_value>
-        <target_value>98</target_value>
-      </field>
-      <field>
-        <source_value>1</source_value>
-        <target_value>50</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>0</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>3</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>4</target_value>
-      </field>
-      <field>
-        <source_value>7</source_value>
-        <target_value>5</target_value>
-      </field>
-      <field>
-        <source_value>8</source_value>
-        <target_value>6</target_value>
-      </field>
-      <field>
-        <source_value>9</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>10</source_value>
-        <target_value>8</target_value>
-      </field>
-      <field>
-        <source_value>11</source_value>
-        <target_value>9</target_value>
-      </field>
-      <field>
-        <source_value>12</source_value>
-        <target_value>10</target_value>
-      </field>
-      <field>
-        <source_value>13</source_value>
-        <target_value>11</target_value>
-      </field>
-      <field>
-        <source_value>14</source_value>
-        <target_value>12</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map tertiary level</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_tertiary_education</field_to_use>
-    <target_field>HighestNonSchoolLevel</target_field>
-    <non_match_default>-1</non_match_default>
-    <fields>
-      <field>
-        <source_value>0</source_value>
-        <target_value>98</target_value>
-      </field>
-      <field>
-        <source_value>1</source_value>
-        <target_value>45</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>23</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>25</target_value>
-      </field>
-      <field>
-        <source_value>99</source_value>
-        <target_value>-1</target_value>
-      </field>
-      <field>
-        <source_value>97</source_value>
-        <target_value>97</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1152</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Maternal DoD VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_maternal_dod != null) {
-var dateStr=upper(hmr_maternal_dod);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var maternalDoD=new Date(yr,mo,dy);
-}
-else {
-var maternalDoD = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>maternalDoD</name>
-        <rename>maternalDoD</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Nationality missing</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value</send_true_to>
-    <send_false_to>Map ResidentStatus</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>Nationality</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>OR</operator>
-            <leftvalue>Nationality</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>??</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Null if</name>
-    <type>NullIf</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>hmr_civil_id_detail</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_gender</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>N/A</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Not Applicable</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>None</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Dk</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Not Given</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Don'T Have</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Unknown</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Uu</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Not Known</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>No Second Name</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>No</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Don'T Know</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Uuuu</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Uuuuu</value>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-        <value>Na</value>
-      </field>
-      <field>
-        <name>hmr_civil_id_dob</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>hmr_maternal_dod</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>hmr_paternal_dod</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-        <value>None</value>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-        <value>Not Given</value>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-        <value>No</value>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-        <value>Not Known</value>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-        <value>Dk</value>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-        <value>Don'T Know</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(999)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(000)-000-0000</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(099)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(999)-999-9990</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(999)-909-9999</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(999)-990-9999</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(999)-999-9900</value>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <value>(199)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_prim_tel_provider</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(000)-000-0000</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(099)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-9990</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-909-9999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-990-9999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-9900</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(199)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-9909</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-9099</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(990)-999-9999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(170)-000-0000</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-0999</value>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <value>(999)-999-9000</value>
-      </field>
-      <field>
-        <name>hmr_atl_tel_provider</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_head_relationship</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_nights_spend</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_is_mem_resident</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_maternal_member</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_maternal_status</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_paternal_member</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_paternal_status</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_highest_grade</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_tertiary_education</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_current_education</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_employed</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_self_employed</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_employment_sector</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_gvt_grant</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_marital_state</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_partnership_pattern</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_pregnant</name>
-        <value>-999999999</value>
-      </field>
-      <field>
-        <name>hmr_new_crr_date</name>
-        <value>##N/A##</value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Null values</name>
-    <type>IfNull</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <replaceAllByValue/>
-    <replaceAllMask/>
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>HighestSchoolLevel</name>
-        <value>-1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>HighestNonSchoolLevel</name>
-        <value>-1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>CurrentEducation</name>
-        <value>-1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>CurrentEmployment</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>EmploymentType</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>Employer</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>EmploymentSector</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>Unemployment</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2240</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>PartnershipStatus</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>PartnershipStatus</field_name>
-      <formula_string>IF([hmr_partnership_pattern]=2;1;IF([hmr_pattern]=1;2;IF([hmr_pattern]=2;3;IF([hmr_pattern]=3;4;0))))</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2064</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Paternal DoD VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_paternal_dod != null) {
-var dateStr=upper(hmr_paternal_dod);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var paternalDoD=new Date(yr,mo,dy);
-}
-else {
-var paternalDoD = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>paternalDoD</name>
-        <rename>paternalDoD</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1184</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Paternal Status</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>MotherStatus</field_name>
-      <formula_string>IF(AND(ISBLANK([hmr_maternal_status]);ISBLANK([hmr_maternal_member]));0;IF(AND(NOT(ISBLANK([hmr_maternal_status]));[hmr_maternal_status]=2);6;IF(AND(NOT(ISBLANK([hmr_maternal_member]));[hmr_maternal_member]=1);1;5)))</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <formula>
-      <field_name>FatherStatus</field_name>
-      <formula_string>IF(AND(ISBLANK([hmr_paternal_status]);ISBLANK([hmr_paternal_member]));0;IF(AND(NOT(ISBLANK([hmr_paternal_status]));[hmr_paternal_status]=2);6;IF(AND(NOT(ISBLANK([hmr_paternal_member]));[hmr_paternal_member]=1);1;5)))</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1376</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Random DoB values</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>rYear</name>
-        <type>random number</type>
-      </field>
-      <field>
-        <name>rMonth</name>
-        <type>random number</type>
-      </field>
-      <field>
-        <name>rDay</name>
-        <type>random number</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>hmr_new_crr_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>1078</replace_string>
-        <replace_by_string>1978</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_new_crr_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>1700</replace_string>
-        <replace_by_string>2000</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_new_crr_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>1068</replace_string>
-        <replace_by_string>1968</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1184</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sector = 15</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_employment_sector</name>
-        <value>15</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1440</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sector = 8</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_employment_sector</name>
-        <value>8</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1584</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Security</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Sector = 15</send_true_to>
-    <send_false_to>Transport</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>hmr_employment_sector</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>98</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>security</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>bouncer</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>saps</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1440</xloc>
-      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10934,148 +8339,37 @@ Alert(str2);</jsScript_script>
         <name>register_members_roster__id</name>
       </field>
       <field>
-        <name>hhr_members_list</name>
-      </field>
-      <field>
-        <name>var_reg_mem_tempid</name>
-      </field>
-      <field>
-        <name>hmr_surname</name>
-      </field>
-      <field>
-        <name>hmr_first_name</name>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-      </field>
-      <field>
-        <name>hmr_civil_id_detail</name>
-      </field>
-      <field>
-        <name>hmr_civil_id</name>
-      </field>
-      <field>
-        <name>hmr_civil_id_dob</name>
-      </field>
-      <field>
-        <name>var_reg_mem_age</name>
-      </field>
-      <field>
-        <name>var_reg_mem_age_str</name>
-      </field>
-      <field>
-        <name>hmr_gender</name>
-      </field>
-      <field>
-        <name>hmr_has_maiden_name</name>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-      </field>
-      <field>
-        <name>hmr_prim_tel_provider</name>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-      </field>
-      <field>
-        <name>hmr_atl_tel_provider</name>
-      </field>
-      <field>
-        <name>hmr_place_of_birth</name>
-      </field>
-      <field>
-        <name>hmr_nationalty</name>
-      </field>
-      <field>
-        <name>hmr_citizenship</name>
-      </field>
-      <field>
-        <name>hmr_head_relationship</name>
-      </field>
-      <field>
-        <name>hmr_nights_spend</name>
-      </field>
-      <field>
-        <name>hmr_is_mem_resident</name>
-      </field>
-      <field>
-        <name>hmr_maternal_member</name>
-      </field>
-      <field>
-        <name>hmr_maternal_dsid</name>
-      </field>
-      <field>
-        <name>hmr_maternal_surname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_firstname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_secondname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_status</name>
-      </field>
-      <field>
-        <name>hmr_maternal_dod</name>
-      </field>
-      <field>
-        <name>hmr_paternal_member</name>
-      </field>
-      <field>
-        <name>hmr_paternal_dsid</name>
-      </field>
-      <field>
-        <name>hmr_paternal_Surname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_firstname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_secondname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_status</name>
-      </field>
-      <field>
-        <name>hmr_paternal_dod</name>
-      </field>
-      <field>
-        <name>hmr_highest_grade</name>
-      </field>
-      <field>
-        <name>hmr_tertiary_education</name>
-      </field>
-      <field>
-        <name>hmr_current_education</name>
-      </field>
-      <field>
-        <name>hmr_employed</name>
-      </field>
-      <field>
-        <name>hmr_self_employed</name>
-      </field>
-      <field>
-        <name>hmr_employer</name>
-      </field>
-      <field>
-        <name>hmr_employment_sector</name>
-      </field>
-      <field>
-        <name>hmr_oth_sector</name>
-      </field>
-      <field>
-        <name>hmr_not_working</name>
-      </field>
-      <field>
-        <name>hmr_oth_not_working</name>
-      </field>
-      <field>
         <name>hmr_gvt_grant</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__1</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__2</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__3</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__4</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__5</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__6</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__7</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__8</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__9</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__99</name>
       </field>
       <field>
         <name>hmr_old_age_start</name>
@@ -11105,127 +8399,154 @@ Alert(str2);</jsScript_script>
         <name>hmr_education_grant_start</name>
       </field>
       <field>
-        <name>hmr_marital_state</name>
+        <name>hmr_grant_benef_DSID__0</name>
       </field>
       <field>
-        <name>hmr_partnership_pattern</name>
+        <name>hmr_grant_benef_DSID__1</name>
       </field>
       <field>
-        <name>hmr_pattern</name>
+        <name>hmr_grant_benef_DSID__2</name>
       </field>
       <field>
-        <name>hmr_pregnant</name>
+        <name>hmr_grant_benef_DSID__3</name>
       </field>
       <field>
-        <name>hmr_reg_partner</name>
+        <name>hmr_grant_benef_DSID__4</name>
       </field>
       <field>
-        <name>hmr_partner_dsid</name>
+        <name>hmr_grant_benef_DSID__5</name>
       </field>
       <field>
-        <name>hmr_new_crr_date</name>
+        <name>hmr_grant_benef_DSID__6</name>
       </field>
       <field>
-        <name>hmr_married</name>
+        <name>hmr_grant_benef_DSID__7</name>
       </field>
       <field>
-        <name>hmr_gave_birth</name>
+        <name>hmr_grant_benef_DSID__8</name>
       </field>
       <field>
-        <name>hmr_live_births</name>
+        <name>hmr_grant_benef_DSID__9</name>
       </field>
       <field>
-        <name>hmr_live_gender__1</name>
+        <name>hmr_grant_benef_DSID__10</name>
       </field>
       <field>
-        <name>hmr_live_gender__2</name>
+        <name>hmr_grant_benef_DSID__11</name>
       </field>
       <field>
-        <name>hmr_live_children</name>
+        <name>hmr_grant_benef_DSID__12</name>
       </field>
       <field>
-        <name>hmr_live_daughters</name>
+        <name>hmr_grant_benef_DSID__13</name>
       </field>
       <field>
-        <name>hmr_live_sons</name>
+        <name>hmr_grant_benef_DSID__14</name>
       </field>
       <field>
-        <name>hmr_gave_birth_die</name>
+        <name>hmr_grant_benef_DSID__15</name>
       </field>
       <field>
-        <name>hmr_live_birth_die</name>
+        <name>hmr_grant_benef_DSID__16</name>
       </field>
       <field>
-        <name>hmr_live_die_gender__1</name>
+        <name>hmr_grant_benef_DSID__17</name>
       </field>
       <field>
-        <name>hmr_live_die_gender__2</name>
+        <name>hmr_grant_benef_DSID__18</name>
       </field>
       <field>
-        <name>hmr_live_die_girls</name>
+        <name>hmr_grant_benef_DSID__19</name>
       </field>
       <field>
-        <name>hmr_live_die_boys</name>
+        <name>hmr_grant_benef_DSID__20</name>
       </field>
       <field>
-        <name>hmr_had_stillbirth</name>
+        <name>hmr_grant_benef_DSID__21</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__1</name>
+        <name>hmr_grant_benef_DSID__22</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__2</name>
+        <name>hmr_grant_benef_DSID__23</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__3</name>
+        <name>hmr_grant_benef_DSID__24</name>
       </field>
       <field>
-        <name>hmr_miscarriage_total</name>
+        <name>hmr_grant_benef_DSID__25</name>
       </field>
       <field>
-        <name>hmr_abortion_total</name>
+        <name>hmr_grant_benef_DSID__26</name>
       </field>
       <field>
-        <name>hmr_stillbirth_total</name>
+        <name>hmr_grant_benef_DSID__27</name>
       </field>
       <field>
-        <name>hmr_total_stillbirth</name>
+        <name>hmr_grant_benef_DSID__28</name>
       </field>
       <field>
-        <name>hmr_total_stillbirth_fin</name>
+        <name>hmr_grant_benef_DSID__29</name>
       </field>
       <field>
-        <name>var_hmr_pgh_total_births</name>
+        <name>hmr_grant_benef_DSID__30</name>
       </field>
       <field>
-        <name>hmr_list_preg__0</name>
+        <name>hmr_grant_benef_DSID__31</name>
       </field>
       <field>
-        <name>hmr_list_preg__1</name>
+        <name>hmr_grant_benef_DSID__32</name>
       </field>
       <field>
-        <name>hmr_list_preg__2</name>
+        <name>hmr_grant_benef_DSID__33</name>
       </field>
       <field>
-        <name>hmr_list_preg__3</name>
+        <name>hmr_grant_benef_DSID__34</name>
       </field>
       <field>
-        <name>hmr_list_preg__4</name>
+        <name>hmr_grant_benef_DSID__35</name>
       </field>
       <field>
-        <name>hmr_list_preg__5</name>
+        <name>hmr_grant_benef_DSID__36</name>
       </field>
       <field>
-        <name>hmr_list_preg__6</name>
+        <name>hmr_grant_benef_DSID__37</name>
       </field>
       <field>
-        <name>hmr_list_preg__7</name>
+        <name>hmr_grant_benef_DSID__38</name>
       </field>
       <field>
-        <name>hmr_list_preg__8</name>
+        <name>hmr_grant_benef_DSID__39</name>
       </field>
       <field>
-        <name>hmr_list_preg__9</name>
+        <name>hmr_grant_benef_DSID__40</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__41</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__42</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__43</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__44</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__45</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__46</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__47</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__48</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__49</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -11238,7 +8559,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>480</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -11268,148 +8589,37 @@ Alert(str2);</jsScript_script>
         <name>register_members_roster__id</name>
       </field>
       <field>
-        <name>hhr_members_list</name>
-      </field>
-      <field>
-        <name>var_reg_mem_tempid</name>
-      </field>
-      <field>
-        <name>hmr_surname</name>
-      </field>
-      <field>
-        <name>hmr_first_name</name>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-      </field>
-      <field>
-        <name>hmr_civil_id_detail</name>
-      </field>
-      <field>
-        <name>hmr_civil_id</name>
-      </field>
-      <field>
-        <name>hmr_civil_id_dob</name>
-      </field>
-      <field>
-        <name>var_reg_mem_age</name>
-      </field>
-      <field>
-        <name>var_reg_mem_age_str</name>
-      </field>
-      <field>
-        <name>hmr_gender</name>
-      </field>
-      <field>
-        <name>hmr_has_maiden_name</name>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-      </field>
-      <field>
-        <name>hmr_prim_tel_provider</name>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-      </field>
-      <field>
-        <name>hmr_atl_tel_provider</name>
-      </field>
-      <field>
-        <name>hmr_place_of_birth</name>
-      </field>
-      <field>
-        <name>hmr_nationalty</name>
-      </field>
-      <field>
-        <name>hmr_citizenship</name>
-      </field>
-      <field>
-        <name>hmr_head_relationship</name>
-      </field>
-      <field>
-        <name>hmr_nights_spend</name>
-      </field>
-      <field>
-        <name>hmr_is_mem_resident</name>
-      </field>
-      <field>
-        <name>hmr_maternal_member</name>
-      </field>
-      <field>
-        <name>hmr_maternal_dsid</name>
-      </field>
-      <field>
-        <name>hmr_maternal_surname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_firstname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_secondname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_status</name>
-      </field>
-      <field>
-        <name>hmr_maternal_dod</name>
-      </field>
-      <field>
-        <name>hmr_paternal_member</name>
-      </field>
-      <field>
-        <name>hmr_paternal_dsid</name>
-      </field>
-      <field>
-        <name>hmr_paternal_Surname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_firstname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_secondname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_status</name>
-      </field>
-      <field>
-        <name>hmr_paternal_dod</name>
-      </field>
-      <field>
-        <name>hmr_highest_grade</name>
-      </field>
-      <field>
-        <name>hmr_tertiary_education</name>
-      </field>
-      <field>
-        <name>hmr_current_education</name>
-      </field>
-      <field>
-        <name>hmr_employed</name>
-      </field>
-      <field>
-        <name>hmr_self_employed</name>
-      </field>
-      <field>
-        <name>hmr_employer</name>
-      </field>
-      <field>
-        <name>hmr_employment_sector</name>
-      </field>
-      <field>
-        <name>hmr_oth_sector</name>
-      </field>
-      <field>
-        <name>hmr_not_working</name>
-      </field>
-      <field>
-        <name>hmr_oth_not_working</name>
-      </field>
-      <field>
         <name>hmr_gvt_grant</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__1</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__2</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__3</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__4</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__5</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__6</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__7</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__8</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__9</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__99</name>
       </field>
       <field>
         <name>hmr_old_age_start</name>
@@ -11439,127 +8649,154 @@ Alert(str2);</jsScript_script>
         <name>hmr_education_grant_start</name>
       </field>
       <field>
-        <name>hmr_marital_state</name>
+        <name>hmr_grant_benef_DSID__0</name>
       </field>
       <field>
-        <name>hmr_partnership_pattern</name>
+        <name>hmr_grant_benef_DSID__1</name>
       </field>
       <field>
-        <name>hmr_pattern</name>
+        <name>hmr_grant_benef_DSID__2</name>
       </field>
       <field>
-        <name>hmr_pregnant</name>
+        <name>hmr_grant_benef_DSID__3</name>
       </field>
       <field>
-        <name>hmr_reg_partner</name>
+        <name>hmr_grant_benef_DSID__4</name>
       </field>
       <field>
-        <name>hmr_partner_dsid</name>
+        <name>hmr_grant_benef_DSID__5</name>
       </field>
       <field>
-        <name>hmr_new_crr_date</name>
+        <name>hmr_grant_benef_DSID__6</name>
       </field>
       <field>
-        <name>hmr_married</name>
+        <name>hmr_grant_benef_DSID__7</name>
       </field>
       <field>
-        <name>hmr_gave_birth</name>
+        <name>hmr_grant_benef_DSID__8</name>
       </field>
       <field>
-        <name>hmr_live_births</name>
+        <name>hmr_grant_benef_DSID__9</name>
       </field>
       <field>
-        <name>hmr_live_gender__1</name>
+        <name>hmr_grant_benef_DSID__10</name>
       </field>
       <field>
-        <name>hmr_live_gender__2</name>
+        <name>hmr_grant_benef_DSID__11</name>
       </field>
       <field>
-        <name>hmr_live_children</name>
+        <name>hmr_grant_benef_DSID__12</name>
       </field>
       <field>
-        <name>hmr_live_daughters</name>
+        <name>hmr_grant_benef_DSID__13</name>
       </field>
       <field>
-        <name>hmr_live_sons</name>
+        <name>hmr_grant_benef_DSID__14</name>
       </field>
       <field>
-        <name>hmr_gave_birth_die</name>
+        <name>hmr_grant_benef_DSID__15</name>
       </field>
       <field>
-        <name>hmr_live_birth_die</name>
+        <name>hmr_grant_benef_DSID__16</name>
       </field>
       <field>
-        <name>hmr_live_die_gender__1</name>
+        <name>hmr_grant_benef_DSID__17</name>
       </field>
       <field>
-        <name>hmr_live_die_gender__2</name>
+        <name>hmr_grant_benef_DSID__18</name>
       </field>
       <field>
-        <name>hmr_live_die_girls</name>
+        <name>hmr_grant_benef_DSID__19</name>
       </field>
       <field>
-        <name>hmr_live_die_boys</name>
+        <name>hmr_grant_benef_DSID__20</name>
       </field>
       <field>
-        <name>hmr_had_stillbirth</name>
+        <name>hmr_grant_benef_DSID__21</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__1</name>
+        <name>hmr_grant_benef_DSID__22</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__2</name>
+        <name>hmr_grant_benef_DSID__23</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__3</name>
+        <name>hmr_grant_benef_DSID__24</name>
       </field>
       <field>
-        <name>hmr_miscarriage_total</name>
+        <name>hmr_grant_benef_DSID__25</name>
       </field>
       <field>
-        <name>hmr_abortion_total</name>
+        <name>hmr_grant_benef_DSID__26</name>
       </field>
       <field>
-        <name>hmr_stillbirth_total</name>
+        <name>hmr_grant_benef_DSID__27</name>
       </field>
       <field>
-        <name>hmr_total_stillbirth</name>
+        <name>hmr_grant_benef_DSID__28</name>
       </field>
       <field>
-        <name>hmr_total_stillbirth_fin</name>
+        <name>hmr_grant_benef_DSID__29</name>
       </field>
       <field>
-        <name>var_hmr_pgh_total_births</name>
+        <name>hmr_grant_benef_DSID__30</name>
       </field>
       <field>
-        <name>hmr_list_preg__0</name>
+        <name>hmr_grant_benef_DSID__31</name>
       </field>
       <field>
-        <name>hmr_list_preg__1</name>
+        <name>hmr_grant_benef_DSID__32</name>
       </field>
       <field>
-        <name>hmr_list_preg__2</name>
+        <name>hmr_grant_benef_DSID__33</name>
       </field>
       <field>
-        <name>hmr_list_preg__3</name>
+        <name>hmr_grant_benef_DSID__34</name>
       </field>
       <field>
-        <name>hmr_list_preg__4</name>
+        <name>hmr_grant_benef_DSID__35</name>
       </field>
       <field>
-        <name>hmr_list_preg__5</name>
+        <name>hmr_grant_benef_DSID__36</name>
       </field>
       <field>
-        <name>hmr_list_preg__6</name>
+        <name>hmr_grant_benef_DSID__37</name>
       </field>
       <field>
-        <name>hmr_list_preg__7</name>
+        <name>hmr_grant_benef_DSID__38</name>
       </field>
       <field>
-        <name>hmr_list_preg__8</name>
+        <name>hmr_grant_benef_DSID__39</name>
       </field>
       <field>
-        <name>hmr_list_preg__9</name>
+        <name>hmr_grant_benef_DSID__40</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__41</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__42</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__43</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__44</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__45</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__46</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__47</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__48</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__49</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -11572,7 +8809,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>480</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -11602,148 +8839,37 @@ Alert(str2);</jsScript_script>
         <name>register_members_roster__id</name>
       </field>
       <field>
-        <name>hhr_members_list</name>
-      </field>
-      <field>
-        <name>var_reg_mem_tempid</name>
-      </field>
-      <field>
-        <name>hmr_surname</name>
-      </field>
-      <field>
-        <name>hmr_first_name</name>
-      </field>
-      <field>
-        <name>hmr_second_name</name>
-      </field>
-      <field>
-        <name>hmr_civil_id_detail</name>
-      </field>
-      <field>
-        <name>hmr_civil_id</name>
-      </field>
-      <field>
-        <name>hmr_civil_id_dob</name>
-      </field>
-      <field>
-        <name>var_reg_mem_age</name>
-      </field>
-      <field>
-        <name>var_reg_mem_age_str</name>
-      </field>
-      <field>
-        <name>hmr_gender</name>
-      </field>
-      <field>
-        <name>hmr_has_maiden_name</name>
-      </field>
-      <field>
-        <name>hmr_maiden_name</name>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-      </field>
-      <field>
-        <name>hmr_prim_tel_provider</name>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-      </field>
-      <field>
-        <name>hmr_atl_tel_provider</name>
-      </field>
-      <field>
-        <name>hmr_place_of_birth</name>
-      </field>
-      <field>
-        <name>hmr_nationalty</name>
-      </field>
-      <field>
-        <name>hmr_citizenship</name>
-      </field>
-      <field>
-        <name>hmr_head_relationship</name>
-      </field>
-      <field>
-        <name>hmr_nights_spend</name>
-      </field>
-      <field>
-        <name>hmr_is_mem_resident</name>
-      </field>
-      <field>
-        <name>hmr_maternal_member</name>
-      </field>
-      <field>
-        <name>hmr_maternal_dsid</name>
-      </field>
-      <field>
-        <name>hmr_maternal_surname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_firstname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_secondname</name>
-      </field>
-      <field>
-        <name>hmr_maternal_status</name>
-      </field>
-      <field>
-        <name>hmr_maternal_dod</name>
-      </field>
-      <field>
-        <name>hmr_paternal_member</name>
-      </field>
-      <field>
-        <name>hmr_paternal_dsid</name>
-      </field>
-      <field>
-        <name>hmr_paternal_Surname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_firstname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_secondname</name>
-      </field>
-      <field>
-        <name>hmr_paternal_status</name>
-      </field>
-      <field>
-        <name>hmr_paternal_dod</name>
-      </field>
-      <field>
-        <name>hmr_highest_grade</name>
-      </field>
-      <field>
-        <name>hmr_tertiary_education</name>
-      </field>
-      <field>
-        <name>hmr_current_education</name>
-      </field>
-      <field>
-        <name>hmr_employed</name>
-      </field>
-      <field>
-        <name>hmr_self_employed</name>
-      </field>
-      <field>
-        <name>hmr_employer</name>
-      </field>
-      <field>
-        <name>hmr_employment_sector</name>
-      </field>
-      <field>
-        <name>hmr_oth_sector</name>
-      </field>
-      <field>
-        <name>hmr_not_working</name>
-      </field>
-      <field>
-        <name>hmr_oth_not_working</name>
-      </field>
-      <field>
         <name>hmr_gvt_grant</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__1</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__2</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__3</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__4</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__5</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__6</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__7</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__8</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__9</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__99</name>
       </field>
       <field>
         <name>hmr_old_age_start</name>
@@ -11773,127 +8899,154 @@ Alert(str2);</jsScript_script>
         <name>hmr_education_grant_start</name>
       </field>
       <field>
-        <name>hmr_marital_state</name>
+        <name>hmr_grant_benef_DSID__0</name>
       </field>
       <field>
-        <name>hmr_partnership_pattern</name>
+        <name>hmr_grant_benef_DSID__1</name>
       </field>
       <field>
-        <name>hmr_pattern</name>
+        <name>hmr_grant_benef_DSID__2</name>
       </field>
       <field>
-        <name>hmr_pregnant</name>
+        <name>hmr_grant_benef_DSID__3</name>
       </field>
       <field>
-        <name>hmr_reg_partner</name>
+        <name>hmr_grant_benef_DSID__4</name>
       </field>
       <field>
-        <name>hmr_partner_dsid</name>
+        <name>hmr_grant_benef_DSID__5</name>
       </field>
       <field>
-        <name>hmr_new_crr_date</name>
+        <name>hmr_grant_benef_DSID__6</name>
       </field>
       <field>
-        <name>hmr_married</name>
+        <name>hmr_grant_benef_DSID__7</name>
       </field>
       <field>
-        <name>hmr_gave_birth</name>
+        <name>hmr_grant_benef_DSID__8</name>
       </field>
       <field>
-        <name>hmr_live_births</name>
+        <name>hmr_grant_benef_DSID__9</name>
       </field>
       <field>
-        <name>hmr_live_gender__1</name>
+        <name>hmr_grant_benef_DSID__10</name>
       </field>
       <field>
-        <name>hmr_live_gender__2</name>
+        <name>hmr_grant_benef_DSID__11</name>
       </field>
       <field>
-        <name>hmr_live_children</name>
+        <name>hmr_grant_benef_DSID__12</name>
       </field>
       <field>
-        <name>hmr_live_daughters</name>
+        <name>hmr_grant_benef_DSID__13</name>
       </field>
       <field>
-        <name>hmr_live_sons</name>
+        <name>hmr_grant_benef_DSID__14</name>
       </field>
       <field>
-        <name>hmr_gave_birth_die</name>
+        <name>hmr_grant_benef_DSID__15</name>
       </field>
       <field>
-        <name>hmr_live_birth_die</name>
+        <name>hmr_grant_benef_DSID__16</name>
       </field>
       <field>
-        <name>hmr_live_die_gender__1</name>
+        <name>hmr_grant_benef_DSID__17</name>
       </field>
       <field>
-        <name>hmr_live_die_gender__2</name>
+        <name>hmr_grant_benef_DSID__18</name>
       </field>
       <field>
-        <name>hmr_live_die_girls</name>
+        <name>hmr_grant_benef_DSID__19</name>
       </field>
       <field>
-        <name>hmr_live_die_boys</name>
+        <name>hmr_grant_benef_DSID__20</name>
       </field>
       <field>
-        <name>hmr_had_stillbirth</name>
+        <name>hmr_grant_benef_DSID__21</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__1</name>
+        <name>hmr_grant_benef_DSID__22</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__2</name>
+        <name>hmr_grant_benef_DSID__23</name>
       </field>
       <field>
-        <name>hmr_stillbirth_type__3</name>
+        <name>hmr_grant_benef_DSID__24</name>
       </field>
       <field>
-        <name>hmr_miscarriage_total</name>
+        <name>hmr_grant_benef_DSID__25</name>
       </field>
       <field>
-        <name>hmr_abortion_total</name>
+        <name>hmr_grant_benef_DSID__26</name>
       </field>
       <field>
-        <name>hmr_stillbirth_total</name>
+        <name>hmr_grant_benef_DSID__27</name>
       </field>
       <field>
-        <name>hmr_total_stillbirth</name>
+        <name>hmr_grant_benef_DSID__28</name>
       </field>
       <field>
-        <name>hmr_total_stillbirth_fin</name>
+        <name>hmr_grant_benef_DSID__29</name>
       </field>
       <field>
-        <name>var_hmr_pgh_total_births</name>
+        <name>hmr_grant_benef_DSID__30</name>
       </field>
       <field>
-        <name>hmr_list_preg__0</name>
+        <name>hmr_grant_benef_DSID__31</name>
       </field>
       <field>
-        <name>hmr_list_preg__1</name>
+        <name>hmr_grant_benef_DSID__32</name>
       </field>
       <field>
-        <name>hmr_list_preg__2</name>
+        <name>hmr_grant_benef_DSID__33</name>
       </field>
       <field>
-        <name>hmr_list_preg__3</name>
+        <name>hmr_grant_benef_DSID__34</name>
       </field>
       <field>
-        <name>hmr_list_preg__4</name>
+        <name>hmr_grant_benef_DSID__35</name>
       </field>
       <field>
-        <name>hmr_list_preg__5</name>
+        <name>hmr_grant_benef_DSID__36</name>
       </field>
       <field>
-        <name>hmr_list_preg__6</name>
+        <name>hmr_grant_benef_DSID__37</name>
       </field>
       <field>
-        <name>hmr_list_preg__7</name>
+        <name>hmr_grant_benef_DSID__38</name>
       </field>
       <field>
-        <name>hmr_list_preg__8</name>
+        <name>hmr_grant_benef_DSID__39</name>
       </field>
       <field>
-        <name>hmr_list_preg__9</name>
+        <name>hmr_grant_benef_DSID__40</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__41</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__42</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__43</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__44</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__45</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__46</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__47</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__48</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__49</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -11906,7 +9059,234 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>480</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Null if</name>
+    <type>NullIf</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>hmr_grant_benef_DSID__0</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__1</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__10</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__11</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__12</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__13</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__14</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__15</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__16</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__17</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__18</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__19</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__2</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__20</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__21</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__22</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__23</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__24</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__25</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__26</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__27</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__28</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__29</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__3</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__30</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__31</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__32</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__33</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__34</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__35</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__36</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__37</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__38</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__39</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__4</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__40</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__41</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__42</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__43</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__44</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__45</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__46</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__47</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__48</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__49</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__5</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__6</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__7</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__8</name>
+        <value>-999999999</value>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__9</name>
+        <value>-999999999</value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -11928,10 +9308,6 @@ Alert(str2);</jsScript_script>
         <rename>interview_key</rename>
       </field>
       <field>
-        <name>interview__id</name>
-        <rename/>
-      </field>
-      <field>
         <name>hhr_register_roster__id</name>
         <rename/>
       </field>
@@ -11940,475 +9316,206 @@ Alert(str2);</jsScript_script>
         <rename/>
       </field>
       <field>
-        <name>IndividualUid</name>
+        <name>hmr_grant_benef_DSID__0</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_surname</name>
+        <name>hmr_grant_benef_DSID__1</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_first_name</name>
+        <name>hmr_grant_benef_DSID__2</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_second_name</name>
+        <name>hmr_grant_benef_DSID__3</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_civil_id_detail</name>
+        <name>hmr_grant_benef_DSID__4</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_civil_id</name>
+        <name>hmr_grant_benef_DSID__5</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_civil_id_dob</name>
+        <name>hmr_grant_benef_DSID__6</name>
         <rename/>
       </field>
       <field>
-        <name>dob</name>
+        <name>hmr_grant_benef_DSID__7</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_gender</name>
+        <name>hmr_grant_benef_DSID__8</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_has_maiden_name</name>
+        <name>hmr_grant_benef_DSID__9</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maiden_name</name>
+        <name>hmr_grant_benef_DSID__10</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_primary_tel</name>
+        <name>hmr_grant_benef_DSID__11</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_prim_tel_provider</name>
+        <name>hmr_grant_benef_DSID__12</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_alt_tel</name>
+        <name>hmr_grant_benef_DSID__13</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_atl_tel_provider</name>
+        <name>hmr_grant_benef_DSID__14</name>
         <rename/>
       </field>
       <field>
-        <name>Nationality</name>
+        <name>hmr_grant_benef_DSID__15</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_citizenship</name>
+        <name>hmr_grant_benef_DSID__16</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_head_relationship</name>
+        <name>hmr_grant_benef_DSID__17</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_nights_spend</name>
+        <name>hmr_grant_benef_DSID__18</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_is_mem_resident</name>
+        <name>hmr_grant_benef_DSID__19</name>
         <rename/>
       </field>
       <field>
-        <name>ResidentStatus</name>
+        <name>hmr_grant_benef_DSID__20</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maternal_member</name>
+        <name>hmr_grant_benef_DSID__21</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maternal_dsid</name>
+        <name>hmr_grant_benef_DSID__22</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maternal_surname</name>
+        <name>hmr_grant_benef_DSID__23</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maternal_firstname</name>
+        <name>hmr_grant_benef_DSID__24</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maternal_secondname</name>
+        <name>hmr_grant_benef_DSID__25</name>
         <rename/>
       </field>
       <field>
-        <name>MotherStatus</name>
+        <name>hmr_grant_benef_DSID__26</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_maternal_dod</name>
+        <name>hmr_grant_benef_DSID__27</name>
         <rename/>
       </field>
       <field>
-        <name>maternalDoD</name>
+        <name>hmr_grant_benef_DSID__28</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_paternal_member</name>
+        <name>hmr_grant_benef_DSID__29</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_paternal_dsid</name>
+        <name>hmr_grant_benef_DSID__30</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_paternal_Surname</name>
+        <name>hmr_grant_benef_DSID__31</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_paternal_firstname</name>
+        <name>hmr_grant_benef_DSID__32</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_paternal_secondname</name>
+        <name>hmr_grant_benef_DSID__33</name>
         <rename/>
       </field>
       <field>
-        <name>FatherStatus</name>
+        <name>hmr_grant_benef_DSID__34</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_paternal_dod</name>
+        <name>hmr_grant_benef_DSID__35</name>
         <rename/>
       </field>
       <field>
-        <name>paternalDoD</name>
+        <name>hmr_grant_benef_DSID__36</name>
         <rename/>
       </field>
       <field>
-        <name>HighestSchoolLevel</name>
+        <name>hmr_grant_benef_DSID__37</name>
         <rename/>
       </field>
       <field>
-        <name>HighestNonSchoolLevel</name>
+        <name>hmr_grant_benef_DSID__38</name>
         <rename/>
       </field>
       <field>
-        <name>CurrentEducation</name>
+        <name>hmr_grant_benef_DSID__39</name>
         <rename/>
       </field>
       <field>
-        <name>CurrentEmployment</name>
+        <name>hmr_grant_benef_DSID__40</name>
         <rename/>
       </field>
       <field>
-        <name>EmploymentType</name>
+        <name>hmr_grant_benef_DSID__41</name>
         <rename/>
       </field>
       <field>
-        <name>Employer</name>
+        <name>hmr_grant_benef_DSID__42</name>
         <rename/>
       </field>
       <field>
-        <name>EmploymentSector</name>
+        <name>hmr_grant_benef_DSID__43</name>
         <rename/>
       </field>
       <field>
-        <name>Unemployment</name>
+        <name>hmr_grant_benef_DSID__44</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_oth_sector</name>
+        <name>hmr_grant_benef_DSID__45</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_oth_not_working</name>
+        <name>hmr_grant_benef_DSID__46</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_gvt_grant</name>
+        <name>hmr_grant_benef_DSID__47</name>
         <rename/>
       </field>
       <field>
-        <name>hmr_marital_state</name>
+        <name>hmr_grant_benef_DSID__48</name>
         <rename/>
       </field>
       <field>
-        <name>PartnershipStatus</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_pregnant</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_reg_partner</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_partner_dsid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_new_crr_date</name>
-        <rename/>
-      </field>
-      <field>
-        <name>UnionStartDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_married</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_gave_birth</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_births</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_gender__1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_gender__2</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_children</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_daughters</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_sons</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_gave_birth_die</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_birth_die</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_die_gender__1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_die_gender__2</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_die_girls</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_live_die_boys</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_had_stillbirth</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_stillbirth_type__1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_stillbirth_type__2</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_stillbirth_type__3</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_miscarriage_total</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_abortion_total</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_stillbirth_total</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_total_stillbirth</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_total_stillbirth_fin</name>
-        <rename/>
-      </field>
-      <field>
-        <name>var_hmr_pgh_total_births</name>
+        <name>hmr_grant_benef_DSID__49</name>
         <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>CurrentEducation</name>
-        <rename>CurrentEducation</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>CurrentEmployment</name>
-        <rename>CurrentEmployment</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>HighestNonSchoolLevel</name>
-        <rename>HighestNonSchoolLevel</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>HighestSchoolLevel</name>
-        <rename>HighestSchoolLevel</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ResidentStatus</name>
-        <rename>ResidentStatus</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>EmploymentType</name>
-        <rename>EmploymentType</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Employer</name>
-        <rename>Employer</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>EmploymentSector</name>
-        <rename>EmploymentSector</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Unemployment</name>
-        <rename>Unemployment</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -12419,647 +9526,33 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2624</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>Nationality</name>
-        <replaceby>Nationality_2</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>hmr_surname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_first_name</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_second_name</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_maiden_name</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_maternal_surname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_maternal_firstname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_maternal_secondname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_paternal_Surname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_paternal_firstname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_paternal_secondname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_civil_id_dob</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_maternal_dod</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_paternal_dod</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_oth_sector</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_oth_not_working</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_new_crr_date</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>832</xloc>
+      <xloc>816</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Transport</name>
-    <type>FilterRows</type>
+    <name>beneficiary_roster_id</name>
+    <type>Constant</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Sector = 8</send_true_to>
-    <send_false_to>EmploymentSector</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>hmr_employment_sector</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>98</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>mechanic</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>petrol</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>driver</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>hmr_oth_sector</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>panel</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1584</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unemployment</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_not_working</field_to_use>
-    <target_field>Unemployment</target_field>
-    <non_match_default>0</non_match_default>
     <fields>
       <field>
-        <source_value>1</source_value>
-        <target_value>11</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>12</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>13</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>14</target_value>
-      </field>
-      <field>
-        <source_value>98</source_value>
-        <target_value>15</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1888</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>UnionStartDate VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_new_crr_date != null) {
-var dateStr=upper(hmr_new_crr_date);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var UnionStartDate = new Date(yr,mo,dy);
-}
-else {
-var UnionStartDate = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>UnionStartDate</name>
-        <rename>UnionStartDate</rename>
-        <type>Date</type>
+        <name>beneficiary_roster_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1376</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>secondname = null</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_second_name</name>
-        <value/>
-        <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
@@ -13072,13 +9565,717 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2352</xloc>
-      <yloc>832</yloc>
+      <xloc>816</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>﻿interview__key</name>
+    <name>DSID_0</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_0</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__0</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_0</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__0</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1584</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_1</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_1</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__1</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_1</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__1</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_2</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__2</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_2</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__2</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_3</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_3</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__3</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_3</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__3</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_4</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_4</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__4</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_4</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__4</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_5</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_5</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__5</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_5</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__5</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_6</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_6</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__6</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_6</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__6</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_7</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_7</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__7</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_7</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__7</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_8</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_8</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__8</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_8</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__8</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DSID_9</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set to DSID_9</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_benef_DSID__9</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set to DSID_9</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <replaceby>hmr_grant_benef_DSID__9</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id register_members_roster__id</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -13120,6 +10317,14 @@ Alert(str2);</jsScript_script>
         <collator_strength>0</collator_strength>
         <presorted>N</presorted>
       </field>
+      <field>
+        <name>beneficiary_roster_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -13130,8 +10335,38 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2768</xloc>
-      <yloc>704</yloc>
+      <xloc>1920</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GrantBenificiaries</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\GrantBenificiaries.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2304</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

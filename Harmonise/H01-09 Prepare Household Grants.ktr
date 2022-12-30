@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2022/12/28 09:23:02.712</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/29 05:50:53.221</modified_date>
-    <key_for_session_key/>
+    <modified_date>2022/12/30 07:12:27.171</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -808,11 +808,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>﻿interview__key</from>
-      <to>HouseholdMemberGrants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 4</from>
       <to>Generate Uids</to>
       <enabled>Y</enabled>
@@ -822,7 +817,87 @@
       <to>﻿interview__key</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>﻿interview__key</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>HouseholdMemberGrants</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Add SupportType</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+      <field>
+        <name>SupportTypeName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>50</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+      <field>
+        <name>SupportTypeDescription</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>255</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>9</item>
+        <item>Tertiary Education</item>
+        <item>Student support grant</item>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -997,6 +1072,69 @@
     <GUI>
       <xloc>304</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add constants 4</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>StartDate</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>StartDateVP</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>10</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8466,6 +8604,356 @@
     </GUI>
   </step>
   <step>
+    <name>Drop</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>1200</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix VPDates</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>b</field_name>
+      <formula_string>IF([hmr_child_supp_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_child_supp_start]="9999-99-99";"19UU-UU-UU";IF([hmr_child_supp_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_child_supp_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_child_supp_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_child_supp_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_child_supp_start]="1200-UU-UU";"2000-UU-UU";[hmr_child_supp_start])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_child_supp_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>c</field_name>
+      <formula_string>IF([hmr_disability_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_disability_start]="9999-99-99";"19UU-UU-UU";IF([hmr_disability_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_disability_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_disability_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_disability_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_disability_start]="1200-UU-UU";"2000-UU-UU";[hmr_disability_start])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_disability_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>f</field_name>
+      <formula_string>IF([hmr_foster_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_foster_start]="9999-99-99";"19UU-UU-UU";IF([hmr_foster_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_foster_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_foster_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_foster_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_foster_start]="1200-UU-UU";"2000-UU-UU";[hmr_foster_start])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_foster_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>g</field_name>
+      <formula_string>IF([hmr_old_age_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_old_age_start]="9999-99-99";"19UU-UU-UU";IF([hmr_old_age_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_old_age_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_old_age_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_old_age_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_old_age_start]="1200-UU-UU";"2000-UU-UU";[hmr_old_age_start])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_old_age_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>i</field_name>
+      <formula_string>IF([hmr_grant_in_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_grant_in_start]="9999-99-99";"19UU-UU-UU";IF([hmr_grant_in_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_grant_in_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_grant_in_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_grant_in_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_grant_in_start]="1200-UU-UU";"2000-UU-UU";[hmr_grant_in_start])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_grant_in_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>j</field_name>
+      <formula_string>IF([hmr_social_belief_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_social_belief_start]="9999-99-99";"19UU-UU-UU";IF([hmr_social_belief_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_social_belief_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_social_belief_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_social_belief_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_social_belief_start]="1200-UU-UU";"2000-UU-UU";[hmr_social_belief_start])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_social_belief_start</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Generate Uids</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>StartEventUid</name>
+        <type>random uuid</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1456</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdMemberGrants</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdMemberGrants.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1920</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>codes</schema>
+      <table>SupportTypes</table>
+      <key>
+        <name>SupportTypeId</name>
+        <field>SupportTypeId</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>SupportTypeId</name>
+        <rename>SupportTypeId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>SupportTypeName</name>
+        <rename>SupportTypeName</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>SupportTypeDescription</name>
+        <rename>SupportTypeDescription</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Random Date values</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>rYear</name>
+        <type>random number</type>
+      </field>
+      <field>
+        <name>rMonth</name>
+        <type>random number</type>
+      </field>
+      <field>
+        <name>rDay</name>
+        <type>random number</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1168</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>hmr_care_dep_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2920</replace_string>
+        <replace_by_string>2020</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_education_grant_start</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2029</replace_string>
+        <replace_by_string>2020</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_old_age_start</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2916</replace_string>
+        <replace_by_string>2016</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_old_age_start</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2917</replace_string>
+        <replace_by_string>2017</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_old_age_start</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>1700</replace_string>
+        <replace_by_string>19UU</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_social_belief_start</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2029</replace_string>
+        <replace_by_string>2019</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
@@ -8479,299 +8967,225 @@
     <fields>
       <field>
         <name>﻿interview__key</name>
-        <rename/>
       </field>
       <field>
         <name>interview__id</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gvt_grant</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__3</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__4</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__5</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__6</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__7</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__8</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__9</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_type__99</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_old_age_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_disability_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_child_supp_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_care_dep_date</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_foster_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_war_vet_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_in_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_social_belief_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_education_grant_start</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__0</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__3</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__4</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__5</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__6</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__7</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__8</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__9</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__10</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__11</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__12</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__13</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__14</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__15</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__16</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__17</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__18</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__19</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__20</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__21</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__22</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__23</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__24</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__25</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__26</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__27</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__28</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__29</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__30</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__31</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__32</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__33</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__34</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__35</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__36</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__37</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__38</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__39</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__40</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__41</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__42</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__43</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__44</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__45</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__46</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__47</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__48</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_grant_benef_DSID__49</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -8786,256 +9200,6 @@
     <GUI>
       <xloc>480</xloc>
       <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿interview__key</name>
-      </field>
-      <field>
-        <name>interview__id</name>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_gvt_grant</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_type__99</name>
-      </field>
-      <field>
-        <name>hmr_old_age_start</name>
-      </field>
-      <field>
-        <name>hmr_disability_start</name>
-      </field>
-      <field>
-        <name>hmr_child_supp_start</name>
-      </field>
-      <field>
-        <name>hmr_care_dep_date</name>
-      </field>
-      <field>
-        <name>hmr_foster_start</name>
-      </field>
-      <field>
-        <name>hmr_war_vet_start</name>
-      </field>
-      <field>
-        <name>hmr_grant_in_start</name>
-      </field>
-      <field>
-        <name>hmr_social_belief_start</name>
-      </field>
-      <field>
-        <name>hmr_education_grant_start</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__0</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__1</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__2</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__3</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__4</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__5</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__6</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__7</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__8</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__9</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__10</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__11</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__12</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__13</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__14</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__15</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__16</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__17</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__18</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__19</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__20</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__21</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__22</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__23</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__24</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__25</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__26</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__27</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__28</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__29</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__30</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__31</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__32</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__33</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__34</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__35</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__36</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__37</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__38</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__39</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__40</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__41</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__42</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__43</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__44</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__45</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__46</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__47</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__48</name>
-      </field>
-      <field>
-        <name>hmr_grant_benef_DSID__49</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9290,2028 +9454,8 @@
     </GUI>
   </step>
   <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>hmr_care_dep_date</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_child_supp_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_disability_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_education_grant_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_foster_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_grant_in_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_social_belief_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>hmr_war_vet_start</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap/>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>hmr_care_dep_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2920</replace_string>
-        <replace_by_string>2020</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_education_grant_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2029</replace_string>
-        <replace_by_string>2020</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2916</replace_string>
-        <replace_by_string>2016</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2917</replace_string>
-        <replace_by_string>2017</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>1700</replace_string>
-        <replace_by_string>19UU</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_social_belief_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2029</replace_string>
-        <replace_by_string>2019</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix VPDates</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>b</field_name>
-      <formula_string>IF([hmr_child_supp_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_child_supp_start]="9999-99-99";"19UU-UU-UU";IF([hmr_child_supp_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_child_supp_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_child_supp_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_child_supp_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_child_supp_start]="1200-UU-UU";"2000-UU-UU";[hmr_child_supp_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_child_supp_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>c</field_name>
-      <formula_string>IF([hmr_disability_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_disability_start]="9999-99-99";"19UU-UU-UU";IF([hmr_disability_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_disability_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_disability_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_disability_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_disability_start]="1200-UU-UU";"2000-UU-UU";[hmr_disability_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_disability_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>f</field_name>
-      <formula_string>IF([hmr_foster_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_foster_start]="9999-99-99";"19UU-UU-UU";IF([hmr_foster_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_foster_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_foster_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_foster_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_foster_start]="1200-UU-UU";"2000-UU-UU";[hmr_foster_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_foster_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>g</field_name>
-      <formula_string>IF([hmr_old_age_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_old_age_start]="9999-99-99";"19UU-UU-UU";IF([hmr_old_age_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_old_age_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_old_age_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_old_age_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_old_age_start]="1200-UU-UU";"2000-UU-UU";[hmr_old_age_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_old_age_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>i</field_name>
-      <formula_string>IF([hmr_grant_in_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_grant_in_start]="9999-99-99";"19UU-UU-UU";IF([hmr_grant_in_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_grant_in_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_grant_in_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_grant_in_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_grant_in_start]="1200-UU-UU";"2000-UU-UU";[hmr_grant_in_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_grant_in_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>j</field_name>
-      <formula_string>IF([hmr_social_belief_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_social_belief_start]="9999-99-99";"19UU-UU-UU";IF([hmr_social_belief_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_social_belief_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_social_belief_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_social_belief_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_social_belief_start]="1200-UU-UU";"2000-UU-UU";[hmr_social_belief_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_social_belief_start</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>old_age_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_old_age_start != null) {
-var dateStr=upper(hmr_old_age_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var old_age_start=new Date(yr,mo,dy);
-}
-else {
-var old_age_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>old_age_start</name>
-        <rename>old_age_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Random Date values</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>rYear</name>
-        <type>random number</type>
-      </field>
-      <field>
-        <name>rMonth</name>
-        <type>random number</type>
-      </field>
-      <field>
-        <name>rDay</name>
-        <type>random number</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1168</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>disability_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_disability_start != null) {
-var dateStr=upper(hmr_disability_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var disability_start=new Date(yr,mo,dy);
-}
-else {
-var disability_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>disability_start</name>
-        <rename>disability_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>912</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>child_supp_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_child_supp_start != null) {
-var dateStr=upper(hmr_child_supp_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var child_supp_start=new Date(yr,mo,dy);
-}
-else {
-var child_supp_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>child_supp_start</name>
-        <rename>child_supp_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>care_dep_date VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_care_dep_date != null) {
-var dateStr=upper(hmr_care_dep_date);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var care_dep_date=new Date(yr,mo,dy);
-}
-else {
-var care_dep_date = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>care_dep_date</name>
-        <rename>care_dep_date</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>foster_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_foster_start != null) {
-var dateStr=upper(hmr_foster_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var foster_start=new Date(yr,mo,dy);
-}
-else {
-var foster_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>foster_start</name>
-        <rename>foster_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1472</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>war_vet_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_war_vet_start != null) {
-var dateStr=upper(hmr_war_vet_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var war_vet_start=new Date(yr,mo,dy);
-}
-else {
-var war_vet_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>war_vet_start</name>
-        <rename>war_vet_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1472</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grant_in_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_grant_in_start != null) {
-var dateStr=upper(hmr_grant_in_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var grant_in_start=new Date(yr,mo,dy);
-}
-else {
-var grant_in_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>grant_in_start</name>
-        <rename>grant_in_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1216</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>social_belief_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_social_belief_start != null) {
-var dateStr=upper(hmr_social_belief_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var social_belief_start=new Date(yr,mo,dy);
-}
-else {
-var social_belief_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>social_belief_start</name>
-        <rename>social_belief_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>960</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>education_grant_start VPDate</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(hmr_education_grant_start != null) {
-var dateStr=upper(hmr_education_grant_start);
-var yrPart=substr(dateStr,0,4);
-var moPart=substr(dateStr,5,2);
-var dyPart=substr(dateStr,8,2);
-var yr=0;
-var mo=0;
-var dy=0;
-//Process year
-if(!isNum(yrPart)) {
-  //replace last two digits with random value
-  var century=str2num(substr(yrPart,0,2));
-  if(century&lt;20) {
-    yr=floor(rYear*100);
-  } else {
-    yr=floor(rYear*21);
-  }
-  yr=(century*100)+yr;
-} else {
-  yr=str2num(yrPart);
-}
-//Process month
-if(!isNum(moPart)) {
-  if("S1".equals(moPart)){
-    mo=floor(rMonth*6);
-  }
-  if("S2".equals(moPart)){
-    mo=floor(rMonth*6)+6;
-  }
-  if("Q1".equals(moPart)){
-    mo=floor(rMonth*3);
-  }
-  if("Q2".equals(moPart)){
-    mo=floor(rMonth*3)+3;
-  }
-  if("Q3".equals(moPart)){
-    mo=floor(rMonth*3)+6;
-  }
-  if("Q4".equals(moPart)){
-    mo=floor(rMonth*3)+9;
-  }
-  if("UU".equals(moPart)){
-    mo=trunc(rMonth*12);
-  }
-
-} else {
-  mo=str2num(moPart)-1;
-}
-// Process day
-if(!isNum(dyPart)){
-  if("UU".equals(dyPart)) {
-    dy=floor(rDay*28)+1;
-  }
-  if("W1".equals(dyPart)) {
-    dy=floor(rDay*7)+1;
-  }
-  if("W2".equals(dyPart)) {
-    dy=floor(rDay*7)+8;
-  }
-  if("W3".equals(dyPart)) {
-    dy=floor(rDay*7)+15;
-  }
-  if("W4".equals(dyPart)) {
-    dy=floor(rDay*7)+22;
-  }
-}  else {
-  dy=str2num(dyPart);
-}
-var education_grant_start=new Date(yr,mo,dy);
-}
-else {
-var education_grant_start = null;
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2num_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a numeric Value.
-//
-// Usage:
-// str2num(var);
-// 1: String - The Variable with the String to convert.
-//
-// str2num(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 
-// 2006-11-15
-//
-var str1 = "1.234,56";
-var str2 = "12";
-Alert((str2num(str1,"#,##0.00")));
-Alert((str2num(str2)));</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>education_grant_start</name>
-        <rename>education_grant_start</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add constants 4</name>
-    <type>Constant</type>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
     <custom_distribution/>
@@ -11322,41 +9466,277 @@ Alert(str2);</jsScript_script>
     </partitioning>
     <fields>
       <field>
+        <name>﻿interview__key</name>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>hmr_gvt_grant</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__1</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__2</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__3</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__4</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__5</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__6</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__7</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__8</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__9</name>
+      </field>
+      <field>
+        <name>hmr_grant_type__99</name>
+      </field>
+      <field>
+        <name>hmr_old_age_start</name>
+      </field>
+      <field>
+        <name>hmr_disability_start</name>
+      </field>
+      <field>
+        <name>hmr_child_supp_start</name>
+      </field>
+      <field>
+        <name>hmr_care_dep_date</name>
+      </field>
+      <field>
+        <name>hmr_foster_start</name>
+      </field>
+      <field>
+        <name>hmr_war_vet_start</name>
+      </field>
+      <field>
+        <name>hmr_grant_in_start</name>
+      </field>
+      <field>
+        <name>hmr_social_belief_start</name>
+      </field>
+      <field>
+        <name>hmr_education_grant_start</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__0</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__1</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__2</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__3</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__4</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__5</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__6</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__7</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__8</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__9</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__10</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__11</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__12</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__13</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__14</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__15</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__16</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__17</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__18</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__19</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__20</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__21</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__22</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__23</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__24</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__25</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__26</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__27</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__28</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__29</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__30</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__31</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__32</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__33</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__34</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__35</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__36</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__37</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__38</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__39</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__40</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__41</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__42</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__43</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__44</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__45</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__46</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__47</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__48</name>
+      </field>
+      <field>
+        <name>hmr_grant_benef_DSID__49</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿interview__key</name>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
         <name>SupportTypeId</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>StartDate</name>
-        <type>Date</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>StartDateVP</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>10</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
       </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -11367,877 +9747,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_1</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 1</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__1</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 1</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 2</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__2</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 2</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>2</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_3</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 6</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__3</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 6</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>6</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_4</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 4</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__4</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
+      <xloc>1312</xloc>
       <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 4</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>4</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_5</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 5</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__5</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 5</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>5</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_6</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 3</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__6</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 3</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>3</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_7</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 7</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__7</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 7</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>7</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_8</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 8</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__8</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>1024</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 8</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>8</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>1024</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_9</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>SupportTypeId = 9</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__9</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>1120</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SupportTypeId = 9</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>1120</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>grantype_99</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Drop</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_grant_type__99</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>1204</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add SupportType</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>SupportTypeId</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-      <field>
-        <name>SupportTypeName</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>50</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-      <field>
-        <name>SupportTypeDescription</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>255</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>9</item>
-        <item>Tertiary Education</item>
-        <item>Student support grant</item>
-      </line>
-    </data>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>codes</schema>
-      <table>SupportTypes</table>
-      <key>
-        <name>SupportTypeId</name>
-        <field>SupportTypeId</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>SupportTypeId</name>
-        <rename>SupportTypeId</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>SupportTypeName</name>
-        <rename>SupportTypeName</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>SupportTypeDescription</name>
-        <rename>SupportTypeDescription</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12308,62 +9819,6 @@ Alert(str2);</jsScript_script>
     <GUI>
       <xloc>1056</xloc>
       <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿interview__key</name>
-        <rename/>
-      </field>
-      <field>
-        <name>interview__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SupportTypeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>StartDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>StartDateVP</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1312</xloc>
-      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12613,8 +10068,8 @@ Alert(str2);</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Drop</name>
-    <type>Dummy</type>
+    <name>String operations</name>
+    <type>StringOperations</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -12623,6 +10078,159 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>hmr_care_dep_date</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_child_supp_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_disability_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_education_grant_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_foster_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_grant_in_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_old_age_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_social_belief_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_war_vet_start</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 1</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -12633,13 +10241,13 @@ Alert(str2);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>896</xloc>
-      <yloc>1200</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HouseholdMemberGrants</name>
-    <type>CubeOutput</type>
+    <name>SupportTypeId = 2</name>
+    <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -12648,11 +10256,15 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdMemberGrants.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>2</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -12662,8 +10274,2351 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1808</xloc>
+      <xloc>896</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 3</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>3</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 4</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>4</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
       <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 5</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>5</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 6</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>6</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 7</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>7</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 8</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>8</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>1024</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SupportTypeId = 9</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>SupportTypeId</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>care_dep_date VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_care_dep_date != null) {
+var dateStr=upper(hmr_care_dep_date);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var care_dep_date=new Date(yr,mo,dy);
+}
+else {
+var care_dep_date = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>care_dep_date</name>
+        <rename>care_dep_date</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>child_supp_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_child_supp_start != null) {
+var dateStr=upper(hmr_child_supp_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var child_supp_start=new Date(yr,mo,dy);
+}
+else {
+var child_supp_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>child_supp_start</name>
+        <rename>child_supp_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>disability_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_disability_start != null) {
+var dateStr=upper(hmr_disability_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var disability_start=new Date(yr,mo,dy);
+}
+else {
+var disability_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>disability_start</name>
+        <rename>disability_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>education_grant_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_education_grant_start != null) {
+var dateStr=upper(hmr_education_grant_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var education_grant_start=new Date(yr,mo,dy);
+}
+else {
+var education_grant_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>education_grant_start</name>
+        <rename>education_grant_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>foster_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_foster_start != null) {
+var dateStr=upper(hmr_foster_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var foster_start=new Date(yr,mo,dy);
+}
+else {
+var foster_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>foster_start</name>
+        <rename>foster_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grant_in_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_grant_in_start != null) {
+var dateStr=upper(hmr_grant_in_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var grant_in_start=new Date(yr,mo,dy);
+}
+else {
+var grant_in_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>grant_in_start</name>
+        <rename>grant_in_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_1</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 1</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__1</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 2</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__2</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_3</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 6</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__3</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_4</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 4</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__4</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_5</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 5</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__5</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_6</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 3</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__6</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_7</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 7</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__7</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_8</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 8</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__8</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>1024</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_9</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>SupportTypeId = 9</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__9</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>grantype_99</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Drop</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_grant_type__99</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>1204</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>old_age_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_old_age_start != null) {
+var dateStr=upper(hmr_old_age_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var old_age_start=new Date(yr,mo,dy);
+}
+else {
+var old_age_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>old_age_start</name>
+        <rename>old_age_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>social_belief_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_social_belief_start != null) {
+var dateStr=upper(hmr_social_belief_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var social_belief_start=new Date(yr,mo,dy);
+}
+else {
+var social_belief_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>social_belief_start</name>
+        <rename>social_belief_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>war_vet_start VPDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+if(hmr_war_vet_start != null) {
+var dateStr=upper(hmr_war_vet_start);
+var yrPart=substr(dateStr,0,4);
+var moPart=substr(dateStr,5,2);
+var dyPart=substr(dateStr,8,2);
+var yr=0;
+var mo=0;
+var dy=0;
+//Process year
+if(!isNum(yrPart)) {
+  //replace last two digits with random value
+  var century=str2num(substr(yrPart,0,2));
+  if(century&lt;20) {
+    yr=floor(rYear*100);
+  } else {
+    yr=floor(rYear*21);
+  }
+  yr=(century*100)+yr;
+} else {
+  yr=str2num(yrPart);
+}
+//Process month
+if(!isNum(moPart)) {
+  if("S1".equals(moPart)){
+    mo=floor(rMonth*6);
+  }
+  if("S2".equals(moPart)){
+    mo=floor(rMonth*6)+6;
+  }
+  if("Q1".equals(moPart)){
+    mo=floor(rMonth*3);
+  }
+  if("Q2".equals(moPart)){
+    mo=floor(rMonth*3)+3;
+  }
+  if("Q3".equals(moPart)){
+    mo=floor(rMonth*3)+6;
+  }
+  if("Q4".equals(moPart)){
+    mo=floor(rMonth*3)+9;
+  }
+  if("UU".equals(moPart)){
+    mo=trunc(rMonth*12);
+  }
+
+} else {
+  mo=str2num(moPart)-1;
+}
+// Process day
+if(!isNum(dyPart)){
+  if("UU".equals(dyPart)) {
+    dy=floor(rDay*28)+1;
+  }
+  if("W1".equals(dyPart)) {
+    dy=floor(rDay*7)+1;
+  }
+  if("W2".equals(dyPart)) {
+    dy=floor(rDay*7)+8;
+  }
+  if("W3".equals(dyPart)) {
+    dy=floor(rDay*7)+15;
+  }
+  if("W4".equals(dyPart)) {
+    dy=floor(rDay*7)+22;
+  }
+}  else {
+  dy=str2num(dyPart);
+}
+var war_vet_start=new Date(yr,mo,dy);
+}
+else {
+var war_vet_start = null;
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2num_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a numeric Value.
+//
+// Usage:
+// str2num(var);
+// 1: String - The Variable with the String to convert.
+//
+// str2num(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 
+// 2006-11-15
+//
+var str1 = "1.234,56";
+var str2 = "12";
+Alert((str2num(str1,"#,##0.00")));
+Alert((str2num(str2)));</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>war_vet_start</name>
+        <rename>war_vet_start</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12726,8 +12681,8 @@ Alert(str2);</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Generate Uids</name>
-    <type>RandomValue</type>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -12738,9 +12693,38 @@ Alert(str2);</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>StartEventUid</name>
-        <type>random uuid</type>
+        <name>﻿interview__key</name>
+        <rename>interview_key</rename>
       </field>
+      <field>
+        <name>interview__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>SupportTypeId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>StartDate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>StartDateVP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>StartEventUid</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -12751,7 +12735,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1456</xloc>
+      <xloc>1744</xloc>
       <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
