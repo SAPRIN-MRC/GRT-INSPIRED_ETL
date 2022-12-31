@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2022/10/26 09:23:48.665</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2022/12/23 17:42:29.942</modified_date>
+  <modified_date>2022/12/31 10:19:45.928</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -400,7 +400,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>432</xloc>
-      <yloc>528</yloc>
+      <yloc>672</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -526,14 +526,14 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>P04 Populate Household Tables</name>
+      <name>P04 Populate Household &amp; Individual Tables</name>
       <description/>
       <type>JOB</type>
       <attributes/>
       <specification_method>rep_name</specification_method>
       <job_object_id/>
       <filename/>
-      <jobname>P04 Populate Household Tables</jobname>
+      <jobname>P04 Populate Household &amp; Individual Tables</jobname>
       <directory>/Populate</directory>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -584,6 +584,67 @@
       <nr>0</nr>
       <xloc>432</xloc>
       <yloc>384</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>P05 Populate Episode Tables</name>
+      <description/>
+      <type>JOB</type>
+      <attributes/>
+      <specification_method>rep_name</specification_method>
+      <job_object_id/>
+      <filename/>
+      <jobname>P05 Populate Episode Tables</jobname>
+      <directory>/Populate</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>656</xloc>
+      <yloc>480</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Step S04 2</name>
+      <description/>
+      <type>SIMPLE_EVAL</type>
+      <attributes/>
+      <valuetype>variable</valuetype>
+      <fieldname/>
+      <variablename>NextStep</variablename>
+      <fieldtype>string</fieldtype>
+      <mask/>
+      <comparevalue>S04</comparevalue>
+      <minvalue/>
+      <maxvalue/>
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>false</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>480</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -680,7 +741,7 @@
     </hop>
     <hop>
       <from>P03 Populate Observation Table</from>
-      <to>P04 Populate Household Tables</to>
+      <to>P04 Populate Household &amp; Individual Tables</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -689,7 +750,7 @@
     </hop>
     <hop>
       <from>Step S04</from>
-      <to>P04 Populate Household Tables</to>
+      <to>P04 Populate Household &amp; Individual Tables</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -698,7 +759,7 @@
     </hop>
     <hop>
       <from>Step S04</from>
-      <to>Success</to>
+      <to>Step S04 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -706,8 +767,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>P04 Populate Household Tables</from>
-      <to>Success</to>
+      <from>Step S04 2</from>
+      <to>P05 Populate Episode Tables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>P04 Populate Household &amp; Individual Tables</from>
+      <to>P05 Populate Episode Tables</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

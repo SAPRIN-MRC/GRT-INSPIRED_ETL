@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>H01-05 Prepare Owners</name>
+    <name>H03-05 Prepare Location Data</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,9 +426,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/12/04 16:29:27.646</created_date>
+    <created_date>2022/10/07 15:23:19.433</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/31 13:25:44.784</modified_date>
+    <modified_date>2022/12/31 09:09:48.279</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -436,133 +436,128 @@
   </notepads>
   <order>
     <hop>
-      <from>InterviewKey not null</from>
-      <to>Drop</to>
+      <from>Add LocationTypeId</from>
+      <to>Geocode 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>InterviewKey not null</from>
-      <to>InterviewKey</to>
+      <from>Geocode</from>
+      <to>Merge join 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Geocode 2</from>
+      <to>Merge join 4</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Mappings</from>
-      <to>InterviewKey not null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select Owner</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>String operations</from>
-      <to>Null if</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Owner not null</from>
-      <to>Drop 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Null if</from>
-      <to>Owner not null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Interviews</from>
-      <to>Select Owner</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Owner not null</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add constants</from>
-      <to>Similar</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Similar</from>
-      <to>Set field value</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value</from>
-      <to>interview_key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Similar</from>
-      <to>name is null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>name is null</from>
-      <to>Set field value 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value 2</from>
-      <to>interview_key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>name is null</from>
-      <to>surname is null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>surname is null</from>
-      <to>Set field value 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value 3</from>
-      <to>interview_key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>surname is null</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula</from>
-      <to>interview_key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>interview_key</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>InterviewKey</from>
-      <to>Merge join</to>
+      <to>Site</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Merge join</from>
+      <to>String operations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 2</from>
+      <to>SubPlace</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 3</from>
+      <to>Add LocationTypeId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 4</from>
+      <to>Regex Unit</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Owners</from>
+      <to>Geocode</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Site</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SiteId BuildingName</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SiteId BuildingName 2</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SiteName</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>SiteId BuildingName 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SubPlace</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SubPlaceName</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Regex Unit</from>
+      <to>Regex Floor</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Regex Floor</from>
+      <to>Map Floor</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Floor</from>
+      <to>Formula</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sites</from>
+      <to>SiteName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Buildings</from>
+      <to>SiteId BuildingName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SubPlaces</from>
+      <to>SubPlaceName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Formula</from>
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values</from>
-      <to>Owners.cube</to>
+      <to>Locations</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add constants</name>
+    <name>Add LocationTypeId</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
@@ -574,13 +569,25 @@
     </partitioning>
     <fields>
       <field>
-        <name>Owner</name>
-        <type>String</type>
+        <name>LocationTypeId</name>
+        <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
+        <nullif>1000</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>NodeId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>4</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -596,98 +603,7 @@
     </remotesteps>
     <GUI>
       <xloc>1152</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Calculator</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>JW</field_name>
-      <calc_type>JARO_WINKLER</calc_type>
-      <field_a>bs_owner_name</field_a>
-      <field_b>bs_owner_sname</field_b>
-      <field_c/>
-      <value_type>Number</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1008</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Drop</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1424</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Drop 2</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>16</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -703,12 +619,20 @@
       <schema_name/>
     </partitioning>
     <formula>
-      <field_name>O</field_name>
-      <formula_string>CONCATENATE([bs_owner_name];" ";[bs_owner_sname])</formula_string>
+      <field_name>f</field_name>
+      <formula_string>IF(ISBLANK([Floor]);[Floor_alt];[Floor])</formula_string>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
-      <replace_field>Owner</replace_field>
+      <replace_field>Floor</replace_field>
+    </formula>
+    <formula>
+      <field_name>u</field_name>
+      <formula_string>IF(ISBLANK([Unit]);[Unit_alt];[Unit])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>Unit</replace_field>
     </formula>
     <attributes/>
     <cluster_schema/>
@@ -719,13 +643,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>416</yloc>
+      <xloc>1808</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>InterviewKey</name>
+    <name>Geocode</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -744,7 +668,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>InterviewKey</name>
+        <name>Geocode</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -761,14 +685,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1584</xloc>
-      <yloc>512</yloc>
+      <xloc>1264</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>InterviewKey not null</name>
-    <type>FilterRows</type>
+    <name>Geocode 2</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -777,16 +701,23 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>InterviewKey</send_true_to>
-    <send_false_to>Drop</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>InterviewKey</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>Geocode</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -796,14 +727,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>512</yloc>
+      <xloc>1264</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Interviews</name>
-    <type>CubeInput</type>
+    <name>Map Floor</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -812,11 +743,67 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\Interviews.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <field_to_use>Floor_alt</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>G</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>I</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>GROU</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>Groufloor</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>GROU FLOOR</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>SECO</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>GROUFLOOR</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>RT</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>HOUSE</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>FIR</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ROOFTOP</source_value>
+        <target_value>Roof</target_value>
+      </field>
+      <field>
+        <source_value>GROU FLOOR0</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>Grou floor</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>NULL</source_value>
+        <target_value/>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -826,8 +813,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>128</yloc>
+      <xloc>1696</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -856,8 +843,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1280</xloc>
-      <yloc>512</yloc>
+      <xloc>48</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -873,13 +860,13 @@
       <schema_name/>
     </partitioning>
     <join_type>INNER</join_type>
-    <step1>interview_key</step1>
-    <step2>InterviewKey</step2>
+    <step1>Site</step1>
+    <step2>SiteName</step2>
     <keys_1>
-      <key>interview_key</key>
+      <key>Site</key>
     </keys_1>
     <keys_2>
-      <key>InterviewKey</key>
+      <key>SiteName</key>
     </keys_2>
     <attributes/>
     <cluster_schema/>
@@ -890,14 +877,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1664</xloc>
-      <yloc>288</yloc>
+      <xloc>320</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Null if</name>
-    <type>NullIf</type>
+    <name>Merge join 2</name>
+    <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -906,104 +893,17 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Dk</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Dk</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Dķ</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Dķ</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Sk</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Sk</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Dm</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Dm</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>##N/A##</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Ck</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Ck</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Unknown</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Unknown</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>N/A</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>N/A</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Don'T Know</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Don'T Know</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Don'T</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Don'T</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Not Known</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Not Known</value>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <value>Not</value>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <value>Not</value>
-      </field>
-    </fields>
+    <join_type>LEFT OUTER</join_type>
+    <step1>SiteId BuildingName 2</step1>
+    <step2>SiteId BuildingName</step2>
+    <keys_1>
+      <key>SiteId</key>
+      <key>BuildingName</key>
+    </keys_1>
+    <keys_2>
+      <key>SiteId</key>
+      <key>BuildingName</key>
+    </keys_2>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1013,14 +913,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
-      <yloc>128</yloc>
+      <xloc>736</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Owner not null</name>
-    <type>FilterRows</type>
+    <name>Merge join 3</name>
+    <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1029,28 +929,15 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Drop 2</send_true_to>
-    <send_false_to>Calculator</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>bs_owner_name</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>bs_owner_sname</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <join_type>LEFT OUTER</join_type>
+    <step1>SubPlace</step1>
+    <step2>SubPlaceName</step2>
+    <keys_1>
+      <key>SubPlace</key>
+    </keys_1>
+    <keys_2>
+      <key>SubPlaceName</key>
+    </keys_2>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1060,14 +947,48 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>128</yloc>
+      <xloc>1024</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Owners.cube</name>
-    <type>CubeOutput</type>
+    <name>Merge join 4</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>Geocode 2</step1>
+    <step2>Geocode</step2>
+    <keys_1>
+      <key>Geocode</key>
+    </keys_1>
+    <keys_2>
+      <key>Geocode</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Owners</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1078,9 +999,9 @@
     </partitioning>
     <file>
       <name>${OutputDirectory}\Owners.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1090,110 +1011,61 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1960</xloc>
-      <yloc>288</yloc>
+      <xloc>1152</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select Owner</name>
-    <type>SelectValues</type>
+    <name>Regex Floor</name>
+    <type>RegexEval</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <script>\A(.+)[.].*\z|\A(.+)\z</script>
+    <matcher>floor_number</matcher>
+    <resultfieldname>result</resultfieldname>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
     <fields>
       <field>
-        <name>interview_key</name>
-        <rename/>
+        <name>Floor</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
       </field>
       <field>
-        <name>interview__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>bs_owner_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>bs_owner_sname</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>Geocode</name>
-        <rename/>
-      </field>
-      <field>
-        <name>interview_key</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Owner</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1760</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>Owner</name>
-        <replaceby>bs_owner_name</replaceby>
+        <name>Floor_alt</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
       </field>
     </fields>
     <attributes/>
@@ -1205,14 +1077,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>128</yloc>
+      <xloc>1600</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set field value 2</name>
-    <type>SetValueField</type>
+    <name>Regex Unit</name>
+    <type>RegexEval</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1221,10 +1093,45 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <script>\A(.+)[.].*\z|\A(.+)\z</script>
+    <matcher>unit_number</matcher>
+    <resultfieldname>result</resultfieldname>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
     <fields>
       <field>
-        <name>Owner</name>
-        <replaceby>bs_owner_sname</replaceby>
+        <name>Unit</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+      <field>
+        <name>Unit_alt</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
       </field>
     </fields>
     <attributes/>
@@ -1236,223 +1143,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>224</yloc>
+      <xloc>1488</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set field value 3</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>Owner</name>
-        <replaceby>bs_owner_name</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1424</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Similar</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value</send_true_to>
-    <send_false_to>name is null</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>JW</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Number</type>
-              <text>0.9</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask>####0.0#########;-####0.0#########</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>bs_owner_name</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>bs_owner_name</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>bs_owner_sname</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>name is null</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value 2</send_true_to>
-    <send_false_to>surname is null</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>bs_owner_name</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>surname is null</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value 3</send_true_to>
-    <send_false_to>Formula</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>bs_owner_sname</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key</name>
+    <name>Site</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1471,7 +1168,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>interview_key</name>
+        <name>Site</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -1488,8 +1185,486 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1584</xloc>
-      <yloc>128</yloc>
+      <xloc>192</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SiteId BuildingName</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>SiteId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>BuildingName</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SiteId BuildingName 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>SiteId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>BuildingName</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SiteName</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>SiteName</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>String operations</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>BuildingName</in_stream_name>
+        <out_stream_name/>
+        <trim_type/>
+        <lower_upper>lower</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>Y</init_cap>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SubPlace</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>SubPlace</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SubPlaceName</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>SubPlaceName</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sites</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Sites.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Buildings</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Buildings.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SubPlaces</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\SubPlaces.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+        <rename/>
+      </field>
+      <field>
+        <name>LocationUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>LocationTypeId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NodeId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Geocode</name>
+        <rename>ExternalId</rename>
+      </field>
+      <field>
+        <name>SiteId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>SubPlaceId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>BuildingId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Owner</name>
+        <rename>CurrentOwner</rename>
+      </field>
+      <field>
+        <name>FCA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>weekblock_1</name>
+        <rename>Weekblock</rename>
+      </field>
+      <field>
+        <name>Floor</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Unit</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Latitude</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Longitude</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DwellingType</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1968</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Locations</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Locations.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

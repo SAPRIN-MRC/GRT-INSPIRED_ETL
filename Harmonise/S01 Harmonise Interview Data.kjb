@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2022/10/05 14:43:20.065</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2022/12/30 05:43:19.227</modified_date>
+  <modified_date>2022/12/31 07:26:51.273</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -316,7 +316,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
-      <yloc>1392</yloc>
+      <yloc>1568</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -1239,7 +1239,71 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>880</xloc>
-      <yloc>1232</yloc>
+      <yloc>1328</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Step S13</name>
+      <description/>
+      <type>SIMPLE_EVAL</type>
+      <attributes/>
+      <valuetype>variable</valuetype>
+      <fieldname/>
+      <variablename>NextStep</variablename>
+      <fieldtype>string</fieldtype>
+      <mask/>
+      <comparevalue>S13</comparevalue>
+      <minvalue/>
+      <maxvalue/>
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>false</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>400</xloc>
+      <yloc>1328</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>H01-12 Prepare grant benificiaries</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>rep_name</specification_method>
+      <trans_object_id/>
+      <filename/>
+      <transname>H01-12 Prepare grant benificiaries</transname>
+      <directory>/Harmonise</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>880</xloc>
+      <yloc>1216</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -1252,7 +1316,7 @@
       <variablename>NextStep</variablename>
       <fieldtype>string</fieldtype>
       <mask/>
-      <comparevalue>S12</comparevalue>
+      <comparevalue>S11</comparevalue>
       <minvalue/>
       <maxvalue/>
       <successcondition>equal</successcondition>
@@ -1263,7 +1327,68 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
-      <yloc>1232</yloc>
+      <yloc>1216</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>H03 Prepare Table Data</name>
+      <description/>
+      <type>JOB</type>
+      <attributes/>
+      <specification_method>rep_name</specification_method>
+      <job_object_id/>
+      <filename/>
+      <jobname>H03 Prepare Table Data</jobname>
+      <directory>/Harmonise</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>880</xloc>
+      <yloc>1440</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Step S14</name>
+      <description/>
+      <type>SIMPLE_EVAL</type>
+      <attributes/>
+      <valuetype>variable</valuetype>
+      <fieldname/>
+      <variablename>NextStep</variablename>
+      <fieldtype>string</fieldtype>
+      <mask/>
+      <comparevalue>S14</comparevalue>
+      <minvalue/>
+      <maxvalue/>
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>false</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>400</xloc>
+      <yloc>1440</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -1602,6 +1727,15 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
+      <from>Step S13</from>
+      <to>H02 Add Uids</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>Step S11</from>
       <to>Step S12</to>
       <from_nr>0</from_nr>
@@ -1612,7 +1746,16 @@
     </hop>
     <hop>
       <from>Step S12</from>
-      <to>H02 Add Uids</to>
+      <to>Step S13</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>H01-11 Prepare Pregnancies &amp; Births</from>
+      <to>H01-12 Prepare grant benificiaries</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -1620,7 +1763,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>H01-11 Prepare Pregnancies &amp; Births</from>
+      <from>H01-12 Prepare grant benificiaries</from>
       <to>H02 Add Uids</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -1630,6 +1773,42 @@
     </hop>
     <hop>
       <from>Step S12</from>
+      <to>H01-12 Prepare grant benificiaries</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S13</from>
+      <to>Step S14</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S14</from>
+      <to>H03 Prepare Table Data</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>H02 Add Uids</from>
+      <to>H03 Prepare Table Data</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Step S14</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -1638,7 +1817,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>H02 Add Uids</from>
+      <from>H03 Prepare Table Data</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

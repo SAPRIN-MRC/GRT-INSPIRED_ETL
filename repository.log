@@ -56,3 +56,6 @@ Save database : Modification by user
 Save repository element : Saprin Ops : Modification by user
 Rename transformation : Renamed from H01-07 Prepare Household Members to H01-08 Prepare Household Members
 Rename transformation : Renamed from H02-01 Add Parental Uids to H02-01 Add Individual Uids to Households
+Rename transformation : Renamed from H03-01 Prepare Site Data to H03-01 Prepare Node Data
+Rename job : Renamed from P04 Populate Household Tables to P04 Populate Household & Individual Tables
+Rename transformation : Renamed from P01-06 Populate LocationStateEpisodes to P05-01 Populate LocationStateEpisodes

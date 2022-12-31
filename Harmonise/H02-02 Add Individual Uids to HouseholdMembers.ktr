@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/30 05:44:25.032</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/30 06:54:00.651</modified_date>
+    <modified_date>2022/12/31 10:58:01.853</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -589,7 +589,37 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Households</from>
+      <to>Select values 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 7</from>
+      <to>interview_key hhr_register_roster__id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Select values 6</from>
+      <to>interview_key hhr_register_roster__id 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id 2</from>
+      <to>Multiway merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>interview_key hhr_register_roster__id</from>
+      <to>Multiway merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Multiway merge join</from>
+      <to>Select values 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 8</from>
       <to>HouseholdMembers_withUids</to>
       <enabled>Y</enabled>
     </hop>
@@ -681,6 +711,66 @@
     <GUI>
       <xloc>144</xloc>
       <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdMembers 4</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdMembers.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdMembers_withUids</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdMembers_withUids.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1081,276 +1171,6 @@
     </GUI>
   </step>
   <step>
-    <name>interview_key hhr_register_roster__id hmr_maternal_dsid</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hmr_maternal_dsid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key hhr_register_roster__id hmr_paternal_dsid</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hmr_paternal_dsid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key hhr_register_roster__id register_members_roster__id</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key hhr_register_roster__id register_members_roster__id 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>join father</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>interview_key hhr_register_roster__id hmr_paternal_dsid</step1>
-    <step2>interview_key hhr_register_roster__id register_members_roster__id 2</step2>
-    <keys_1>
-      <key>interview_key</key>
-      <key>hhr_register_roster__id</key>
-      <key>hmr_paternal_dsid</key>
-    </keys_1>
-    <keys_2>
-      <key>interview_key</key>
-      <key>hhr_register_roster__id</key>
-      <key>register_members_roster__id</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>944</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select values 4</name>
     <type>SelectValues</type>
     <description/>
@@ -1364,139 +1184,105 @@
     <fields>
       <field>
         <name>interview_key</name>
-        <rename/>
       </field>
       <field>
         <name>interview__id</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>IndividualUid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_surname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_first_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_second_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_detail</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_civil_id</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_dob</name>
-        <rename/>
       </field>
       <field>
         <name>dob</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gender</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_has_maiden_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maiden_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_primary_tel</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_prim_tel_provider</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_alt_tel</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_atl_tel_provider</name>
-        <rename/>
       </field>
       <field>
         <name>Nationality</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_citizenship</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_head_relationship</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_nights_spend</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_is_mem_resident</name>
-        <rename/>
       </field>
       <field>
         <name>ResidentStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_member</name>
-        <rename/>
       </field>
       <field>
         <name>MotherUid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_surname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_firstname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_secondname</name>
-        <rename/>
       </field>
       <field>
         <name>MotherStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dod</name>
-        <rename/>
       </field>
       <field>
         <name>maternalDoD</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_member</name>
-        <rename/>
       </field>
       <field>
         <name>IndividualUid_1</name>
@@ -1504,195 +1290,147 @@
       </field>
       <field>
         <name>hmr_paternal_Surname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_firstname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_secondname</name>
-        <rename/>
       </field>
       <field>
         <name>FatherStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dod</name>
-        <rename/>
       </field>
       <field>
         <name>paternalDoD</name>
-        <rename/>
       </field>
       <field>
         <name>HighestSchoolLevel</name>
-        <rename/>
       </field>
       <field>
         <name>HighestNonSchoolLevel</name>
-        <rename/>
       </field>
       <field>
         <name>CurrentEducation</name>
-        <rename/>
       </field>
       <field>
         <name>CurrentEmployment</name>
-        <rename/>
       </field>
       <field>
         <name>EmploymentType</name>
-        <rename/>
       </field>
       <field>
         <name>Employer</name>
-        <rename/>
       </field>
       <field>
         <name>EmploymentSector</name>
-        <rename/>
       </field>
       <field>
         <name>Unemployment</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_oth_sector</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_oth_not_working</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gvt_grant</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_marital_state</name>
-        <rename/>
       </field>
       <field>
         <name>PartnershipStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pregnant</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_reg_partner</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_partner_dsid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_new_crr_date</name>
-        <rename/>
       </field>
       <field>
         <name>UnionStartDate</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_married</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_births</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_children</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_daughters</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_sons</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth_die</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_birth_die</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_girls</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_boys</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_had_stillbirth</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__3</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_abortion_total</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth_fin</name>
-        <rename/>
       </field>
       <field>
         <name>var_hmr_pgh_total_births</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1707,94 +1445,6 @@
     <GUI>
       <xloc>1136</xloc>
       <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key hhr_register_roster__id hmr_partner_dsid</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hmr_partner_dsid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdMembers 4</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdMembers.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1834,102 +1484,6 @@
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key hhr_register_roster__id register_members_roster__id 3</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>join partner</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>interview_key hhr_register_roster__id hmr_partner_dsid</step1>
-    <step2>interview_key hhr_register_roster__id register_members_roster__id 3</step2>
-    <keys_1>
-      <key>interview_key</key>
-      <key>hhr_register_roster__id</key>
-      <key>hmr_partner_dsid</key>
-    </keys_1>
-    <keys_2>
-      <key>interview_key</key>
-      <key>hhr_register_roster__id</key>
-      <key>register_members_roster__id</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2289,14 +1843,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
+      <xloc>1360</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HouseholdMembers_withUids</name>
-    <type>CubeOutput</type>
+    <name>interview_key hhr_register_roster__id hmr_maternal_dsid</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2305,11 +1859,39 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdMembers_withUids.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hmr_maternal_dsid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2319,8 +1901,941 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1568</xloc>
+      <xloc>640</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id hmr_partner_dsid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hmr_partner_dsid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id hmr_paternal_dsid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hmr_paternal_dsid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id register_members_roster__id</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id register_members_roster__id 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id register_members_roster__id 3</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
       <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>join father</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>interview_key hhr_register_roster__id hmr_paternal_dsid</step1>
+    <step2>interview_key hhr_register_roster__id register_members_roster__id 2</step2>
+    <keys_1>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>hmr_paternal_dsid</key>
+    </keys_1>
+    <keys_2>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>register_members_roster__id</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>join partner</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>interview_key hhr_register_roster__id hmr_partner_dsid</step1>
+    <step2>interview_key hhr_register_roster__id register_members_roster__id 3</step2>
+    <keys_1>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>hmr_partner_dsid</key>
+    </keys_1>
+    <keys_2>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>register_members_roster__id</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Households</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Households.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>145</xloc>
+      <yloc>734</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 7</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>HouseholdUid</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>interview_key hhr_register_roster__id 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiway merge join</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step0>interview_key hhr_register_roster__id 2</step0>
+    <step1>interview_key hhr_register_roster__id</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>interview_key,hhr_register_roster__id</key>
+      <key>interview_key,hhr_register_roster__id</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 8</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <rename/>
+      </field>
+      <field>
+        <name>interview__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>HouseholdUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_surname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_first_name</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_second_name</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_civil_id_detail</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_civil_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_civil_id_dob</name>
+        <rename/>
+      </field>
+      <field>
+        <name>dob</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_gender</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_has_maiden_name</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_maiden_name</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_primary_tel</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_prim_tel_provider</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_alt_tel</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_atl_tel_provider</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Nationality</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_citizenship</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_head_relationship</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_nights_spend</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_is_mem_resident</name>
+        <rename/>
+      </field>
+      <field>
+        <name>ResidentStatus</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_maternal_member</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MotherUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_maternal_surname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_maternal_firstname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_maternal_secondname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MotherStatus</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_maternal_dod</name>
+        <rename/>
+      </field>
+      <field>
+        <name>maternalDoD</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_paternal_member</name>
+        <rename/>
+      </field>
+      <field>
+        <name>FatherUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_paternal_Surname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_paternal_firstname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_paternal_secondname</name>
+        <rename/>
+      </field>
+      <field>
+        <name>FatherStatus</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_paternal_dod</name>
+        <rename/>
+      </field>
+      <field>
+        <name>paternalDoD</name>
+        <rename/>
+      </field>
+      <field>
+        <name>HighestSchoolLevel</name>
+        <rename/>
+      </field>
+      <field>
+        <name>HighestNonSchoolLevel</name>
+        <rename/>
+      </field>
+      <field>
+        <name>CurrentEducation</name>
+        <rename/>
+      </field>
+      <field>
+        <name>CurrentEmployment</name>
+        <rename/>
+      </field>
+      <field>
+        <name>EmploymentType</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Employer</name>
+        <rename/>
+      </field>
+      <field>
+        <name>EmploymentSector</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Unemployment</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_oth_sector</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_oth_not_working</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_gvt_grant</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_marital_state</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PartnershipStatus</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_pregnant</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_reg_partner</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PartnerUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_new_crr_date</name>
+        <rename/>
+      </field>
+      <field>
+        <name>UnionStartDate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_married</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_gave_birth</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_births</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_gender__1</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_gender__2</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_children</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_daughters</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_sons</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_gave_birth_die</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_birth_die</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_die_gender__1</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_die_gender__2</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_die_girls</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_live_die_boys</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_had_stillbirth</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_stillbirth_type__1</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_stillbirth_type__2</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_stillbirth_type__3</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_miscarriage_total</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_abortion_total</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_stillbirth_total</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_total_stillbirth</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_total_stillbirth_fin</name>
+        <rename/>
+      </field>
+      <field>
+        <name>var_hmr_pgh_total_births</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
