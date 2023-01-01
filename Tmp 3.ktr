@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>Tmp</name>
+    <name>Tmp 3</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,154 +426,73 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/12/04 12:57:41.232</created_date>
+    <created_date>2023/01/01 07:04:52.161</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 07:01:40.025</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2023/01/01 08:13:29.810</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>Miscarriages &amp; Abortions</note>
-      <xloc>357</xloc>
-      <yloc>672</yloc>
-      <width>211</width>
-      <heigth>34</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <order>
     <hop>
-      <from>&gt; 9m</from>
-      <to>Duration in wks</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>&gt; 9m</from>
-      <to>Wks > 40</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add constants</from>
-      <to>Multiple 2</to>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Add constants 2</from>
-      <to>Add constants 4</to>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants 3</from>
-      <to>Select values 4</to>
+      <from>BSR_2021_v13-14</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants 4</from>
-      <to>Pregnancy only</to>
+      <from>BSR_2021_v7-8</from>
+      <to>Add constants</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants 4</from>
-      <to>Select values 5</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>BSR_2021_v13-14 2</from>
-      <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>BSR_2021_v7-8 2</from>
-      <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>BSR_2021_v9-11 2</from>
-      <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Deliveries</from>
-      <to>Select values 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Duration</from>
-      <to>Random Date values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Duration in wks</from>
-      <to>Wks > 40</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Duration in wks 2</from>
-      <to>Duration</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Generate Uids</from>
-      <to>String operations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Group by</from>
-      <to>Multiple</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>MaternityHistory</from>
-      <to>interview_key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Multiple</from>
-      <to>multiple = 1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Multiple</from>
-      <to>multiple = 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Multiple 2</from>
+      <from>BSR_2021_v9-11</from>
       <to>Add constants 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Multiple 2</from>
-      <to>Deliveries</to>
+      <from>Fix VPDates</from>
+      <to>Random Date values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate Uids</from>
+      <to>Null if</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>HouseholdMembers</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Matched</from>
+      <to>Set as not registered</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Matched</from>
+      <to>Use merged roster_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join</from>
+      <to>Matched</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Null if</from>
-      <to>Generate Uids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Pregnancy only</from>
-      <to>Ignore</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Pregnancy only</from>
-      <to>Select values 3</to>
+      <to>Registered</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -582,99 +501,114 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Registered</from>
+      <to>Pass through</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Registered</from>
+      <to>Self mother</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Fix VPDates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Select values</from>
-      <to>Add constants</to>
+      <to>String operations</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 2</from>
-      <to>Null if</to>
+      <to>interview_key hmr_first_name hmr_civil_id_dob</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3</from>
-      <to>Sort rows</to>
+      <from>Self mother</from>
+      <to>Pass through</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 4</from>
-      <to>Sort rows</to>
+      <from>Self mother</from>
+      <to>﻿interview__key hmr_list_preg hmr_pgh_date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 5</from>
-      <to>Sort rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 6</from>
-      <to>Add constants 4</to>
+      <from>Set as not registered</from>
+      <to>Select values 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>String operations</from>
-      <to>&gt; 9m</to>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Wks > 40</from>
-      <to>Duration</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Wks > 40</from>
-      <to>Duration in wks 2</to>
+      <from>Use merged roster_id</from>
+      <to>Select values 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>hmr_pgh_date VPDate</from>
-      <to>Add constants 3</to>
+      <to>Generate Uids</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>interview_key</from>
-      <to>Group by</to>
+      <from>interview_key hmr_first_name hmr_civil_id_dob</from>
+      <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>interview_key 2</from>
-      <to>Select values</to>
+      <from>﻿interview__key hmr_list_preg hmr_pgh_date</from>
+      <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>multiple = 1</from>
-      <to>interview_key 2</to>
+      <from>Pass through</from>
+      <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>multiple = 2</from>
-      <to>interview_key 2</to>
+      <from>Sort rows</from>
+      <to>Group by 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Group by 2</from>
-      <to>Filter rows</to>
+      <to> Multiple</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Dummy (do nothing)</to>
+      <from> Multiple</from>
+      <to>Set as not registered 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 2</from>
-      <to>Select values 7</to>
+      <from> Multiple</from>
+      <to>Select values 4</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 7</from>
-      <to>Group by 2</to>
+      <from>Set as not registered 2</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>Sort rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>Sort rows 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>&gt; 9m</name>
-    <type>FilterRows</type>
+    <name>Add constants</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -683,80 +617,39 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Duration in wks</send_true_to>
-    <send_false_to>Wks > 40</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>hmr_pgh_duration_unit</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>hmr_pgh_duration</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>9</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>933</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
     <fields>
       <field>
-        <name>Duration</name>
+        <name>hmr_pgh_dead_days</name>
         <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>40</nullif>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -771,8 +664,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1173</xloc>
-      <yloc>176</yloc>
+      <xloc>304</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -789,25 +682,37 @@
     </partitioning>
     <fields>
       <field>
-        <name>Babies</name>
+        <name>hmr_pgh_dead_days</name>
         <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>1</nullif>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>recid</name>
+        <name>hmr_pgh_dead_months</name>
         <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>1</nullif>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -822,127 +727,348 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1333</xloc>
+      <xloc>304</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>BSR_2021_v13-14</name>
+    <type>TextFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <accept_filenames>N</accept_filenames>
+    <passing_through_fields>N</passing_through_fields>
+    <accept_field/>
+    <accept_stepname/>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_breaks>N</enclosure_breaks>
+    <escapechar/>
+    <header>Y</header>
+    <nr_headerlines>1</nr_headerlines>
+    <footer>N</footer>
+    <nr_footerlines>1</nr_footerlines>
+    <line_wrapped>N</line_wrapped>
+    <nr_wraps>1</nr_wraps>
+    <layout_paged>N</layout_paged>
+    <nr_lines_per_page>80</nr_lines_per_page>
+    <nr_lines_doc_header>0</nr_lines_doc_header>
+    <noempty>Y</noempty>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <rownumByFile>N</rownumByFile>
+    <rownum_field/>
+    <format>DOS</format>
+    <encoding>UTF-8</encoding>
+    <length>Characters</length>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>zip:${DataDirectory}\BSR_2021_13_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_14_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <type>CSV</type>
+      <compression>None</compression>
+    </file>
+    <filters>
+    </filters>
+    <fields>
+      <field>
+        <name>﻿interview__key</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>11</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>interview__id</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>32</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>reg_pregnancies_roster__id</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_list_preg</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>26</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_date</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>10</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_gender</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_single_multiple</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_days</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field/>
+    <file_error_message_field/>
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field/>
+    <error_fields_field/>
+    <error_text_field/>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>en_ZA</date_format_locale>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Add constants 3</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>Babies</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1733</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add constants 4</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>outcome</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>3</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>spontaneous</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster_2__id</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1477</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>BSR_2021_v13-14 2</name>
+    <name>BSR_2021_v7-8</name>
     <type>TextFileInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -980,12 +1106,12 @@
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>zip:${DataDirectory}\BSR_2021_13_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
+      <name>zip:${DataDirectory}\BSR_2021_7_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <name>zip:${DataDirectory}\BSR_2021_14_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
+      <name>zip:${DataDirectory}\BSR_2021_8_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1057,7 +1183,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>reg_pregnancies_roster_2__id</name>
+        <name>reg_pregnancies_roster__id</name>
         <type>Integer</type>
         <format>#</format>
         <currency>R</currency>
@@ -1072,7 +1198,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>hmr_pgh_stillbirth_month</name>
+        <name>hmr_list_preg</name>
         <type>String</type>
         <format/>
         <currency>R</currency>
@@ -1081,670 +1207,142 @@
         <nullif>-</nullif>
         <ifnull/>
         <position>-1</position>
-        <length>7</length>
+        <length>21</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
         <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_duration_unit</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_duration</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_abort_misc_still</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_age</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <error_ignored>N</error_ignored>
-    <skip_bad_files>N</skip_bad_files>
-    <file_error_field/>
-    <file_error_message_field/>
-    <error_line_skipped>N</error_line_skipped>
-    <error_count_field/>
-    <error_fields_field/>
-    <error_text_field/>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <date_format_lenient>Y</date_format_lenient>
-    <date_format_locale>en_ZA</date_format_locale>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>69</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>BSR_2021_v7-8 2</name>
-    <type>TextFileInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <accept_filenames>N</accept_filenames>
-    <passing_through_fields>N</passing_through_fields>
-    <accept_field/>
-    <accept_stepname/>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_breaks>N</enclosure_breaks>
-    <escapechar/>
-    <header>Y</header>
-    <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
-    <nr_footerlines>1</nr_footerlines>
-    <line_wrapped>N</line_wrapped>
-    <nr_wraps>1</nr_wraps>
-    <layout_paged>N</layout_paged>
-    <nr_lines_per_page>80</nr_lines_per_page>
-    <nr_lines_doc_header>0</nr_lines_doc_header>
-    <noempty>Y</noempty>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <rownumByFile>N</rownumByFile>
-    <rownum_field/>
-    <format>DOS</format>
-    <encoding>UTF-8</encoding>
-    <length>Characters</length>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <file>
-      <name>zip:${DataDirectory}\BSR_2021_7_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>zip:${DataDirectory}\BSR_2021_8_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <type>CSV</type>
-      <compression>None</compression>
-    </file>
-    <filters>
-    </filters>
-    <fields>
-      <field>
-        <name>﻿interview__key</name>
-        <type>String</type>
-        <format/>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>11</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>interview__id</name>
-        <type>String</type>
-        <format/>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>32</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster_2__id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_stillbirth_month</name>
-        <type>String</type>
-        <format/>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>7</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_duration_unit</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_duration</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_abort_misc_still</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_age</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <error_ignored>N</error_ignored>
-    <skip_bad_files>N</skip_bad_files>
-    <file_error_field/>
-    <file_error_message_field/>
-    <error_line_skipped>N</error_line_skipped>
-    <error_count_field/>
-    <error_fields_field/>
-    <error_text_field/>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <date_format_lenient>Y</date_format_lenient>
-    <date_format_locale>en_ZA</date_format_locale>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>69</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>BSR_2021_v9-11 2</name>
-    <type>TextFileInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <accept_filenames>N</accept_filenames>
-    <passing_through_fields>N</passing_through_fields>
-    <accept_field/>
-    <accept_stepname/>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_breaks>N</enclosure_breaks>
-    <escapechar/>
-    <header>Y</header>
-    <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
-    <nr_footerlines>1</nr_footerlines>
-    <line_wrapped>N</line_wrapped>
-    <nr_wraps>1</nr_wraps>
-    <layout_paged>N</layout_paged>
-    <nr_lines_per_page>80</nr_lines_per_page>
-    <nr_lines_doc_header>0</nr_lines_doc_header>
-    <noempty>Y</noempty>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <rownumByFile>N</rownumByFile>
-    <rownum_field/>
-    <format>DOS</format>
-    <encoding>UTF-8</encoding>
-    <length>Characters</length>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <file>
-      <name>zip:${DataDirectory}\BSR_2021_9_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>zip:${DataDirectory}\BSR_2021_10_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>zip:${DataDirectory}\BSR_2021_11_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>zip:${DataDirectory}\BSR_2021_12_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster_2.tab</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <type>CSV</type>
-      <compression>None</compression>
-    </file>
-    <filters>
-    </filters>
-    <fields>
-      <field>
-        <name>﻿interview__key</name>
-        <type>String</type>
-        <format/>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>11</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>interview__id</name>
-        <type>String</type>
-        <format/>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>32</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster_2__id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_stillbirth_month</name>
-        <type>String</type>
-        <format/>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>7</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_duration_unit</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_duration</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_abort_misc_still</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>hmr_pgh_age</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <error_ignored>N</error_ignored>
-    <skip_bad_files>N</skip_bad_files>
-    <file_error_field/>
-    <file_error_message_field/>
-    <error_line_skipped>N</error_line_skipped>
-    <error_count_field/>
-    <error_fields_field/>
-    <error_text_field/>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <date_format_lenient>Y</date_format_lenient>
-    <date_format_locale>en_ZA</date_format_locale>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>69</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Deliveries</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <all_rows>Y</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>Y</add_linenr>
-    <linenr_fieldname>recid</linenr_fieldname>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>interview_key</name>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
       </field>
       <field>
         <name>hmr_pgh_date</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>DeliveryDate</aggregate>
-        <subject>DeliveryDate</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield/>
-      </field>
-      <field>
-        <aggregate>OutcomeEventUid</aggregate>
-        <subject>OutcomeEventUid</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield/>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>10</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
       </field>
       <field>
-        <aggregate>PregnancyUid</aggregate>
-        <subject>PregnancyUid</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield/>
+        <name>hmr_pgh_gender</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
       </field>
       <field>
-        <aggregate>Babies</aggregate>
-        <subject/>
-        <type>COUNT_ANY</type>
-        <valuefield/>
+        <name>hmr_pgh_single_multiple</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
       </field>
     </fields>
+    <limit>0</limit>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field/>
+    <file_error_message_field/>
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field/>
+    <error_fields_field/>
+    <error_text_field/>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>en_ZA</date_format_locale>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1754,13 +1352,313 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1173</xloc>
-      <yloc>384</yloc>
+      <xloc>96</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Duration</name>
+    <name>BSR_2021_v9-11</name>
+    <type>TextFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <accept_filenames>N</accept_filenames>
+    <passing_through_fields>N</passing_through_fields>
+    <accept_field/>
+    <accept_stepname/>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_breaks>N</enclosure_breaks>
+    <escapechar/>
+    <header>Y</header>
+    <nr_headerlines>1</nr_headerlines>
+    <footer>N</footer>
+    <nr_footerlines>1</nr_footerlines>
+    <line_wrapped>N</line_wrapped>
+    <nr_wraps>1</nr_wraps>
+    <layout_paged>N</layout_paged>
+    <nr_lines_per_page>80</nr_lines_per_page>
+    <nr_lines_doc_header>0</nr_lines_doc_header>
+    <noempty>Y</noempty>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <rownumByFile>N</rownumByFile>
+    <rownum_field/>
+    <format>DOS</format>
+    <encoding>UTF-8</encoding>
+    <length>Characters</length>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>zip:${DataDirectory}\BSR_2021_9_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_10_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_11_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>zip:${DataDirectory}\BSR_2021_12_Tabular_ApprovedByHeadquarters.zip!/reg_pregnancies_roster.tab</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <type>CSV</type>
+      <compression>None</compression>
+    </file>
+    <filters>
+    </filters>
+    <fields>
+      <field>
+        <name>﻿interview__key</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>11</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>interview__id</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>32</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>reg_pregnancies_roster__id</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_list_preg</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>27</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_date</name>
+        <type>String</type>
+        <format/>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>10</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_gender</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_single_multiple</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field/>
+    <file_error_message_field/>
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field/>
+    <error_fields_field/>
+    <error_text_field/>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>en_ZA</date_format_locale>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix VPDates</name>
     <type>Formula</type>
     <description/>
     <distribute>Y</distribute>
@@ -1771,12 +1669,140 @@
       <schema_name/>
     </partitioning>
     <formula>
-      <field_name>Duration</field_name>
-      <formula_string>IF([hmr_pgh_duration_unit]=2;([hmr_pgh_duration]+1)*4;[hmr_pgh_duration])</formula_string>
+      <field_name>b</field_name>
+      <formula_string>IF([hmr_pgh_date]="0000-UU-UU";"19UU-UU-UU";IF([hmr_pgh_date]="9999-99-99";"19UU-UU-UU";IF([hmr_pgh_date]="1900-UU-UU";"19UU-UU-UU";IF([hmr_pgh_date]="2000-UU-UU";"20UU-UU-UU";IF([hmr_pgh_date]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_pgh_date]="9999-UU-UU";"20UU-UU-UU";IF([hmr_pgh_date]="1200-UU-UU";"2000-UU-UU";[hmr_pgh_date])))))))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>y</field_name>
+      <formula_string>IF([hmr_pgh_dead_years]=2010;12;IF([hmr_pgh_dead_years]=2011;11;IF([hmr_pgh_dead_years]=2020;2;[hmr_pgh_dead_years])))</formula_string>
       <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
-      <replace_field/>
+      <replace_field>hmr_pgh_dead_years</replace_field>
+    </formula>
+    <formula>
+      <field_name>k</field_name>
+      <formula_string>IF([hmr_list_preg]="KITUNGWA MPUNGA";"2016-10-12";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>r</field_name>
+      <formula_string>IF(AND([interview_key]="05-75-47-89";[hhr_register_roster__id]=1;[register_members_roster__id]=3;[reg_pregnancies_roster__id]=2);2;[hmr_pgh_single_multiple])</formula_string>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_single_multiple</replace_field>
+    </formula>
+    <formula>
+      <field_name>s</field_name>
+      <formula_string>IF([interview_key]="12-75-25-43";"2018-12-13";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s2</field_name>
+      <formula_string>IF(AND([interview_key]="33-26-20-56";[reg_pregnancies_roster__id]=2);"2007-04-19";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s3</field_name>
+      <formula_string>IF(AND([interview_key]="43-22-21-38";[reg_pregnancies_roster__id]=1);"2011-09-10";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s4</field_name>
+      <formula_string>IF(AND([interview_key]="51-87-92-94";[reg_pregnancies_roster__id]=3);"2020-07-25";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s5</field_name>
+      <formula_string>IF(AND([interview_key]="58-57-51-17";[reg_pregnancies_roster__id]=4);"2005-03-16";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s6</field_name>
+      <formula_string>IF(AND([interview_key]="68-40-67-48";[reg_pregnancies_roster__id]=3);"2010-06-10";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s7</field_name>
+      <formula_string>IF(AND([interview_key]="89-64-89-54";[reg_pregnancies_roster__id]=2);"2008-03-06";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s8</field_name>
+      <formula_string>IF(AND([interview_key]="93-97-58-19";[reg_pregnancies_roster__id]=3);"2009-08-23";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s9</field_name>
+      <formula_string>IF(AND([interview_key]="95-52-57-88";[reg_pregnancies_roster__id]=3);"2016-11-19";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s10</field_name>
+      <formula_string>IF(AND([interview_key]="97-07-01-14";[reg_pregnancies_roster__id]=1);"2001-05-07";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s11</field_name>
+      <formula_string>IF(AND([interview_key]="01-23-73-90";[reg_pregnancies_roster__id]=5);"2016-10-12";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s12</field_name>
+      <formula_string>IF(AND([interview_key]="82-24-20-08";[reg_pregnancies_roster__id]=3);"2005-09-16";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>s13</field_name>
+      <formula_string>IF(AND([interview_key]="82-46-24-03";[reg_pregnancies_roster__id]=1);"2018-09-25";[hmr_pgh_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_pgh_date</replace_field>
     </formula>
     <attributes/>
     <cluster_schema/>
@@ -1787,76 +1813,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1269</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Duration in wks</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_pgh_duration_unit</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>933</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Duration in wks 2</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_pgh_duration</name>
-        <value>-1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1077</xloc>
-      <yloc>704</yloc>
+      <xloc>896</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1890,14 +1848,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>661</xloc>
-      <yloc>576</yloc>
+      <xloc>1392</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
+    <name>HouseholdMembers</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1906,34 +1864,115 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <all_rows>Y</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname/>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>interview_key</name>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_date</name>
-      </field>
-    </group>
+    <file>
+      <name>${OutputDirectory}\HouseholdMembers.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Matched</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Use merged roster_id</send_true_to>
+    <send_false_to>Set as not registered</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>interview_key_1</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1536</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>﻿interview__key hmr_list_preg hmr_pgh_date</step1>
+    <step2>interview_key hmr_first_name hmr_civil_id_dob</step2>
+    <keys_1>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>hmr_list_preg</key>
+      <key>hmr_pgh_date</key>
+    </keys_1>
+    <keys_2>
+      <key>interview_key</key>
+      <key>hhr_register_roster__id</key>
+      <key>hmr_first_name</key>
+      <key>hmr_civil_id_dob</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Null if</name>
+    <type>NullIf</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>
       <field>
-        <aggregate>Babies</aggregate>
-        <subject/>
-        <type>COUNT_ANY</type>
-        <valuefield/>
+        <name>hmr_pgh_age_dead</name>
+        <value>-999999999</value>
       </field>
     </fields>
     <attributes/>
@@ -1945,13 +1984,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>517</xloc>
-      <yloc>64</yloc>
+      <xloc>560</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Ignore</name>
+    <name>Pass through</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -1970,280 +2009,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1621</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MaternityHistory</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\MaternityHistory.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>85</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Multiple</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>multiple = 2</send_true_to>
-    <send_false_to>multiple = 1</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>Babies</leftvalue>
-                <function>&gt;</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>1</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>AND</operator>
-                <leftvalue>hmr_pgh_single_multiple</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>2</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>OR</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>Babies</leftvalue>
-                <function>&gt;</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>1</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>AND NOT</operator>
-                <leftvalue>hmr_pgh_date</leftvalue>
-                <function>CONTAINS</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>String</type>
-                  <text>U</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask/>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>AND</operator>
-                <leftvalue>hmr_pgh_single_multiple</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>1</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>709</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Multiple 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Deliveries</send_true_to>
-    <send_false_to>Add constants 2</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hmr_pgh_single_multiple</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>2</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1173</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Null if</name>
-    <type>NullIf</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>hmr_pgh_duration</name>
-        <value>-999999999</value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>533</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Pregnancy only</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Select values 3</send_true_to>
-    <send_false_to>Ignore</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>recid</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1621</xloc>
-      <yloc>384</yloc>
+      <xloc>880</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2281,8 +2048,175 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1397</xloc>
-      <yloc>576</yloc>
+      <xloc>1024</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Registered</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Self mother</send_true_to>
+    <send_false_to>Pass through</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_pgh_registered_member</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>1096</replace_string>
+        <replace_by_string>1996</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>200Y</replace_string>
+        <replace_by_string>2006</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>200E</replace_string>
+        <replace_by_string>2003</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>201Q</replace_string>
+        <replace_by_string>2011</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>0o</replace_string>
+        <replace_by_string>09</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2105</replace_string>
+        <replace_by_string>2015</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2916</replace_string>
+        <replace_by_string>2016</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>2921</replace_string>
+        <replace_by_string>2021</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2298,13 +2232,56 @@
       <schema_name/>
     </partitioning>
     <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
+      <field>
+        <name>﻿interview__key</name>
+        <rename>interview_key</rename>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>reg_pregnancies_roster__id</name>
+      </field>
+      <field>
         <name>hmr_list_preg</name>
-      </remove>
-      <remove>
-        <name>Babies</name>
-      </remove>
+      </field>
+      <field>
+        <name>hmr_pgh_date</name>
+      </field>
+      <field>
+        <name>hmr_pgh_gender</name>
+      </field>
+      <field>
+        <name>hmr_pgh_single_multiple</name>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_days</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2315,7 +2292,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1045</xloc>
+      <xloc>512</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2333,10 +2310,7 @@
     </partitioning>
     <fields>
       <field>
-        <name>﻿interview__key</name>
-      </field>
-      <field>
-        <name>interview__id</name>
+        <name>interview_key</name>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
@@ -2345,22 +2319,10 @@
         <name>register_members_roster__id</name>
       </field>
       <field>
-        <name>reg_pregnancies_roster_2__id</name>
+        <name>hmr_first_name</name>
       </field>
       <field>
-        <name>hmr_pgh_stillbirth_month</name>
-      </field>
-      <field>
-        <name>hmr_pgh_duration_unit</name>
-      </field>
-      <field>
-        <name>hmr_pgh_duration</name>
-      </field>
-      <field>
-        <name>hmr_pgh_abort_misc_still</name>
-      </field>
-      <field>
-        <name>hmr_pgh_age</name>
+        <name>hmr_civil_id_dob</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2373,8 +2335,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>405</xloc>
-      <yloc>576</yloc>
+      <xloc>736</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2394,148 +2356,7 @@
         <name>interview_key</name>
       </field>
       <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_date</name>
-      </field>
-      <field>
         <name>interview__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-      </field>
-      <field>
-        <name>DeliveryDate</name>
-      </field>
-      <field>
-        <name>OutcomeEventUid</name>
-      </field>
-      <field>
-        <name>Duration</name>
-      </field>
-      <field>
-        <name>Babies</name>
-      </field>
-      <field>
-        <name>outcome</name>
-      </field>
-      <field>
-        <name>spontaneous</name>
-      </field>
-      <field>
-        <name>PregnancyUid</name>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster__id</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1749</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿interview__key</name>
-        <rename>interview_key</rename>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_date</name>
-      </field>
-      <field>
-        <name>interview__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-      </field>
-      <field>
-        <name>DeliveryDate</name>
-      </field>
-      <field>
-        <name>OutcomeEventUid</name>
-      </field>
-      <field>
-        <name>Duration</name>
-      </field>
-      <field>
-        <name>Babies</name>
-      </field>
-      <field>
-        <name>hmr_pgh_abort_misc_still</name>
-        <rename>outcome</rename>
-      </field>
-      <field>
-        <name>hmr_pgh_age</name>
-        <rename>spontaneous</rename>
-      </field>
-      <field>
-        <name>PregnancyUid</name>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster_2__id</name>
-        <rename>reg_pregnancies_roster__id</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1877</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 5</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>interview_key</name>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
@@ -2547,7 +2368,7 @@
         <name>reg_pregnancies_roster__id</name>
       </field>
       <field>
-        <name>interview__id</name>
+        <name>hmr_list_preg</name>
       </field>
       <field>
         <name>hmr_pgh_date</name>
@@ -2583,9 +2404,6 @@
         <name>DeliveryDate</name>
       </field>
       <field>
-        <name>Duration</name>
-      </field>
-      <field>
         <name>OutcomeEventUid</name>
       </field>
       <field>
@@ -2602,14 +2420,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1749</xloc>
-      <yloc>272</yloc>
+      <xloc>1680</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 6</name>
-    <type>SelectValues</type>
+    <name>Self mother</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2618,74 +2436,55 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <send_true_to>﻿interview__key hmr_list_preg hmr_pgh_date</send_true_to>
+    <send_false_to>Pass through</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>register_members_roster__id</leftvalue>
+        <function>=</function>
+        <rightvalue>hmr_pgh_dsid</rightvalue>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set as not registered</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
     <fields>
       <field>
-        <name>interview_key</name>
-      </field>
-      <field>
-        <name>interview__id</name>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_date</name>
-      </field>
-      <field>
-        <name>hmr_pgh_gender</name>
-      </field>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-      </field>
-      <field>
-        <name>hmr_pgh_still_alive</name>
-      </field>
-      <field>
         <name>hmr_pgh_registered_member</name>
+        <value>2</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>hmr_pgh_dsid</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
       </field>
-      <field>
-        <name>hmr_pgh_age_dead</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dead_days</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dead_months</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dead_years</name>
-      </field>
-      <field>
-        <name>DeliveryDate_1</name>
-        <rename>DeliveryDate</rename>
-      </field>
-      <field>
-        <name>OutcomeEventUid_1</name>
-        <rename>OutcomeEventUid</rename>
-      </field>
-      <field>
-        <name>PregnancyUid_1</name>
-        <rename>PregnancyUid</rename>
-      </field>
-      <field>
-        <name>Duration</name>
-      </field>
-      <field>
-        <name>Babies</name>
-      </field>
-      <field>
-        <name>recid</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2696,8 +2495,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1333</xloc>
-      <yloc>384</yloc>
+      <xloc>1536</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2744,64 +2543,6 @@
         <collator_strength>0</collator_strength>
         <presorted>N</presorted>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1877</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
       <field>
         <name>hmr_pgh_dsid</name>
         <ascending>Y</ascending>
@@ -2820,8 +2561,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1872</xloc>
-      <yloc>272</yloc>
+      <xloc>1104</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2838,7 +2579,7 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>hmr_pgh_stillbirth_month</in_stream_name>
+        <in_stream_name>hmr_pgh_date</in_stream_name>
         <out_stream_name/>
         <trim_type>both</trim_type>
         <lower_upper>upper</lower_upper>
@@ -2846,6 +2587,19 @@
         <pad_char/>
         <pad_len/>
         <init_cap/>
+        <mask_xml/>
+        <digits/>
+        <remove_special_characters/>
+      </field>
+      <field>
+        <in_stream_name>hmr_list_preg</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type/>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>Y</init_cap>
         <mask_xml/>
         <digits/>
         <remove_special_characters/>
@@ -2860,14 +2614,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>821</xloc>
-      <yloc>576</yloc>
+      <xloc>576</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Wks > 40</name>
-    <type>FilterRows</type>
+    <name>Use merged roster_id</name>
+    <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2876,46 +2630,12 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Duration in wks 2</send_true_to>
-    <send_false_to>Duration</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>hmr_pgh_duration_unit</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>1</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>hmr_pgh_duration</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>40</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <fields>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <replaceby>register_members_roster__id_1</replaceby>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2925,8 +2645,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1077</xloc>
-      <yloc>576</yloc>
+      <xloc>1680</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2948,11 +2668,11 @@
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
-if(hmr_pgh_stillbirth_month != null) {
-var dateStr=upper(hmr_pgh_stillbirth_month);
+if(hmr_pgh_date != null) {
+var dateStr=upper(hmr_pgh_date);
 var yrPart=substr(dateStr,0,4);
 var moPart=substr(dateStr,5,2);
-var dyPart="UU";
+var dyPart=substr(dateStr,8,2);
 var yr=0;
 var mo=0;
 var dy=0;
@@ -3017,11 +2737,9 @@ if(!isNum(dyPart)){
   dy=str2num(dyPart);
 }
 var DeliveryDate = new Date(yr,mo,dy);
-var hmr_pgh_date = yrPart+"-"+moPart+"-"+dyPart;
 } 
 else {
 var DeliveryDate = null;
-var hmr_pgh_date = null;
 }</jsScript_script>
       </jsScript>
       <jsScript>
@@ -3102,14 +2820,6 @@ Alert(str2);</jsScript_script>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
-      <field>
-        <name>hmr_pgh_date</name>
-        <rename>hmr_pgh_date</rename>
-        <type>String</type>
-        <length>10</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3120,13 +2830,13 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1573</xloc>
-      <yloc>576</yloc>
+      <xloc>1216</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>interview_key</name>
+    <name>interview_key hmr_first_name hmr_civil_id_dob</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -3161,7 +2871,7 @@ Alert(str2);</jsScript_script>
         <presorted>N</presorted>
       </field>
       <field>
-        <name>register_members_roster__id</name>
+        <name>hmr_first_name</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -3169,7 +2879,7 @@ Alert(str2);</jsScript_script>
         <presorted>N</presorted>
       </field>
       <field>
-        <name>hmr_pgh_date</name>
+        <name>hmr_civil_id_dob</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -3186,13 +2896,13 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>293</xloc>
-      <yloc>64</yloc>
+      <xloc>1008</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>interview_key 2</name>
+    <name>﻿interview__key hmr_list_preg hmr_pgh_date</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -3227,7 +2937,7 @@ Alert(str2);</jsScript_script>
         <presorted>N</presorted>
       </field>
       <field>
-        <name>register_members_roster__id</name>
+        <name>hmr_list_preg</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -3252,76 +2962,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>917</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>multiple = 1</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>709</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>multiple = 2</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-        <value>2</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>917</xloc>
-      <yloc>64</yloc>
+      <xloc>1104</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3375,13 +3017,13 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2176</xloc>
-      <yloc>272</yloc>
+      <xloc>1376</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
+    <name> Multiple</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -3391,7 +3033,7 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Dummy (do nothing)</send_true_to>
+    <send_true_to>Set as not registered 2</send_true_to>
     <send_false_to/>
     <compare>
       <condition>
@@ -3419,14 +3061,14 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2352</xloc>
-      <yloc>272</yloc>
+      <xloc>1536</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
+    <name>Set as not registered 2</name>
+    <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -3435,6 +3077,21 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+        <value>2</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -3444,13 +3101,13 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2528</xloc>
-      <yloc>272</yloc>
+      <xloc>1536</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 7</name>
+    <name>Select values 4</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3466,6 +3123,10 @@ Alert(str2);</jsScript_script>
         <rename/>
       </field>
       <field>
+        <name>interview__id</name>
+        <rename/>
+      </field>
+      <field>
         <name>hhr_register_roster__id</name>
         <rename/>
       </field>
@@ -3475,6 +3136,10 @@ Alert(str2);</jsScript_script>
       </field>
       <field>
         <name>reg_pregnancies_roster__id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_list_preg</name>
         <rename/>
       </field>
       <field>
@@ -3490,6 +3155,10 @@ Alert(str2);</jsScript_script>
         <rename/>
       </field>
       <field>
+        <name>hmr_pgh_still_alive</name>
+        <rename/>
+      </field>
+      <field>
         <name>hmr_pgh_registered_member</name>
         <rename/>
       </field>
@@ -3498,7 +3167,31 @@ Alert(str2);</jsScript_script>
         <rename/>
       </field>
       <field>
+        <name>hmr_pgh_age_dead</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_days</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+        <rename/>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+        <rename/>
+      </field>
+      <field>
         <name>DeliveryDate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>OutcomeEventUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PregnancyUid</name>
         <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
@@ -3512,8 +3205,74 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2032</xloc>
-      <yloc>272</yloc>
+      <xloc>1680</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1856</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
