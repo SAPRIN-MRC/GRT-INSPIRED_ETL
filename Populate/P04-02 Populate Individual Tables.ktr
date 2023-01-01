@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2023/01/01 09:32:15.569</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 10:14:31.476</modified_date>
-    <key_for_session_key/>
+    <modified_date>2023/01/01 20:43:49.825</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -539,8 +539,8 @@
     </hop>
   </order>
   <step>
-    <name>IndividualData</name>
-    <type>CubeInput</type>
+    <name>Blocking step</name>
+    <type>BlockingStep</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -549,11 +549,11 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\IndividualData.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <pass_all_rows>Y</pass_all_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>block</prefix>
+    <cache_size>10000</cache_size>
+    <compress>Y</compress>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -563,7 +563,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
+      <xloc>592</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -641,6 +641,36 @@
     </GUI>
   </step>
   <step>
+    <name>IndividualData</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\IndividualData.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>IndividualInsertErrors</name>
     <type>TextFileOutput</type>
     <description/>
@@ -665,7 +695,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\IndividualInsertErrors</name>
+      <name>${OutputDirectory}\Errors\IndividualInsertErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -1094,85 +1124,6 @@
     </GUI>
   </step>
   <step>
-    <name>Update Parental Uids</name>
-    <type>Update</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <skip_lookup>N</skip_lookup>
-    <commit>100</commit>
-    <use_batch>N</use_batch>
-    <error_ignored>N</error_ignored>
-    <ignore_flag_field/>
-    <lookup>
-      <schema>dbo</schema>
-      <table>Individuals</table>
-      <key>
-        <name>IndividualUid</name>
-        <field>IndividualUid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>MotherUid</name>
-        <rename>MotherUid</rename>
-      </value>
-      <value>
-        <name>FatherUid</name>
-        <rename>FatherUid</rename>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Blocking step</name>
-    <type>BlockingStep</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <pass_all_rows>Y</pass_all_rows>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>block</prefix>
-    <cache_size>10000</cache_size>
-    <compress>Y</compress>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>ParentalUpdateErrors</name>
     <type>TextFileOutput</type>
     <description/>
@@ -1197,7 +1148,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\ParentalUpdateErrors</name>
+      <name>${OutputDirectory}\Errors\ParentalUpdateErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -1302,118 +1253,6 @@
     </GUI>
   </step>
   <step>
-    <name>ProtectedIndividuals output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <schema>dbo</schema>
-    <table>ProtectedIndividuals</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>IndividualUid</column_name>
-        <stream_name>IndividualUid</stream_name>
-      </field>
-      <field>
-        <column_name>ExternalIdentifier</column_name>
-        <stream_name>ExternalIdentifier</stream_name>
-      </field>
-      <field>
-        <column_name>Surname</column_name>
-        <stream_name>Surname</stream_name>
-      </field>
-      <field>
-        <column_name>AltSurname</column_name>
-        <stream_name>AltSurname</stream_name>
-      </field>
-      <field>
-        <column_name>FirstName1</column_name>
-        <stream_name>FirstName1</stream_name>
-      </field>
-      <field>
-        <column_name>FirstName2</column_name>
-        <stream_name>FirstName2</stream_name>
-      </field>
-      <field>
-        <column_name>CivilianId</column_name>
-        <stream_name>CivilianId</stream_name>
-      </field>
-      <field>
-        <column_name>Nationality</column_name>
-        <stream_name>Nationality</stream_name>
-      </field>
-      <field>
-        <column_name>Citizenship</column_name>
-        <stream_name>Citizenship</stream_name>
-      </field>
-      <field>
-        <column_name>MotherSurname</column_name>
-        <stream_name>MotherSurname</stream_name>
-      </field>
-      <field>
-        <column_name>MotherFirstName</column_name>
-        <stream_name>MotherFirstName</stream_name>
-      </field>
-      <field>
-        <column_name>FatherSurname</column_name>
-        <stream_name>FatherSurname</stream_name>
-      </field>
-      <field>
-        <column_name>FatherFirstName</column_name>
-        <stream_name>FatherFirstName</stream_name>
-      </field>
-      <field>
-        <column_name>TelephoneNr1</column_name>
-        <stream_name>TelephoneNr1</stream_name>
-      </field>
-      <field>
-        <column_name>MobileServiceProvider1</column_name>
-        <stream_name>MobileServiceProvider1</stream_name>
-      </field>
-      <field>
-        <column_name>TelephoneNr2</column_name>
-        <stream_name>TelephoneNr2</stream_name>
-      </field>
-      <field>
-        <column_name>MobileServiceProvider2</column_name>
-        <stream_name>MobileServiceProvider2</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>960</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>ProtectedIndividualInsertErrors</name>
     <type>TextFileOutput</type>
     <description/>
@@ -1438,7 +1277,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\ProtectedIndividualInsertErrors</name>
+      <name>${OutputDirectory}\Errors\ProtectedIndividualInsertErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -1758,6 +1597,167 @@
       <draw>Y</draw>
     </GUI>
   </step>
+  <step>
+    <name>ProtectedIndividuals output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <schema>dbo</schema>
+    <table>ProtectedIndividuals</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>IndividualUid</column_name>
+        <stream_name>IndividualUid</stream_name>
+      </field>
+      <field>
+        <column_name>ExternalIdentifier</column_name>
+        <stream_name>ExternalIdentifier</stream_name>
+      </field>
+      <field>
+        <column_name>Surname</column_name>
+        <stream_name>Surname</stream_name>
+      </field>
+      <field>
+        <column_name>AltSurname</column_name>
+        <stream_name>AltSurname</stream_name>
+      </field>
+      <field>
+        <column_name>FirstName1</column_name>
+        <stream_name>FirstName1</stream_name>
+      </field>
+      <field>
+        <column_name>FirstName2</column_name>
+        <stream_name>FirstName2</stream_name>
+      </field>
+      <field>
+        <column_name>CivilianId</column_name>
+        <stream_name>CivilianId</stream_name>
+      </field>
+      <field>
+        <column_name>Nationality</column_name>
+        <stream_name>Nationality</stream_name>
+      </field>
+      <field>
+        <column_name>Citizenship</column_name>
+        <stream_name>Citizenship</stream_name>
+      </field>
+      <field>
+        <column_name>MotherSurname</column_name>
+        <stream_name>MotherSurname</stream_name>
+      </field>
+      <field>
+        <column_name>MotherFirstName</column_name>
+        <stream_name>MotherFirstName</stream_name>
+      </field>
+      <field>
+        <column_name>FatherSurname</column_name>
+        <stream_name>FatherSurname</stream_name>
+      </field>
+      <field>
+        <column_name>FatherFirstName</column_name>
+        <stream_name>FatherFirstName</stream_name>
+      </field>
+      <field>
+        <column_name>TelephoneNr1</column_name>
+        <stream_name>TelephoneNr1</stream_name>
+      </field>
+      <field>
+        <column_name>MobileServiceProvider1</column_name>
+        <stream_name>MobileServiceProvider1</stream_name>
+      </field>
+      <field>
+        <column_name>TelephoneNr2</column_name>
+        <stream_name>TelephoneNr2</stream_name>
+      </field>
+      <field>
+        <column_name>MobileServiceProvider2</column_name>
+        <stream_name>MobileServiceProvider2</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Update Parental Uids</name>
+    <type>Update</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <skip_lookup>N</skip_lookup>
+    <commit>100</commit>
+    <use_batch>N</use_batch>
+    <error_ignored>N</error_ignored>
+    <ignore_flag_field/>
+    <lookup>
+      <schema>dbo</schema>
+      <table>Individuals</table>
+      <key>
+        <name>IndividualUid</name>
+        <field>IndividualUid</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>MotherUid</name>
+        <rename>MotherUid</rename>
+      </value>
+      <value>
+        <name>FatherUid</name>
+        <rename>FatherUid</rename>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
     <error>
       <source_step>Individual output</source_step>
@@ -1772,8 +1772,8 @@
       <min_pct_rows/>
     </error>
     <error>
-      <source_step>Update Parental Uids</source_step>
-      <target_step>ParentalUpdateErrors</target_step>
+      <source_step>ProtectedIndividuals output</source_step>
+      <target_step>ProtectedIndividualInsertErrors</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename>Error</descriptions_valuename>
@@ -1784,8 +1784,8 @@
       <min_pct_rows/>
     </error>
     <error>
-      <source_step>ProtectedIndividuals output</source_step>
-      <target_step>ProtectedIndividualInsertErrors</target_step>
+      <source_step>Update Parental Uids</source_step>
+      <target_step>ParentalUpdateErrors</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename>Error</descriptions_valuename>

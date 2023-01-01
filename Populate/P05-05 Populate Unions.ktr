@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2023/01/01 15:36:26.670</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 16:32:40.970</modified_date>
-    <key_for_session_key/>
+    <modified_date>2023/01/01 20:54:02.584</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -529,6 +529,36 @@
     </hop>
   </order>
   <step>
+    <name>Blocking step</name>
+    <type>BlockingStep</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <pass_all_rows>Y</pass_all_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>block</prefix>
+    <cache_size>10000</cache_size>
+    <compress>Y</compress>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>UnionData</name>
     <type>CubeInput</type>
     <description/>
@@ -627,36 +657,6 @@
     </GUI>
   </step>
   <step>
-    <name>Blocking step</name>
-    <type>BlockingStep</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <pass_all_rows>Y</pass_all_rows>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>block</prefix>
-    <cache_size>10000</cache_size>
-    <compress>Y</compress>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>UnionStartEventInsertErrors</name>
     <type>TextFileOutput</type>
     <description/>
@@ -681,7 +681,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\UnionStartEventInsertErrors</name>
+      <name>${OutputDirectory}\Errors\UnionStartEventInsertErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -870,70 +870,6 @@
     </GUI>
   </step>
   <step>
-    <name>Unions output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <schema>dbo</schema>
-    <table>Unions</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>Individual1Uid</column_name>
-        <stream_name>Individual1Uid</stream_name>
-      </field>
-      <field>
-        <column_name>Individual2Uid</column_name>
-        <stream_name>Individual2Uid</stream_name>
-      </field>
-      <field>
-        <column_name>StartEventUid</column_name>
-        <stream_name>UnionStartEventUid</stream_name>
-      </field>
-      <field>
-        <column_name>EndEventUid</column_name>
-        <stream_name>EndEventUid</stream_name>
-      </field>
-      <field>
-        <column_name>Married</column_name>
-        <stream_name>Married</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>UnionStartEventInsertErrors 2</name>
     <type>TextFileOutput</type>
     <description/>
@@ -958,7 +894,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\UnionStartEventInsertErrors</name>
+      <name>${OutputDirectory}\Errors\UnionStartEventInsertErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -1143,6 +1079,70 @@
     <GUI>
       <xloc>687</xloc>
       <yloc>163</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unions output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <schema>dbo</schema>
+    <table>Unions</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>Individual1Uid</column_name>
+        <stream_name>Individual1Uid</stream_name>
+      </field>
+      <field>
+        <column_name>Individual2Uid</column_name>
+        <stream_name>Individual2Uid</stream_name>
+      </field>
+      <field>
+        <column_name>StartEventUid</column_name>
+        <stream_name>UnionStartEventUid</stream_name>
+      </field>
+      <field>
+        <column_name>EndEventUid</column_name>
+        <stream_name>EndEventUid</stream_name>
+      </field>
+      <field>
+        <column_name>Married</column_name>
+        <stream_name>Married</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

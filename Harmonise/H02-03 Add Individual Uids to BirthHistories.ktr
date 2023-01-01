@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/30 05:44:25.032</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 18:22:58.214</modified_date>
+    <modified_date>2023/01/01 21:26:54.040</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -479,7 +479,7 @@
   <order>
     <hop>
       <from>BirthHistories</from>
-      <to>interview_key hhr_register_roster__id hmr_pgh_registered_member</to>
+      <to>interview_key hhr_register_roster__id hmr_pgh_dsid</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -493,7 +493,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>interview_key hhr_register_roster__id hmr_pgh_registered_member</from>
+      <from>interview_key hhr_register_roster__id hmr_pgh_dsid</from>
       <to>Join Child</to>
       <enabled>Y</enabled>
     </hop>
@@ -675,7 +675,7 @@
       <schema_name/>
     </partitioning>
     <join_type>LEFT OUTER</join_type>
-    <step1>interview_key hhr_register_roster__id hmr_pgh_registered_member</step1>
+    <step1>interview_key hhr_register_roster__id hmr_pgh_dsid</step1>
     <step2>interview_key hhr_register_roster__id register_members_roster__id</step2>
     <keys_1>
       <key>interview_key</key>
@@ -755,43 +755,33 @@
     <fields>
       <field>
         <name>interview_key</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>reg_pregnancies_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>interview__id</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_date</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_gender</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_single_multiple</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_still_alive</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_registered_member</name>
-        <rename/>
       </field>
       <field>
         <name>IndividualUid</name>
@@ -799,39 +789,30 @@
       </field>
       <field>
         <name>hmr_pgh_age_dead</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_dead_days</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_dead_months</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_dead_years</name>
-        <rename/>
       </field>
       <field>
         <name>DeliveryDate</name>
-        <rename/>
       </field>
       <field>
         <name>Duration</name>
-        <rename/>
       </field>
       <field>
         <name>OutcomeEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>PregnancyUid</name>
-        <rename/>
       </field>
       <field>
         <name>BabyName</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -903,15 +884,12 @@
     <fields>
       <field>
         <name>interview_key</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>IndividualUid</name>
@@ -919,71 +897,54 @@
       </field>
       <field>
         <name>reg_pregnancies_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>interview__id</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_date</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_gender</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_single_multiple</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_still_alive</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_registered_member</name>
-        <rename/>
       </field>
       <field>
         <name>ChildUid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_age_dead</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_dead_days</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_dead_months</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_pgh_dead_years</name>
-        <rename/>
       </field>
       <field>
         <name>DeliveryDate</name>
-        <rename/>
       </field>
       <field>
         <name>Duration</name>
-        <rename/>
       </field>
       <field>
         <name>OutcomeEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>PregnancyUid</name>
-        <rename/>
       </field>
       <field>
         <name>BabyName</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1002,7 +963,7 @@
     </GUI>
   </step>
   <step>
-    <name>interview_key hhr_register_roster__id hmr_pgh_registered_member</name>
+    <name>interview_key hhr_register_roster__id hmr_pgh_dsid</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>

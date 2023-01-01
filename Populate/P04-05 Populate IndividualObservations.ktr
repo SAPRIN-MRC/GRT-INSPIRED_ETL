@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2023/01/01 13:27:08.482</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 13:49:57.464</modified_date>
+    <modified_date>2023/01/01 20:44:39.050</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -680,7 +680,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\IndividualObservationsInsertErrors</name>
+      <name>${OutputDirectory}\Errors\IndividualObservationsInsertErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
