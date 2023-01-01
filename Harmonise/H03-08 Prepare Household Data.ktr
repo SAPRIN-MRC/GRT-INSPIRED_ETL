@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2022/12/31 10:38:58.994</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/31 16:18:27.480</modified_date>
-    <key_for_session_key/>
+    <modified_date>2023/01/01 13:26:20.931</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -694,11 +694,6 @@
     </hop>
     <hop>
       <from>Observation Consent Fields</from>
-      <to>HouseholdObservationConsents</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Observation Consent Fields</from>
       <to>Select values 9</to>
       <enabled>Y</enabled>
     </hop>
@@ -858,188 +853,26 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Observation Consent Fields</from>
+      <to>Select</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select</from>
+      <to>HouseholdObservationConsents</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Sort rows</from>
+      <to>Select values 10</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 10</from>
       <to>HouseholdObservationKnowledgeSources 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Households_withUids</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\Households_withUids.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Enumerations</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\Enumerations.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>InterviewKey</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>InterviewKey</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>interview_key</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Multiway merge join</name>
-    <type>MultiwayMergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>FULL OUTER</join_type>
-    <step0>interview_key</step0>
-    <step1>InterviewKey</step1>
-    <number_input>2</number_input>
-    <keys>
-      <key>interview_key</key>
-      <key>InterviewKey</key>
-    </keys>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -1080,8 +913,8 @@
     </GUI>
   </step>
   <step>
-    <name>HouseholdUid InformantUid</name>
-    <type>SortRows</type>
+    <name>Enumerations</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1090,30 +923,98 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
+    <file>
+      <name>${OutputDirectory}\Enumerations.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Has ContactNumber</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>HouseholdUid</send_true_to>
+    <send_false_to>HouseholdUid HHeadUid</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>ContactNumber</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1424</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Household Fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>
       <field>
         <name>HouseholdUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>EventUid</name>
+        <rename>StartEventUid</rename>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+        <rename>EndeventUid</rename>
+      </field>
+      <field>
+        <name>CurrentNodeId</name>
+      </field>
+      <field>
+        <name>ContactNumber</name>
+      </field>
+      <field>
+        <name>RespondentTypeId</name>
+        <rename>LastRespondentTypeId</rename>
       </field>
       <field>
         <name>InformantUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <rename>LastRespondentUid</rename>
       </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1124,8 +1025,83 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>432</yloc>
+      <xloc>1968</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Household Residency Fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+      </field>
+      <field>
+        <name>HouseholdExtId</name>
+      </field>
+      <field>
+        <name>LocationUid</name>
+      </field>
+      <field>
+        <name>EventUid</name>
+        <rename>StartEventUid</rename>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+        <rename>EndeventUid</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1968</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdData</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdData.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2272</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1160,8 +1136,38 @@
     </GUI>
   </step>
   <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
+    <name>HouseholdMembers_withUids 2</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdMembers_withUids.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdObservationConsentUid</name>
+    <type>RandomValue</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1172,22 +1178,9 @@
     </partitioning>
     <fields>
       <field>
-        <name>HouseholdUid</name>
-        <rename/>
+        <name>HouseholdObservationConsentUid</name>
+        <type>random uuid</type>
       </field>
-      <field>
-        <name>IndividualUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1198,8 +1191,190 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>1840</xloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdObservationConsents</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdObservationConsents.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2400</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdObservationKnowledgeSources 2</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdObservationKnowledgeSources.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3024</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdResidencies</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdResidencies.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2272</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1632</xloc>
       <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdUid HHeadUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>HHeadUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1424</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1254,8 +1429,8 @@
     </GUI>
   </step>
   <step>
-    <name>Merge join</name>
-    <type>MergeJoin</type>
+    <name>HouseholdUid IndividualUid 2</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1264,17 +1439,81 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>HouseholdUid InformantUid</step1>
-    <step2>HouseholdUid IndividualUid</step2>
-    <keys_1>
-      <key>HouseholdUid</key>
-      <key>InformantUid</key>
-    </keys_1>
-    <keys_2>
-      <key>HouseholdUid</key>
-      <key>IndividualUid</key>
-    </keys_2>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdUid InformantUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>InformantUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1285,13 +1524,13 @@
     </remotesteps>
     <GUI>
       <xloc>1024</xloc>
-      <yloc>544</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Not in Enumerations</name>
-    <type>FilterRows</type>
+    <name>HouseholdUrbanObservations</name>
+    <type>CubeOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1300,16 +1539,11 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Select values 3</send_true_to>
-    <send_false_to>Not in households</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>InterviewKey</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
+    <file>
+      <name>${OutputDirectory}\HouseholdUrbanObservations.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1319,171 +1553,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Not in households</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Select values</send_true_to>
-    <send_false_to>Add constants</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>HouseholdUid</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>InterviewKey</name>
-      </field>
-      <field>
-        <name>EventUid</name>
-      </field>
-      <field>
-        <name>EventTypeId</name>
-      </field>
-      <field>
-        <name>EventDate</name>
-      </field>
-      <field>
-        <name>DateEstimated</name>
-      </field>
-      <field>
-        <name>VPDate</name>
-      </field>
-      <field>
-        <name>ObservationEventUid</name>
-      </field>
-      <field>
-        <name>LocationUid</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_att_visit_ref</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_tracker_visit_ref</name>
-        <rename/>
-      </field>
-      <field>
-        <name>current_visit</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_informant_type</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_informant_firstname</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_informant_surname</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_permission</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_refusal_reason</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_consent</name>
-        <rename/>
-      </field>
-      <field>
-        <name>bs_site</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>128</yloc>
+      <xloc>2272</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1685,6 +1756,502 @@
     <GUI>
       <xloc>720</xloc>
       <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Households_withUids</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Households_withUids.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 1</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 2</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>2</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 3</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>3</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>960</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 4</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>4</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1040</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 5</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>5</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 6</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>6</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1200</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 7</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>7</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1280</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 8</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>8</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1360</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 9</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>9</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Id = 99</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <value>99</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2464</xloc>
+      <yloc>1520</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>InterviewKey</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>InterviewKey 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>InterviewKey 3</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1998,6 +2565,45 @@
     </GUI>
   </step>
   <step>
+    <name>KnowledgeSourceId</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Mappings</name>
     <type>CubeInput</type>
     <description/>
@@ -2028,8 +2634,8 @@
     </GUI>
   </step>
   <step>
-    <name>InterviewKey 2</name>
-    <type>SortRows</type>
+    <name>Merge join</name>
+    <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2038,23 +2644,17 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>InterviewKey</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
+    <join_type>LEFT OUTER</join_type>
+    <step1>HouseholdUid InformantUid</step1>
+    <step2>HouseholdUid IndividualUid</step2>
+    <keys_1>
+      <key>HouseholdUid</key>
+      <key>InformantUid</key>
+    </keys_1>
+    <keys_2>
+      <key>HouseholdUid</key>
+      <key>IndividualUid</key>
+    </keys_2>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2064,892 +2664,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>InterviewKey 3</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>InterviewKey</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Multiway merge join 2</name>
-    <type>MultiwayMergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>INNER</join_type>
-    <step0>InterviewKey 3</step0>
-    <step1>InterviewKey 2</step1>
-    <number_input>2</number_input>
-    <keys>
-      <key>InterviewKey</key>
-      <key>InterviewKey</key>
-    </keys>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1328</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>InterviewKey</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventTypeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DateEstimated</name>
-        <rename/>
-      </field>
-      <field>
-        <name>VPDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ObservationEventUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>LocationUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Geocode</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Site</name>
-        <rename/>
-      </field>
-      <field>
-        <name>FCA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SubPlace</name>
-        <rename/>
-      </field>
-      <field>
-        <name>BuildingName</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DwellingType</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ImageDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Longitude</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Latitude</name>
-        <rename/>
-      </field>
-      <field>
-        <name>floor_number</name>
-        <rename/>
-      </field>
-      <field>
-        <name>unit_number</name>
-        <rename/>
-      </field>
-      <field>
-        <name>weekblock_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>weekblock_2</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1504</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Site breakdown 2</name>
-    <type>MemoryGroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>Site</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>n</aggregate>
-        <subject/>
-        <type>COUNT_ANY</type>
-        <valuefield/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1984</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Site breakdown</name>
-    <type>MemoryGroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>bs_site</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>n</aggregate>
-        <subject/>
-        <type>COUNT_ANY</type>
-        <valuefield/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 5</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>HouseholdUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>VisitDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>interview__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_att_visit_ref</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_tracker_visit_ref</name>
-        <rename/>
-      </field>
-      <field>
-        <name>current_visit</name>
-        <rename/>
-      </field>
-      <field>
-        <name>var_hhr_current_visit_string</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_informant_type</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_informant_firstname</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_informant_surname</name>
-        <rename/>
-      </field>
-      <field>
-        <name>InformantUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>HHeadUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_permission</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_refusal_reason</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_transfer_to</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_consent</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_tel_consent</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_consent_write</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_consent_sign</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_consent_date</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_witness_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_witness_surname</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_witness_consent_sign</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_witness_date</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware</name>
-        <rename/>
-      </field>
-      <field>
-        <name>bs_other_way</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_member_total</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_member_total_elsewhere</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_total_members</name>
-        <rename/>
-      </field>
-      <field>
-        <name>var_current_hhr_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_start_date</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_place</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_rooms</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_kitchen</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_no_kitchen</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_lived_here</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_weeks_lived</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_months_lived</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_years_lived</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_members</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_own_house</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_extreme_event</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_extreme_event_type</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_changes</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_parks</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_parks_use</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_arrest</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_house_class</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_borrow</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_work</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_work_period</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_work_travel</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_work_time</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_net_income</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_substance</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_end_time</name>
-        <rename/>
-      </field>
-      <field>
-        <name>RespondentTypeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ExtremeEventEffect</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ChangesDone</name>
-        <rename/>
-      </field>
-      <field>
-        <name>WhyChanges</name>
-        <rename/>
-      </field>
-      <field>
-        <name>IncomeSources</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SubstanceUse</name>
-        <rename/>
-      </field>
-      <field>
-        <name>bs_site</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventTypeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DateEstimated</name>
-        <rename/>
-      </field>
-      <field>
-        <name>VPDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ObservationEventUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>LocationUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>InterviewKey</name>
-        <rename/>
-      </field>
-      <field>
-        <name>CurrentNodeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <rename>ContactNumber</rename>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__2</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__3</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__4</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__5</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__6</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__7</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__8</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__9</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__10</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1232</xloc>
+      <xloc>1024</xloc>
       <yloc>544</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Has ContactNumber</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>HouseholdUid</send_true_to>
-    <send_false_to>HouseholdUid HHeadUid</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>ContactNumber</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1424</xloc>
-      <yloc>544</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdUid</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>HouseholdUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1632</xloc>
-      <yloc>544</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdUid HHeadUid</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>HouseholdUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>HHeadUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1424</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdMembers_withUids 2</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdMembers_withUids.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 6</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>HouseholdUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>IndividualUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_primary_tel</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hmr_alt_tel</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdUid IndividualUid 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>HouseholdUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>IndividualUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2990,6 +2706,891 @@
     </GUI>
   </step>
   <step>
+    <name>Multiway merge join</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>FULL OUTER</join_type>
+    <step0>interview_key</step0>
+    <step1>InterviewKey</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>interview_key</key>
+      <key>InterviewKey</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiway merge join 2</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step0>InterviewKey 3</step0>
+    <step1>InterviewKey 2</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>InterviewKey</key>
+      <key>InterviewKey</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1328</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Not in Enumerations</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Select values 3</send_true_to>
+    <send_false_to>Not in households</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>InterviewKey</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Not in households</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Select values</send_true_to>
+    <send_false_to>Add constants</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>HouseholdUid</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Observation Consent Fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>HouseholdObservationConsentUid</name>
+      </field>
+      <field>
+        <name>HouseholdUid</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+        <rename>ObservationUid</rename>
+      </field>
+      <field>
+        <name>hhr_permission</name>
+        <rename>ConsentToParticipate</rename>
+      </field>
+      <field>
+        <name>hhr_refusal_reason</name>
+        <rename>RefusalReason</rename>
+      </field>
+      <field>
+        <name>hhr_consent</name>
+        <rename>ConsentToQuestionnaire</rename>
+      </field>
+      <field>
+        <name>hhr_tel_consent</name>
+        <rename>ConsentToCall</rename>
+      </field>
+      <field>
+        <name>hhr_consent_date</name>
+        <rename>ConsentedOn</rename>
+      </field>
+      <field>
+        <name>hhr_witness_date</name>
+        <rename>WitnessedOn</rename>
+      </field>
+      <field>
+        <name>hhr_visit_aware</name>
+        <rename>KnownVisit</rename>
+      </field>
+      <field>
+        <name>bs_other_way</name>
+        <rename>OtherKnowledgeSource</rename>
+      </field>
+      <field>
+        <name>InformantUid</name>
+        <rename>ConsentByUid</rename>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__1</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__2</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__3</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__4</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__5</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__6</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__7</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__8</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__9</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__10</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1968</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>HouseholdObservationConsentUid</name>
+      </field>
+      <field>
+        <name>HouseholdUid</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+        <rename>ObservationUid</rename>
+      </field>
+      <field>
+        <name>hhr_permission</name>
+        <rename>ConsentToParticipate</rename>
+      </field>
+      <field>
+        <name>hhr_refusal_reason</name>
+        <rename>RefusalReason</rename>
+      </field>
+      <field>
+        <name>hhr_consent</name>
+        <rename>ConsentToQuestionnaire</rename>
+      </field>
+      <field>
+        <name>hhr_tel_consent</name>
+        <rename>ConsentToCall</rename>
+      </field>
+      <field>
+        <name>hhr_consent_date</name>
+        <rename>ConsentedOn</rename>
+      </field>
+      <field>
+        <name>hhr_witness_date</name>
+        <rename>WitnessedOn</rename>
+      </field>
+      <field>
+        <name>hhr_visit_aware</name>
+        <rename>KnownVisit</rename>
+      </field>
+      <field>
+        <name>bs_other_way</name>
+        <rename>OtherKnowledgeSource</rename>
+      </field>
+      <field>
+        <name>InformantUid</name>
+        <rename>ConsentByUid</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2192</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+      </field>
+      <field>
+        <name>EventUid</name>
+      </field>
+      <field>
+        <name>EventTypeId</name>
+      </field>
+      <field>
+        <name>EventDate</name>
+      </field>
+      <field>
+        <name>DateEstimated</name>
+      </field>
+      <field>
+        <name>VPDate</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+      </field>
+      <field>
+        <name>LocationUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+      </field>
+      <field>
+        <name>hmr_primary_tel</name>
+      </field>
+      <field>
+        <name>hmr_alt_tel</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>interview_key</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>hhr_att_visit_ref</name>
+      </field>
+      <field>
+        <name>hhr_tracker_visit_ref</name>
+      </field>
+      <field>
+        <name>current_visit</name>
+      </field>
+      <field>
+        <name>hhr_informant_type</name>
+      </field>
+      <field>
+        <name>hhr_informant_firstname</name>
+      </field>
+      <field>
+        <name>hhr_informant_surname</name>
+      </field>
+      <field>
+        <name>hhr_permission</name>
+      </field>
+      <field>
+        <name>hhr_refusal_reason</name>
+      </field>
+      <field>
+        <name>hhr_consent</name>
+      </field>
+      <field>
+        <name>bs_site</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+      </field>
+      <field>
+        <name>EventUid</name>
+      </field>
+      <field>
+        <name>EventTypeId</name>
+      </field>
+      <field>
+        <name>EventDate</name>
+      </field>
+      <field>
+        <name>DateEstimated</name>
+      </field>
+      <field>
+        <name>VPDate</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+      </field>
+      <field>
+        <name>LocationUid</name>
+      </field>
+      <field>
+        <name>Geocode</name>
+      </field>
+      <field>
+        <name>Site</name>
+      </field>
+      <field>
+        <name>FCA</name>
+      </field>
+      <field>
+        <name>SubPlace</name>
+      </field>
+      <field>
+        <name>BuildingName</name>
+      </field>
+      <field>
+        <name>DwellingType</name>
+      </field>
+      <field>
+        <name>ImageDate</name>
+      </field>
+      <field>
+        <name>Longitude</name>
+      </field>
+      <field>
+        <name>Latitude</name>
+      </field>
+      <field>
+        <name>floor_number</name>
+      </field>
+      <field>
+        <name>unit_number</name>
+      </field>
+      <field>
+        <name>weekblock_1</name>
+      </field>
+      <field>
+        <name>weekblock_2</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1504</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>interview_key</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>HouseholdUid</name>
+      </field>
+      <field>
+        <name>VisitDate</name>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hhr_att_visit_ref</name>
+      </field>
+      <field>
+        <name>hhr_tracker_visit_ref</name>
+      </field>
+      <field>
+        <name>current_visit</name>
+      </field>
+      <field>
+        <name>var_hhr_current_visit_string</name>
+      </field>
+      <field>
+        <name>hhr_informant_type</name>
+      </field>
+      <field>
+        <name>hhr_informant_firstname</name>
+      </field>
+      <field>
+        <name>hhr_informant_surname</name>
+      </field>
+      <field>
+        <name>InformantUid</name>
+      </field>
+      <field>
+        <name>HHeadUid</name>
+      </field>
+      <field>
+        <name>hhr_permission</name>
+      </field>
+      <field>
+        <name>hhr_refusal_reason</name>
+      </field>
+      <field>
+        <name>hhr_transfer_to</name>
+      </field>
+      <field>
+        <name>hhr_consent</name>
+      </field>
+      <field>
+        <name>hhr_tel_consent</name>
+      </field>
+      <field>
+        <name>hhr_consent_write</name>
+      </field>
+      <field>
+        <name>hhr_consent_sign</name>
+      </field>
+      <field>
+        <name>hhr_consent_date</name>
+      </field>
+      <field>
+        <name>hmr_witness_name</name>
+      </field>
+      <field>
+        <name>hmr_witness_surname</name>
+      </field>
+      <field>
+        <name>hhr_witness_consent_sign</name>
+      </field>
+      <field>
+        <name>hhr_witness_date</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware</name>
+      </field>
+      <field>
+        <name>bs_other_way</name>
+      </field>
+      <field>
+        <name>hhr_member_total</name>
+      </field>
+      <field>
+        <name>hhr_member_total_elsewhere</name>
+      </field>
+      <field>
+        <name>hhr_total_members</name>
+      </field>
+      <field>
+        <name>var_current_hhr_name</name>
+      </field>
+      <field>
+        <name>hhr_start_date</name>
+      </field>
+      <field>
+        <name>urban_place</name>
+      </field>
+      <field>
+        <name>urban_rooms</name>
+      </field>
+      <field>
+        <name>urban_kitchen</name>
+      </field>
+      <field>
+        <name>urban_no_kitchen</name>
+      </field>
+      <field>
+        <name>urban_lived_here</name>
+      </field>
+      <field>
+        <name>urban_weeks_lived</name>
+      </field>
+      <field>
+        <name>urban_months_lived</name>
+      </field>
+      <field>
+        <name>urban_years_lived</name>
+      </field>
+      <field>
+        <name>urban_members</name>
+      </field>
+      <field>
+        <name>urban_own_house</name>
+      </field>
+      <field>
+        <name>urban_extreme_event</name>
+      </field>
+      <field>
+        <name>urban_extreme_event_type</name>
+      </field>
+      <field>
+        <name>urban_changes</name>
+      </field>
+      <field>
+        <name>urban_parks</name>
+      </field>
+      <field>
+        <name>urban_parks_use</name>
+      </field>
+      <field>
+        <name>urban_arrest</name>
+      </field>
+      <field>
+        <name>urban_house_class</name>
+      </field>
+      <field>
+        <name>urban_borrow</name>
+      </field>
+      <field>
+        <name>urban_work</name>
+      </field>
+      <field>
+        <name>urban_work_period</name>
+      </field>
+      <field>
+        <name>urban_work_travel</name>
+      </field>
+      <field>
+        <name>urban_work_time</name>
+      </field>
+      <field>
+        <name>urban_net_income</name>
+      </field>
+      <field>
+        <name>urban_substance</name>
+      </field>
+      <field>
+        <name>hhr_end_time</name>
+      </field>
+      <field>
+        <name>RespondentTypeId</name>
+      </field>
+      <field>
+        <name>ExtremeEventEffect</name>
+      </field>
+      <field>
+        <name>ChangesDone</name>
+      </field>
+      <field>
+        <name>WhyChanges</name>
+      </field>
+      <field>
+        <name>IncomeSources</name>
+      </field>
+      <field>
+        <name>SubstanceUse</name>
+      </field>
+      <field>
+        <name>bs_site</name>
+      </field>
+      <field>
+        <name>EventUid</name>
+      </field>
+      <field>
+        <name>EventTypeId</name>
+      </field>
+      <field>
+        <name>EventDate</name>
+      </field>
+      <field>
+        <name>DateEstimated</name>
+      </field>
+      <field>
+        <name>VPDate</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+      </field>
+      <field>
+        <name>LocationUid</name>
+      </field>
+      <field>
+        <name>InterviewKey</name>
+      </field>
+      <field>
+        <name>CurrentNodeId</name>
+      </field>
+      <field>
+        <name>hmr_primary_tel</name>
+        <rename>ContactNumber</rename>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__1</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__2</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__3</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__4</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__5</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__6</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__7</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__8</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__9</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__10</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1232</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 6</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>HouseholdUid</name>
+      </field>
+      <field>
+        <name>IndividualUid</name>
+      </field>
+      <field>
+        <name>hmr_primary_tel</name>
+      </field>
+      <field>
+        <name>hmr_alt_tel</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values 7</name>
     <type>SelectValues</type>
     <description/>
@@ -3003,299 +3604,225 @@
     <fields>
       <field>
         <name>interview_key</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>HouseholdUid</name>
-        <rename/>
       </field>
       <field>
         <name>VisitDate</name>
-        <rename/>
       </field>
       <field>
         <name>interview__id</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_att_visit_ref</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_tracker_visit_ref</name>
-        <rename/>
       </field>
       <field>
         <name>current_visit</name>
-        <rename/>
       </field>
       <field>
         <name>var_hhr_current_visit_string</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_informant_type</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_informant_firstname</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_informant_surname</name>
-        <rename/>
       </field>
       <field>
         <name>InformantUid</name>
-        <rename/>
       </field>
       <field>
         <name>HHeadUid</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_permission</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_refusal_reason</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_transfer_to</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_consent</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_tel_consent</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_consent_write</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_consent_sign</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_consent_date</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_witness_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_witness_surname</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_witness_consent_sign</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_witness_date</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware</name>
-        <rename/>
       </field>
       <field>
         <name>bs_other_way</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_member_total</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_member_total_elsewhere</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_total_members</name>
-        <rename/>
       </field>
       <field>
         <name>var_current_hhr_name</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_start_date</name>
-        <rename/>
       </field>
       <field>
         <name>urban_place</name>
-        <rename/>
       </field>
       <field>
         <name>urban_rooms</name>
-        <rename/>
       </field>
       <field>
         <name>urban_kitchen</name>
-        <rename/>
       </field>
       <field>
         <name>urban_no_kitchen</name>
-        <rename/>
       </field>
       <field>
         <name>urban_lived_here</name>
-        <rename/>
       </field>
       <field>
         <name>urban_weeks_lived</name>
-        <rename/>
       </field>
       <field>
         <name>urban_months_lived</name>
-        <rename/>
       </field>
       <field>
         <name>urban_years_lived</name>
-        <rename/>
       </field>
       <field>
         <name>urban_members</name>
-        <rename/>
       </field>
       <field>
         <name>urban_own_house</name>
-        <rename/>
       </field>
       <field>
         <name>urban_extreme_event</name>
-        <rename/>
       </field>
       <field>
         <name>urban_extreme_event_type</name>
-        <rename/>
       </field>
       <field>
         <name>urban_changes</name>
-        <rename/>
       </field>
       <field>
         <name>urban_parks</name>
-        <rename/>
       </field>
       <field>
         <name>urban_parks_use</name>
-        <rename/>
       </field>
       <field>
         <name>urban_arrest</name>
-        <rename/>
       </field>
       <field>
         <name>urban_house_class</name>
-        <rename/>
       </field>
       <field>
         <name>urban_borrow</name>
-        <rename/>
       </field>
       <field>
         <name>urban_work</name>
-        <rename/>
       </field>
       <field>
         <name>urban_work_period</name>
-        <rename/>
       </field>
       <field>
         <name>urban_work_travel</name>
-        <rename/>
       </field>
       <field>
         <name>urban_work_time</name>
-        <rename/>
       </field>
       <field>
         <name>urban_net_income</name>
-        <rename/>
       </field>
       <field>
         <name>urban_substance</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_end_time</name>
-        <rename/>
       </field>
       <field>
         <name>RespondentTypeId</name>
-        <rename/>
       </field>
       <field>
         <name>ExtremeEventEffect</name>
-        <rename/>
       </field>
       <field>
         <name>ChangesDone</name>
-        <rename/>
       </field>
       <field>
         <name>WhyChanges</name>
-        <rename/>
       </field>
       <field>
         <name>IncomeSources</name>
-        <rename/>
       </field>
       <field>
         <name>SubstanceUse</name>
-        <rename/>
       </field>
       <field>
         <name>bs_site</name>
-        <rename/>
       </field>
       <field>
         <name>EventUid</name>
-        <rename/>
       </field>
       <field>
         <name>EventTypeId</name>
-        <rename/>
       </field>
       <field>
         <name>EventDate</name>
-        <rename/>
       </field>
       <field>
         <name>DateEstimated</name>
-        <rename/>
       </field>
       <field>
         <name>VPDate</name>
-        <rename/>
       </field>
       <field>
         <name>ObservationEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>LocationUid</name>
-        <rename/>
       </field>
       <field>
         <name>InterviewKey</name>
-        <rename/>
       </field>
       <field>
         <name>CurrentNodeId</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_primary_tel</name>
@@ -3303,43 +3830,33 @@
       </field>
       <field>
         <name>hhr_visit_aware_how__1</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__2</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__3</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__4</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__5</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__6</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__7</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__8</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__9</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_visit_aware_how__10</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -3389,7 +3906,7 @@
     </GUI>
   </step>
   <step>
-    <name>Household Fields</name>
+    <name>Select values 9</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3401,32 +3918,40 @@
     </partitioning>
     <fields>
       <field>
-        <name>HouseholdUid</name>
-        <rename/>
+        <name>HouseholdObservationConsentUid</name>
       </field>
       <field>
-        <name>EventUid</name>
-        <rename>StartEventUid</rename>
+        <name>OtherKnowledgeSource</name>
       </field>
       <field>
-        <name>ObservationEventUid</name>
-        <rename>EndeventUid</rename>
+        <name>hhr_visit_aware_how__1</name>
       </field>
       <field>
-        <name>CurrentNodeId</name>
-        <rename/>
+        <name>hhr_visit_aware_how__2</name>
       </field>
       <field>
-        <name>ContactNumber</name>
-        <rename/>
+        <name>hhr_visit_aware_how__3</name>
       </field>
       <field>
-        <name>RespondentTypeId</name>
-        <rename>LastRespondentTypeId</rename>
+        <name>hhr_visit_aware_how__4</name>
       </field>
       <field>
-        <name>InformantUid</name>
-        <rename>LastRespondentUid</rename>
+        <name>hhr_visit_aware_how__5</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__6</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__7</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__8</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__9</name>
+      </field>
+      <field>
+        <name>hhr_visit_aware_how__10</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -3440,12 +3965,140 @@
     </remotesteps>
     <GUI>
       <xloc>1968</xloc>
-      <yloc>384</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Household Residency Fields</name>
+    <name>Site breakdown</name>
+    <type>MemoryGroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>bs_site</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>n</aggregate>
+        <subject/>
+        <type>COUNT_ANY</type>
+        <valuefield/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Site breakdown 2</name>
+    <type>MemoryGroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>Site</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>n</aggregate>
+        <subject/>
+        <type>COUNT_ANY</type>
+        <valuefield/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1984</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>HouseholdObservationConsentUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2656</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>UrbanObservations Fields</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3458,23 +4111,121 @@
     <fields>
       <field>
         <name>HouseholdUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>HouseholdExtId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>LocationUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EventUid</name>
-        <rename>StartEventUid</rename>
       </field>
       <field>
         <name>ObservationEventUid</name>
-        <rename>EndeventUid</rename>
+        <rename>ObservationUid</rename>
+      </field>
+      <field>
+        <name>urban_place</name>
+        <rename>Place</rename>
+      </field>
+      <field>
+        <name>urban_rooms</name>
+        <rename>Rooms</rename>
+      </field>
+      <field>
+        <name>urban_kitchen</name>
+        <rename>Kitchen</rename>
+      </field>
+      <field>
+        <name>urban_no_kitchen</name>
+        <rename>NoKitchen</rename>
+      </field>
+      <field>
+        <name>urban_lived_here</name>
+        <rename>LivedHerePeriod</rename>
+      </field>
+      <field>
+        <name>urban_weeks_lived</name>
+        <rename>WeeksLived</rename>
+      </field>
+      <field>
+        <name>urban_months_lived</name>
+        <rename>MonthsLived</rename>
+      </field>
+      <field>
+        <name>urban_years_lived</name>
+        <rename>YearsLived</rename>
+      </field>
+      <field>
+        <name>urban_members</name>
+        <rename>MembersElsewhere</rename>
+      </field>
+      <field>
+        <name>urban_own_house</name>
+        <rename>OwnHouseElsewhere</rename>
+      </field>
+      <field>
+        <name>urban_extreme_event</name>
+        <rename>ExtremeEvent</rename>
+      </field>
+      <field>
+        <name>urban_extreme_event_type</name>
+        <rename>ExtremeEventType</rename>
+      </field>
+      <field>
+        <name>ExtremeEventEffect</name>
+      </field>
+      <field>
+        <name>urban_changes</name>
+        <rename>Changes</rename>
+      </field>
+      <field>
+        <name>ChangesDone</name>
+      </field>
+      <field>
+        <name>WhyChanges</name>
+      </field>
+      <field>
+        <name>urban_parks</name>
+        <rename>Parks</rename>
+      </field>
+      <field>
+        <name>urban_parks_use</name>
+        <rename>ParksUsed</rename>
+      </field>
+      <field>
+        <name>urban_arrest</name>
+        <rename>Arrest</rename>
+      </field>
+      <field>
+        <name>urban_house_class</name>
+        <rename>HouseholdClass</rename>
+      </field>
+      <field>
+        <name>IncomeSources</name>
+      </field>
+      <field>
+        <name>urban_borrow</name>
+        <rename>Borrow</rename>
+      </field>
+      <field>
+        <name>urban_work</name>
+        <rename>ProxyWorked</rename>
+      </field>
+      <field>
+        <name>urban_work_period</name>
+        <rename>ProxyWorkPeriod</rename>
+      </field>
+      <field>
+        <name>urban_work_travel</name>
+        <rename>ProxyWorkTravel</rename>
+      </field>
+      <field>
+        <name>urban_work_time</name>
+        <rename>ProxyTravelTime</rename>
+      </field>
+      <field>
+        <name>urban_net_income</name>
+        <rename>NetIncome</rename>
+      </field>
+      <field>
+        <name>urban_substance</name>
+        <rename>Substance</rename>
+      </field>
+      <field>
+        <name>SubstanceUse</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -3488,7 +4239,7 @@
     </remotesteps>
     <GUI>
       <xloc>1968</xloc>
-      <yloc>464</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3643,497 +4394,6 @@
     </GUI>
   </step>
   <step>
-    <name>UrbanObservations Fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>HouseholdUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ObservationEventUid</name>
-        <rename>ObservationUid</rename>
-      </field>
-      <field>
-        <name>urban_place</name>
-        <rename>Place</rename>
-      </field>
-      <field>
-        <name>urban_rooms</name>
-        <rename>Rooms</rename>
-      </field>
-      <field>
-        <name>urban_kitchen</name>
-        <rename>Kitchen</rename>
-      </field>
-      <field>
-        <name>urban_no_kitchen</name>
-        <rename>NoKitchen</rename>
-      </field>
-      <field>
-        <name>urban_lived_here</name>
-        <rename>LivedHerePeriod</rename>
-      </field>
-      <field>
-        <name>urban_weeks_lived</name>
-        <rename>WeeksLived</rename>
-      </field>
-      <field>
-        <name>urban_months_lived</name>
-        <rename>MonthsLived</rename>
-      </field>
-      <field>
-        <name>urban_years_lived</name>
-        <rename>YearsLived</rename>
-      </field>
-      <field>
-        <name>urban_members</name>
-        <rename>MembersElsewhere</rename>
-      </field>
-      <field>
-        <name>urban_own_house</name>
-        <rename>OwnHouseElsewhere</rename>
-      </field>
-      <field>
-        <name>urban_extreme_event</name>
-        <rename>ExtremeEvent</rename>
-      </field>
-      <field>
-        <name>urban_extreme_event_type</name>
-        <rename>ExtremeEventType</rename>
-      </field>
-      <field>
-        <name>ExtremeEventEffect</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_changes</name>
-        <rename>Changes</rename>
-      </field>
-      <field>
-        <name>ChangesDone</name>
-        <rename/>
-      </field>
-      <field>
-        <name>WhyChanges</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_parks</name>
-        <rename>Parks</rename>
-      </field>
-      <field>
-        <name>urban_parks_use</name>
-        <rename>ParksUsed</rename>
-      </field>
-      <field>
-        <name>urban_arrest</name>
-        <rename>Arrest</rename>
-      </field>
-      <field>
-        <name>urban_house_class</name>
-        <rename>HouseholdClass</rename>
-      </field>
-      <field>
-        <name>IncomeSources</name>
-        <rename/>
-      </field>
-      <field>
-        <name>urban_borrow</name>
-        <rename>Borrow</rename>
-      </field>
-      <field>
-        <name>urban_work</name>
-        <rename>ProxyWorked</rename>
-      </field>
-      <field>
-        <name>urban_work_period</name>
-        <rename>ProxyWorkPeriod</rename>
-      </field>
-      <field>
-        <name>urban_work_travel</name>
-        <rename>ProxyWorkTravel</rename>
-      </field>
-      <field>
-        <name>urban_work_time</name>
-        <rename>ProxyTravelTime</rename>
-      </field>
-      <field>
-        <name>urban_net_income</name>
-        <rename>NetIncome</rename>
-      </field>
-      <field>
-        <name>urban_substance</name>
-        <rename>Substance</rename>
-      </field>
-      <field>
-        <name>SubstanceUse</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1968</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Observation Consent Fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>HouseholdObservationConsentUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>HouseholdUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ObservationEventUid</name>
-        <rename>ObservationUid</rename>
-      </field>
-      <field>
-        <name>hhr_permission</name>
-        <rename>ConsentToParticipate</rename>
-      </field>
-      <field>
-        <name>hhr_refusal_reason</name>
-        <rename>RefusalReason</rename>
-      </field>
-      <field>
-        <name>hhr_consent</name>
-        <rename>ConsentToQuestionnaire</rename>
-      </field>
-      <field>
-        <name>hhr_tel_consent</name>
-        <rename>ConsentToCall</rename>
-      </field>
-      <field>
-        <name>hhr_consent_date</name>
-        <rename>ConsentedOn</rename>
-      </field>
-      <field>
-        <name>hhr_witness_date</name>
-        <rename>WitnessedOn</rename>
-      </field>
-      <field>
-        <name>hhr_visit_aware</name>
-        <rename>KnownVisit</rename>
-      </field>
-      <field>
-        <name>bs_other_way</name>
-        <rename>OtherKnowledgeSource</rename>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__2</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__3</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__4</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__5</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__6</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__7</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__8</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__9</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__10</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1968</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdObservationConsentUid</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>HouseholdObservationConsentUid</name>
-        <type>random uuid</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1840</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdData</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdData.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2272</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdResidencies</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdResidencies.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2272</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdUrbanObservations</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdUrbanObservations.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2272</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdObservationConsents</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdObservationConsents.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2272</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 9</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>HouseholdObservationConsentUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>OtherKnowledgeSource</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__2</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__3</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__4</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__5</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__6</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__7</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__8</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__9</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_visit_aware_how__10</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1968</xloc>
-      <yloc>1120</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>aware_how_1</name>
     <type>FilterRows</type>
     <description/>
@@ -4178,47 +4438,8 @@
     </GUI>
   </step>
   <step>
-    <name>KnowledgeSourceId</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2128</xloc>
-      <yloc>1120</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Id = 1</name>
-    <type>SetValueConstant</type>
+    <name>aware_how_10</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -4227,15 +4448,25 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <send_true_to>Id = 99</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hhr_visit_aware_how__10</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -4245,8 +4476,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2464</xloc>
-      <yloc>800</yloc>
+      <xloc>2288</xloc>
+      <yloc>1520</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4290,40 +4521,6 @@
     </remotesteps>
     <GUI>
       <xloc>2288</xloc>
-      <yloc>880</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Id = 2</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>2</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
       <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4373,40 +4570,6 @@
     </GUI>
   </step>
   <step>
-    <name>Id = 3</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>3</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
-      <yloc>960</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>aware_how_4</name>
     <type>FilterRows</type>
     <description/>
@@ -4446,40 +4609,6 @@
     </remotesteps>
     <GUI>
       <xloc>2288</xloc>
-      <yloc>1040</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Id = 4</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>4</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
       <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4529,40 +4658,6 @@
     </GUI>
   </step>
   <step>
-    <name>Id = 5</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>5</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
-      <yloc>1120</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>aware_how_6</name>
     <type>FilterRows</type>
     <description/>
@@ -4602,40 +4697,6 @@
     </remotesteps>
     <GUI>
       <xloc>2288</xloc>
-      <yloc>1200</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Id = 6</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>6</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
       <yloc>1200</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4685,40 +4746,6 @@
     </GUI>
   </step>
   <step>
-    <name>Id = 7</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>7</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
-      <yloc>1280</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>aware_how_8</name>
     <type>FilterRows</type>
     <description/>
@@ -4758,40 +4785,6 @@
     </remotesteps>
     <GUI>
       <xloc>2288</xloc>
-      <yloc>1360</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Id = 8</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>8</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
       <yloc>1360</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4841,119 +4834,7 @@
     </GUI>
   </step>
   <step>
-    <name>Id = 9</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>9</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
-      <yloc>1440</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>aware_how_10</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Id = 99</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>hhr_visit_aware_how__10</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2288</xloc>
-      <yloc>1520</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Id = 99</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>KnowledgeSourceId</name>
-        <value>99</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2464</xloc>
-      <yloc>1520</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
+    <name>interview_key</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -4972,15 +4853,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>HouseholdObservationConsentUid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>KnowledgeSourceId</name>
+        <name>interview_key</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -4997,14 +4870,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2656</xloc>
-      <yloc>1120</yloc>
+      <xloc>336</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HouseholdObservationKnowledgeSources 2</name>
-    <type>CubeOutput</type>
+    <name>Select values 10</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -5013,11 +4886,21 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdObservationKnowledgeSources.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
+    <fields>
+      <field>
+        <name>HouseholdObservationConsentUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>OtherKnowledgeSource</name>
+        <rename/>
+      </field>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -5027,7 +4910,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2896</xloc>
+      <xloc>2784</xloc>
       <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>

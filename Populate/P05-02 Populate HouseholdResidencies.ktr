@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>P03-01 Populate Observation Table</name>
+    <name>P05-02 Populate HouseholdResidencies</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,9 +426,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/11/20 12:18:54.456</created_date>
+    <created_date>2023/01/01 13:51:18.025</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 09:59:22.078</modified_date>
+    <modified_date>2023/01/01 16:33:02.530</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -503,29 +503,19 @@
   </connection>
   <order>
     <hop>
-      <from>Events output</from>
-      <to>Blocking step</to>
+      <from>HouseholdResidencies</from>
+      <to>HouseholdResidences output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Blocking step</from>
-      <to>Observations output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Observations output</from>
-      <to>ObservationInsertErrors</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Observations</from>
-      <to>Events output</to>
+      <from>HouseholdResidences output</from>
+      <to>HouseholdResidencesInsertErrors</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Blocking step</name>
-    <type>BlockingStep</type>
+    <name>HouseholdResidencies</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -534,11 +524,11 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <pass_all_rows>Y</pass_all_rows>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>block</prefix>
-    <cache_size>10000</cache_size>
-    <compress>Y</compress>
+    <file>
+      <name>${OutputDirectory}\HouseholdResidencies.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -548,13 +538,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
+      <xloc>176</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Events output</name>
+    <name>HouseholdResidences output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -566,11 +556,11 @@
     </partitioning>
     <connection>Saprin Ops</connection>
     <schema>dbo</schema>
-    <table>Events</table>
+    <table>HouseholdResidences</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
+    <use_batch>N</use_batch>
     <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
@@ -583,28 +573,24 @@
     <return_field/>
     <fields>
       <field>
-        <column_name>EventUid</column_name>
-        <stream_name>EventUid</stream_name>
+        <column_name>HouseholdUid</column_name>
+        <stream_name>HouseholdUid</stream_name>
       </field>
       <field>
-        <column_name>EventTypeId</column_name>
-        <stream_name>EventTypeId</stream_name>
+        <column_name>HouseholdExtId</column_name>
+        <stream_name>HouseholdExtId</stream_name>
       </field>
       <field>
-        <column_name>EventDate</column_name>
-        <stream_name>ObservationDate</stream_name>
+        <column_name>LocationUid</column_name>
+        <stream_name>LocationUid</stream_name>
       </field>
       <field>
-        <column_name>DateEstimated</column_name>
-        <stream_name>DateEstimated</stream_name>
+        <column_name>StartEventUid</column_name>
+        <stream_name>StartEventUid</stream_name>
       </field>
       <field>
-        <column_name>VPDate</column_name>
-        <stream_name>VPDate</stream_name>
-      </field>
-      <field>
-        <column_name>ObservationEventUid</column_name>
-        <stream_name>ObservationEventUid</stream_name>
+        <column_name>EndEventUid</column_name>
+        <stream_name>EndeventUid</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -616,13 +602,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
+      <xloc>512</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ObservationInsertErrors</name>
+    <name>HouseholdResidencesInsertErrors</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -646,7 +632,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\Errors\ObservationInsertErrors</name>
+      <name>${OutputDirectory}\HouseholdResidencesInsertErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -664,7 +650,7 @@
     </file>
     <fields>
       <field>
-        <name>EventUid</name>
+        <name>HouseholdUid</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -676,55 +662,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>EventTypeId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ObservationDate</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DateEstimated</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>VPDate</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ObservationEventUid</name>
+        <name>HouseholdExtId</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -748,7 +686,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FieldworkerUid</name>
+        <name>StartEventUid</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -760,7 +698,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>RespondentTypeId</name>
+        <name>EndeventUid</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -772,7 +710,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>RespondentUid</name>
+        <name>Error</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -784,43 +722,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>ObservationTypeId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>NonContactReason</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>KnownVisit</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency>R</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>InterviewUid</name>
+        <name>ErrorFld</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -832,7 +734,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>InterviewKey</name>
+        <name>ErrorCode</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -853,125 +755,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Observations</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\Observations.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Observations output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <schema>dbo</schema>
-    <table>Observations</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>EventUid</column_name>
-        <stream_name>EventUid</stream_name>
-      </field>
-      <field>
-        <column_name>LocationUid</column_name>
-        <stream_name>LocationUid</stream_name>
-      </field>
-      <field>
-        <column_name>StaffMemberUid</column_name>
-        <stream_name>FieldworkerUid</stream_name>
-      </field>
-      <field>
-        <column_name>RespondentTypeId</column_name>
-        <stream_name>RespondentTypeId</stream_name>
-      </field>
-      <field>
-        <column_name>ObservationTypeId</column_name>
-        <stream_name>ObservationTypeId</stream_name>
-      </field>
-      <field>
-        <column_name>NonContactReason</column_name>
-        <stream_name>NonContactReason</stream_name>
-      </field>
-      <field>
-        <column_name>KnownVisit</column_name>
-        <stream_name>KnownVisit</stream_name>
-      </field>
-      <field>
-        <column_name>InterviewUid</column_name>
-        <stream_name>InterviewUid</stream_name>
-      </field>
-      <field>
-        <column_name>InterviewKey</column_name>
-        <stream_name>InterviewKey</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>576</xloc>
+      <xloc>800</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
     <error>
-      <source_step>Observations output</source_step>
-      <target_step>ObservationInsertErrors</target_step>
+      <source_step>HouseholdResidences output</source_step>
+      <target_step>HouseholdResidencesInsertErrors</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename>Error</descriptions_valuename>

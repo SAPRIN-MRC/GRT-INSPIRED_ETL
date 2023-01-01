@@ -59,3 +59,9 @@ Rename transformation : Renamed from H02-01 Add Parental Uids to H02-01 Add Indi
 Rename transformation : Renamed from H03-01 Prepare Site Data to H03-01 Prepare Node Data
 Rename job : Renamed from P04 Populate Household Tables to P04 Populate Household & Individual Tables
 Rename transformation : Renamed from P01-06 Populate LocationStateEpisodes to P05-01 Populate LocationStateEpisodes
+Rename transformation : Renamed from H03-11 Prepare Social Support Data to H03-10 Prepare Social Support Data
+Rename transformation : Renamed from P05-01 Populate HouseholdResidencies to P05-02 Populate HouseholdResidencies
+Rename transformation : Renamed from P05-03 Populate SocialSupports to P05-04 Populate SocialSupports
+Rename transformation : Renamed from H03-11 Prepare Pregnancy Data to H03-12 Prepare Pregnancy Data
+Rename transformation : Renamed from H03-11 Prepare BirthHistory Data to H03-12 Prepare BirthHistory Data
+Rename transformation : Renamed from H03-12 Prepare Pregnancy Data to H03-11 Prepare Pregnancy Data

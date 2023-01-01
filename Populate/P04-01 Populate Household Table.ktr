@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2023/01/01 09:20:33.143</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 09:27:39.569</modified_date>
-    <key_for_session_key/>
+    <modified_date>2023/01/01 09:50:27.254</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -509,40 +509,10 @@
     </hop>
     <hop>
       <from>Household output</from>
-      <to>Text file output</to>
+      <to>HouseholdInsertErrors</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>HouseholdData</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>D:\Data\GRT-I\ETLOutput\HouseholdData.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Household output</name>
     <type>TableOutput</type>
@@ -616,7 +586,37 @@
     </GUI>
   </step>
   <step>
-    <name>Text file output</name>
+    <name>HouseholdData</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>D:\Data\GRT-I\ETLOutput\HouseholdData.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HouseholdInsertErrors</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -751,20 +751,20 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>128</yloc>
+      <xloc>496</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
     <error>
       <source_step>Household output</source_step>
-      <target_step>Text file output</target_step>
+      <target_step>HouseholdInsertErrors</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
-      <descriptions_valuename/>
-      <fields_valuename/>
-      <codes_valuename/>
+      <descriptions_valuename>Error</descriptions_valuename>
+      <fields_valuename>ErrorFld</fields_valuename>
+      <codes_valuename>ErrorCode</codes_valuename>
       <max_errors/>
       <max_pct_errors/>
       <min_pct_rows/>
