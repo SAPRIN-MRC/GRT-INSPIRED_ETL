@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/29 05:25:14.472</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 08:12:36.121</modified_date>
+    <modified_date>2023/01/02 17:36:45.560</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -500,11 +500,6 @@
     <hop>
       <from>BSR_2021_v9-11</from>
       <to>Add constants 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix VPDates</from>
-      <to>Random Date values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -652,10 +647,20 @@
       <to>MaternityHistory</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Fix VPDates</from>
+      <to>Fix hmr_pgh_date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_pgh_date</from>
+      <to>Random Date values</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
-    <name>MaternityHistory</name>
-    <type>CubeOutput</type>
+    <name> Multiple</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -664,11 +669,25 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\MaternityHistory.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
+    <send_true_to>Set as not registered 2</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>n</leftvalue>
+        <function>&gt;</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -678,7 +697,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2000</xloc>
+      <xloc>1516</xloc>
       <yloc>505</yloc>
       <draw>Y</draw>
     </GUI>
@@ -741,8 +760,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>284</xloc>
-      <yloc>233</yloc>
+      <xloc>272</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -804,8 +823,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>284</xloc>
-      <yloc>329</yloc>
+      <xloc>272</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1139,8 +1158,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>76</xloc>
-      <yloc>425</yloc>
+      <xloc>64</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1429,8 +1448,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>76</xloc>
-      <yloc>233</yloc>
+      <xloc>64</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1729,8 +1748,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>76</xloc>
-      <yloc>329</yloc>
+      <xloc>64</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1745,14 +1764,6 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <formula>
-      <field_name>b</field_name>
-      <formula_string>IF([hmr_pgh_date]="0000-UU-UU";"19UU-UU-UU";IF([hmr_pgh_date]="9999-99-99";"19UU-UU-UU";IF([hmr_pgh_date]="1900-UU-UU";"19UU-UU-UU";IF([hmr_pgh_date]="2000-UU-UU";"20UU-UU-UU";IF([hmr_pgh_date]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_pgh_date]="9999-UU-UU";"20UU-UU-UU";IF([hmr_pgh_date]="1200-UU-UU";"2000-UU-UU";[hmr_pgh_date])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_pgh_date</replace_field>
-    </formula>
     <formula>
       <field_name>y</field_name>
       <formula_string>IF([hmr_pgh_dead_years]=2010;12;IF([hmr_pgh_dead_years]=2011;11;IF([hmr_pgh_dead_years]=2020;2;[hmr_pgh_dead_years])))</formula_string>
@@ -1890,8 +1901,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>876</xloc>
-      <yloc>169</yloc>
+      <xloc>960</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1925,8 +1936,63 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1372</xloc>
-      <yloc>169</yloc>
+      <xloc>816</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by 2</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <all_rows>Y</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname/>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>interview_key</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>n</aggregate>
+        <subject/>
+        <type>COUNT_ANY</type>
+        <valuefield/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1356</xloc>
+      <yloc>505</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1996,6 +2062,36 @@
     </GUI>
   </step>
   <step>
+    <name>MaternityHistory</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\MaternityHistory.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2000</xloc>
+      <yloc>505</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Merge join</name>
     <type>MergeJoin</type>
     <description/>
@@ -2061,8 +2157,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>540</xloc>
-      <yloc>633</yloc>
+      <xloc>704</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2125,8 +2221,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1004</xloc>
-      <yloc>169</yloc>
+      <xloc>1152</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2292,8 +2388,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>732</xloc>
-      <yloc>169</yloc>
+      <xloc>816</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2369,8 +2465,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>492</xloc>
-      <yloc>329</yloc>
+      <xloc>480</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2503,6 +2599,91 @@
     </GUI>
   </step>
   <step>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>interview_key</name>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>reg_pregnancies_roster__id</name>
+      </field>
+      <field>
+        <name>hmr_list_preg</name>
+      </field>
+      <field>
+        <name>hmr_pgh_date</name>
+      </field>
+      <field>
+        <name>hmr_pgh_gender</name>
+      </field>
+      <field>
+        <name>hmr_pgh_single_multiple</name>
+      </field>
+      <field>
+        <name>hmr_pgh_still_alive</name>
+      </field>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+      </field>
+      <field>
+        <name>hmr_pgh_age_dead</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_days</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_months</name>
+      </field>
+      <field>
+        <name>hmr_pgh_dead_years</name>
+      </field>
+      <field>
+        <name>DeliveryDate</name>
+      </field>
+      <field>
+        <name>OutcomeEventUid</name>
+      </field>
+      <field>
+        <name>PregnancyUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1660</xloc>
+      <yloc>505</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Self mother</name>
     <type>FilterRows</type>
     <description/>
@@ -2578,6 +2759,46 @@
     </GUI>
   </step>
   <step>
+    <name>Set as not registered 2</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>hmr_pgh_registered_member</name>
+        <value>2</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1516</xloc>
+      <yloc>393</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Sort rows</name>
     <type>SortRows</type>
     <description/>
@@ -2644,6 +2865,72 @@
     </GUI>
   </step>
   <step>
+    <name>Sort rows 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>hmr_pgh_dsid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1836</xloc>
+      <yloc>505</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>String operations</name>
     <type>StringOperations</type>
     <description/>
@@ -2691,8 +2978,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>556</xloc>
-      <yloc>169</yloc>
+      <xloc>640</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2907,8 +3194,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1196</xloc>
-      <yloc>169</yloc>
+      <xloc>976</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3045,44 +3332,90 @@ Alert(str2);</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Group by 2</name>
-    <type>GroupBy</type>
+    <name>Fix hmr_pgh_date</name>
+    <type>ScriptValueMod</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <all_rows>Y</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname/>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>interview_key</name>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dsid</name>
-      </field>
-    </group>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_pgh_date != null) {
+  dateStr=upper(hmr_pgh_date);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U" || yrPart == "org.") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_pgh_date
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
     <fields>
       <field>
-        <aggregate>n</aggregate>
-        <subject/>
-        <type>COUNT_ANY</type>
-        <valuefield/>
+        <name>dob</name>
+        <rename>hmr_pgh_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
       </field>
     </fields>
     <attributes/>
@@ -3094,243 +3427,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1356</xloc>
-      <yloc>505</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name> Multiple</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set as not registered 2</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>n</leftvalue>
-        <function>&gt;</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1516</xloc>
-      <yloc>505</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set as not registered 2</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>hmr_pgh_registered_member</name>
-        <value>2</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>hmr_pgh_dsid</name>
-        <value/>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1516</xloc>
-      <yloc>393</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>interview_key</name>
-      </field>
-      <field>
-        <name>interview__id</name>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-      </field>
-      <field>
-        <name>reg_pregnancies_roster__id</name>
-      </field>
-      <field>
-        <name>hmr_list_preg</name>
-      </field>
-      <field>
-        <name>hmr_pgh_date</name>
-      </field>
-      <field>
-        <name>hmr_pgh_gender</name>
-      </field>
-      <field>
-        <name>hmr_pgh_single_multiple</name>
-      </field>
-      <field>
-        <name>hmr_pgh_still_alive</name>
-      </field>
-      <field>
-        <name>hmr_pgh_registered_member</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dsid</name>
-      </field>
-      <field>
-        <name>hmr_pgh_age_dead</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dead_days</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dead_months</name>
-      </field>
-      <field>
-        <name>hmr_pgh_dead_years</name>
-      </field>
-      <field>
-        <name>DeliveryDate</name>
-      </field>
-      <field>
-        <name>OutcomeEventUid</name>
-      </field>
-      <field>
-        <name>PregnancyUid</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1660</xloc>
-      <yloc>505</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>interview_key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>hmr_pgh_dsid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1836</xloc>
-      <yloc>505</yloc>
+      <xloc>1152</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

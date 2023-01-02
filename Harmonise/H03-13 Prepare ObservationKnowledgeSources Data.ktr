@@ -1,11 +1,11 @@
 <transformation>
   <info>
-    <name>P04-01 Populate Household Table</name>
+    <name>H03-13 Prepare ObservationKnowledgeSources Data</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <directory>/Populate</directory>
+    <directory>/Harmonise</directory>
     <parameters>
     </parameters>
     <log>
@@ -426,163 +426,48 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2023/01/01 09:20:33.143</created_date>
+    <created_date>2023/01/02 06:49:03.587</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/02 07:40:13.332</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2023/01/02 06:57:01.350</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
-  <connection>
-    <name>Saprin Ops</name>
-    <server>localhost</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>Saprin_Ops_Structure</database>
-    <port>1433</port>
-    <username/>
-    <password>Encrypted </password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQLNATIVE.encrypt</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MSSQLNATIVE.trustServerCertificate</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQLUseIntegratedSecurity</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>1433</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
-      <from>HouseholdData</from>
-      <to>Household output</to>
+      <from>InterviewKnowledgeSources</from>
+      <to>EventUid</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Household output</from>
-      <to>HouseholdInsertErrors</to>
+      <from>Observations</from>
+      <to>ObservationEventUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EventUid</from>
+      <to>Limit to actual observations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ObservationEventUid</from>
+      <to>Limit to actual observations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Limit to actual observations</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>ObservationKnowledgeSourcesData</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Household output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <schema>dbo</schema>
-    <table>Households</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>HouseholdUid</column_name>
-        <stream_name>HouseholdUid</stream_name>
-      </field>
-      <field>
-        <column_name>StartEventUid</column_name>
-        <stream_name>StartEventUid</stream_name>
-      </field>
-      <field>
-        <column_name>EndEventUid</column_name>
-        <stream_name>EndeventUid</stream_name>
-      </field>
-      <field>
-        <column_name>CurrentNodeId</column_name>
-        <stream_name>CurrentNodeId</stream_name>
-      </field>
-      <field>
-        <column_name>ContactNumber</column_name>
-        <stream_name>ContactNumber</stream_name>
-      </field>
-      <field>
-        <column_name>LastRespondentTypeId</column_name>
-        <stream_name>LastRespondentTypeId</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>HouseholdData</name>
+    <name>InterviewKnowledgeSources</name>
     <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -593,7 +478,7 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>D:\Data\GRT-I\ETLOutput\HouseholdData.cube</name>
+      <name>${OutputDirectory}\InterviewKnowledgeSources.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -606,14 +491,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>128</yloc>
+      <xloc>144</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HouseholdInsertErrors</name>
-    <type>TextFileOutput</type>
+    <name>EventUid</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -622,156 +507,21 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${OutputDirectory}\Errors\HouseholdInsertErrors</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>tab</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>HouseholdUid</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>StartEventUid</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>EndeventUid</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CurrentNodeId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ContactNumber</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>LastRespondentTypeId</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>LastRespondentUid</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Error</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ErrorFld</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ErrorCode</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>EventUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
     </fields>
     <attributes/>
@@ -783,24 +533,188 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>240</yloc>
+      <xloc>352</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Observations</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Observations.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ObservationEventUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>ObservationEventUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>344</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Limit to actual observations</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>EventUid</step1>
+    <step2>ObservationEventUid</step2>
+    <keys_1>
+      <key>EventUid</key>
+    </keys_1>
+    <keys_2>
+      <key>ObservationEventUid</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ObservationEventUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>KnowledgeSourceId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bs_other_meth</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ObservationKnowledgeSourcesData</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\ObservationKnowledgeSourcesData.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
-    <error>
-      <source_step>Household output</source_step>
-      <target_step>HouseholdInsertErrors</target_step>
-      <is_enabled>Y</is_enabled>
-      <nr_valuename/>
-      <descriptions_valuename>Error</descriptions_valuename>
-      <fields_valuename>ErrorFld</fields_valuename>
-      <codes_valuename>ErrorCode</codes_valuename>
-      <max_errors/>
-      <max_pct_errors/>
-      <min_pct_rows/>
-    </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>

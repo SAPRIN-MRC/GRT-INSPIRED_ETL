@@ -428,11 +428,32 @@
     <created_user>-</created_user>
     <created_date>2022/12/04 12:57:41.232</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 14:17:13.695</modified_date>
+    <modified_date>2023/01/02 17:05:42.833</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Will be set to null if joiin is unsuccessfull</note>
+      <xloc>1136</xloc>
+      <yloc>416</yloc>
+      <width>326</width>
+      <heigth>34</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
     <hop>
@@ -461,16 +482,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge join</from>
-      <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add constants</from>
-      <to>Estimated date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Estimated date</from>
       <to>Select values 2</to>
       <enabled>Y</enabled>
@@ -487,13 +498,138 @@
     </hop>
     <hop>
       <from>Select values 2</from>
+      <to>fix VPDates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Benificiary Not Null</from>
+      <to>Add constants</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Benificiary Not Null</from>
+      <to>BenificiaryUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>Benificiary Not Null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>IndividualData 2</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>IndividualUid 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>IndividualUid 2</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>BenificiaryUid</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 2</from>
+      <to>BenificiaryUid = IndividualUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>BenificiaryUid = IndividualUid</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>Add constants</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>StartEventUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>StartEventUid</from>
+      <to>Estimated date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix VPDates</from>
+      <to>ObservationEventUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Observations</from>
+      <to>Select values 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 6</from>
+      <to>ObservationEventUid 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ObservationEventUid</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ObservationEventUid 2</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 3</from>
+      <to>Start after Observation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Start after Observation</from>
+      <to>Generate random value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate random value</from>
+      <to>fix StartDate</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix StartDate</from>
+      <to>Select values 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Start after Observation</from>
+      <to>Select values 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 8</from>
       <to>SocialSupportData</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 7</from>
+      <to>Select values 8</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>HouseholdMemberGrants_withUids</name>
-    <type>CubeInput</type>
+    <name>Add constants</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -502,11 +638,32 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\HouseholdMemberGrants_withUids.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
+    <fields>
+      <field>
+        <name>EventTypeId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>400</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>DateEstimated</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -516,7 +673,193 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
+      <xloc>1472</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Benificiary Not Null</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>BenificiaryUid</send_true_to>
+    <send_false_to>Add constants</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>BenificiaryUid</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>BenificiaryUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>BenificiaryUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>BenificiaryUid = IndividualUid</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>BenificiaryUid</name>
+        <replaceby>IndividualUid</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DateEstimated = 1</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>DateEstimated</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1744</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Estimated date</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>DateEstimated = 1</send_true_to>
+    <send_false_to>Select values 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>StartDateVP</leftvalue>
+        <function>CONTAINS</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>U</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1744</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -564,6 +907,36 @@
     </GUI>
   </step>
   <step>
+    <name>HouseholdMemberGrants_withUids</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\HouseholdMemberGrants_withUids.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>IndividualData</name>
     <type>CubeInput</type>
     <description/>
@@ -590,6 +963,36 @@
     <GUI>
       <xloc>224</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>IndividualData 2</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\IndividualData.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -636,8 +1039,8 @@
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
+    <name>IndividualUid 2</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -646,20 +1049,22 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>IndividualUid</name>
-        <rename/>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
-      <field>
-        <name>ObservationEventUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>EndEventUid</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -670,8 +1075,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>192</yloc>
+      <xloc>928</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -710,6 +1115,77 @@
     </GUI>
   </step>
   <step>
+    <name>Merge join 2</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>BenificiaryUid</step1>
+    <step2>IndividualUid 2</step2>
+    <keys_1>
+      <key>BenificiaryUid</key>
+    </keys_1>
+    <keys_2>
+      <key>IndividualUid</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>IndividualUid</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+      </field>
+      <field>
+        <name>EndEventUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values 2</name>
     <type>SelectValues</type>
     <description/>
@@ -723,43 +1199,33 @@
     <fields>
       <field>
         <name>GrantHolderUid</name>
-        <rename/>
       </field>
       <field>
         <name>BenificiaryUid</name>
-        <rename/>
       </field>
       <field>
         <name>SupportTypeId</name>
-        <rename/>
       </field>
       <field>
         <name>StartEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>EventTypeId</name>
-        <rename/>
       </field>
       <field>
         <name>StartDate</name>
-        <rename/>
       </field>
       <field>
         <name>StartDateVP</name>
-        <rename/>
       </field>
       <field>
         <name>DateEstimated</name>
-        <rename/>
       </field>
       <field>
         <name>ObservationEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>EndEventUid</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -772,136 +1238,112 @@
       </output>
     </remotesteps>
     <GUI>
+      <xloc>1968</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>IndividualUid</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>IndividualUid</name>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+      </field>
+      <field>
+        <name>EndEventUid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>EndEventUid_1</name>
+      </remove>
+      <remove>
+        <name>ObservationEventUid_1</name>
+      </remove>
+      <remove>
+        <name>IndividualUid</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>1280</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>EventTypeId</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>400</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>DateEstimated</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Estimated date</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>DateEstimated = 1</send_true_to>
-    <send_false_to>Select values 2</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>StartDateVP</leftvalue>
-        <function>CONTAINS</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>U</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>DateEstimated = 1</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>DateEstimated</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -931,8 +1373,465 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1504</xloc>
+      <xloc>2128</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>StartEventUid</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>StartEventUid</name>
+        <type>random uuid</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1616</xloc>
       <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>fix VPDates</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>StartDateVP</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>-</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ObservationEventUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>ObservationEventUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Observations</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Observations.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2320</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 6</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ObservationEventUid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>ObservationDate</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2320</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ObservationEventUid 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>ObservationEventUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2320</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join 3</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>ObservationEventUid</step1>
+    <step2>ObservationEventUid 2</step2>
+    <keys_1>
+      <key>ObservationEventUid</key>
+    </keys_1>
+    <keys_2>
+      <key>ObservationEventUid</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Start after Observation</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Generate random value</send_true_to>
+    <send_false_to>Select values 8</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>StartDate</leftvalue>
+        <function>&gt;</function>
+        <rightvalue>ObservationDate</rightvalue>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Generate random value</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>r</name>
+        <type>random number</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2320</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>fix StartDate</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var days = trunc(r * 365) * -1;
+var s = dateAdd(ObservationDate,"d",days)</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>dateAdd_Sample</jsScript_name>
+        <jsScript_script>// Add's the given number to  the given date Value.
+//
+// Usage:
+// dateAdd(var,var,var);
+// 1: Date - The Variable with the Date.
+// 2: String - The Type which represents the value
+// to add.
+// y - Years
+// m - Months
+// d - Days
+// w - Weeks
+// wd - Workingdays
+// hh - Hours
+// mi - Minutes
+// ss - Seconds
+// 3: Numeric - The Value to add.
+// 
+// 2006-11-15
+//
+var d1 = new Date();
+Alert(dateAdd(d1, "y", 1));
+Alert(dateAdd(d1, "m", 4));
+Alert(dateAdd(d1, "d", 5));
+Alert(dateAdd(d1, "wd", 5));</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>s</name>
+        <rename>StartDate</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2544</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 7</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>r</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2544</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 8</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>ObservationEventUid_1</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

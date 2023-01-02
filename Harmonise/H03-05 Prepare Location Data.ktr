@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/07 15:23:19.433</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/31 09:09:48.279</modified_date>
+    <modified_date>2023/01/02 06:27:42.383</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -462,7 +462,7 @@
     </hop>
     <hop>
       <from>Merge join 2</from>
-      <to>SubPlace</to>
+      <to>SiteId SubPlace</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -506,12 +506,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SubPlace</from>
+      <from>SiteId SubPlace</from>
       <to>Merge join 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SubPlaceName</from>
+      <from>SiteId SubPlaceName</from>
       <to>Merge join 3</to>
       <enabled>Y</enabled>
     </hop>
@@ -542,7 +542,7 @@
     </hop>
     <hop>
       <from>SubPlaces</from>
-      <to>SubPlaceName</to>
+      <to>SiteId SubPlaceName</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -604,6 +604,36 @@
     <GUI>
       <xloc>1152</xloc>
       <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Buildings</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Buildings.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -728,6 +758,36 @@
     </remotesteps>
     <GUI>
       <xloc>1264</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Locations</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Locations.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2128</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -930,12 +990,14 @@
       <schema_name/>
     </partitioning>
     <join_type>LEFT OUTER</join_type>
-    <step1>SubPlace</step1>
-    <step2>SubPlaceName</step2>
+    <step1>SiteId SubPlace</step1>
+    <step2>SiteId SubPlaceName</step2>
     <keys_1>
+      <key>SiteId</key>
       <key>SubPlace</key>
     </keys_1>
     <keys_2>
+      <key>SiteId</key>
       <key>SubPlaceName</key>
     </keys_2>
     <attributes/>
@@ -1149,6 +1211,85 @@
     </GUI>
   </step>
   <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>InterviewKey</name>
+      </field>
+      <field>
+        <name>LocationUid</name>
+      </field>
+      <field>
+        <name>LocationTypeId</name>
+      </field>
+      <field>
+        <name>NodeId</name>
+      </field>
+      <field>
+        <name>Geocode</name>
+        <rename>ExternalId</rename>
+      </field>
+      <field>
+        <name>SiteId</name>
+      </field>
+      <field>
+        <name>SubPlaceId</name>
+      </field>
+      <field>
+        <name>BuildingId</name>
+      </field>
+      <field>
+        <name>Owner</name>
+        <rename>CurrentOwner</rename>
+      </field>
+      <field>
+        <name>FCA</name>
+      </field>
+      <field>
+        <name>weekblock_1</name>
+        <rename>Weekblock</rename>
+      </field>
+      <field>
+        <name>Floor</name>
+      </field>
+      <field>
+        <name>Unit</name>
+      </field>
+      <field>
+        <name>Latitude</name>
+      </field>
+      <field>
+        <name>Longitude</name>
+      </field>
+      <field>
+        <name>DwellingType</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1968</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Site</name>
     <type>SortRows</type>
     <description/>
@@ -1333,6 +1474,36 @@
     </GUI>
   </step>
   <step>
+    <name>Sites</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Sites.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>String operations</name>
     <type>StringOperations</type>
     <description/>
@@ -1373,7 +1544,7 @@
     </GUI>
   </step>
   <step>
-    <name>SubPlace</name>
+    <name>SiteId SubPlace</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1391,6 +1562,14 @@
     <compress_variable/>
     <unique_rows>N</unique_rows>
     <fields>
+      <field>
+        <name>SiteId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
       <field>
         <name>SubPlace</name>
         <ascending>Y</ascending>
@@ -1415,7 +1594,7 @@
     </GUI>
   </step>
   <step>
-    <name>SubPlaceName</name>
+    <name>SiteId SubPlaceName</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1433,6 +1612,14 @@
     <compress_variable/>
     <unique_rows>N</unique_rows>
     <fields>
+      <field>
+        <name>SiteId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
       <field>
         <name>SubPlaceName</name>
         <ascending>Y</ascending>
@@ -1452,66 +1639,6 @@
     </remotesteps>
     <GUI>
       <xloc>880</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sites</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\Sites.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>48</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Buildings</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\Buildings.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1543,128 +1670,6 @@
     <GUI>
       <xloc>752</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>InterviewKey</name>
-        <rename/>
-      </field>
-      <field>
-        <name>LocationUid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>LocationTypeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>NodeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Geocode</name>
-        <rename>ExternalId</rename>
-      </field>
-      <field>
-        <name>SiteId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SubPlaceId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>BuildingId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Owner</name>
-        <rename>CurrentOwner</rename>
-      </field>
-      <field>
-        <name>FCA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>weekblock_1</name>
-        <rename>Weekblock</rename>
-      </field>
-      <field>
-        <name>Floor</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Unit</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Latitude</name>
-        <rename/>
-      </field>
-      <field>
-        <name>Longitude</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DwellingType</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1968</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Locations</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${OutputDirectory}\Locations.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2128</xloc>
-      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2023/01/01 09:32:15.569</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 20:43:49.825</modified_date>
+    <modified_date>2023/01/02 08:17:50.035</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -503,11 +503,6 @@
   </connection>
   <order>
     <hop>
-      <from>IndividualData</from>
-      <to>Individual output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Individual output</from>
       <to>IndividualInsertErrors</to>
       <enabled>Y</enabled>
@@ -537,7 +532,272 @@
       <to>ProtectedIndividualInsertErrors</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>IndividualData</from>
+      <to>Birth event output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Birth event output</from>
+      <to>Blocking step 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Blocking step 2</from>
+      <to>Individual output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Birth event output</from>
+      <to>BirthEventInsertErrors</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Birth event output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <schema>dbo</schema>
+    <table>Events</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>EventUid</column_name>
+        <stream_name>BirthEventUid</stream_name>
+      </field>
+      <field>
+        <column_name>EventTypeId</column_name>
+        <stream_name>BirthEventTypeId</stream_name>
+      </field>
+      <field>
+        <column_name>EventDate</column_name>
+        <stream_name>BirthEventDate</stream_name>
+      </field>
+      <field>
+        <column_name>DateEstimated</column_name>
+        <stream_name>DateEstimated</stream_name>
+      </field>
+      <field>
+        <column_name>VPDate</column_name>
+        <stream_name>BirthVPDate</stream_name>
+      </field>
+      <field>
+        <column_name>ObservationEventUid</column_name>
+        <stream_name>ObservationEventUid</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>BirthEventInsertErrors</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${OutputDirectory}\Errors\BirthEventInsertErrors</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>tab</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>IndividualUid</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>BirthEventUid</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>BirthVPDate</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>BirthEventDate</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DeliveryEventUid</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DeliveryDate</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Error</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ErrorFld</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ErrorCode</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Blocking step</name>
     <type>BlockingStep</type>
@@ -563,7 +823,37 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>832</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Blocking step 2</name>
+    <type>BlockingStep</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <pass_all_rows>Y</pass_all_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>block</prefix>
+    <cache_size>10000</cache_size>
+    <compress>Y</compress>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -635,7 +925,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
+      <xloc>624</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1118,7 +1408,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
+      <xloc>624</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1247,7 +1537,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>976</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1592,7 +1882,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1200</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1704,7 +1994,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1200</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1753,12 +2043,24 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>976</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
+    <error>
+      <source_step>Birth event output</source_step>
+      <target_step>BirthEventInsertErrors</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename/>
+      <descriptions_valuename>Error</descriptions_valuename>
+      <fields_valuename>ErrorFld</fields_valuename>
+      <codes_valuename>ErrorCode</codes_valuename>
+      <max_errors/>
+      <max_pct_errors/>
+      <min_pct_rows/>
+    </error>
     <error>
       <source_step>Individual output</source_step>
       <target_step>IndividualInsertErrors</target_step>

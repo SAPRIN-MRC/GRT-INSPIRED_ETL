@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/31 10:38:58.994</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 21:41:33.744</modified_date>
+    <modified_date>2023/01/02 14:22:54.635</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -654,11 +654,11 @@
     </hop>
     <hop>
       <from>HouseholdUid</from>
-      <to>Value mapper</to>
+      <to>Map ExtId</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Value mapper</from>
+      <from>Map ExtId</from>
       <to>Household Residency Fields</to>
       <enabled>Y</enabled>
     </hop>
@@ -1221,7 +1221,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2400</xloc>
+      <xloc>2608</xloc>
       <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2959,51 +2959,39 @@
     <fields>
       <field>
         <name>HouseholdObservationConsentUid</name>
-        <rename/>
       </field>
       <field>
         <name>HouseholdUid</name>
-        <rename/>
       </field>
       <field>
         <name>ObservationUid</name>
-        <rename/>
       </field>
       <field>
         <name>ConsentToParticipate</name>
-        <rename/>
       </field>
       <field>
         <name>RefusalReason</name>
-        <rename/>
       </field>
       <field>
         <name>ConsentToQuestionnaire</name>
-        <rename/>
       </field>
       <field>
         <name>ConsentToCall</name>
-        <rename/>
       </field>
       <field>
         <name>ConsentedOn</name>
-        <rename/>
       </field>
       <field>
         <name>WitnessedOn</name>
-        <rename/>
       </field>
       <field>
         <name>KnownVisit</name>
-        <rename/>
       </field>
       <field>
         <name>OtherKnowledgeSource</name>
-        <rename/>
       </field>
       <field>
         <name>ConsentByUid</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -4283,7 +4271,7 @@
     </GUI>
   </step>
   <step>
-    <name>Value mapper</name>
+    <name>Map ExtId</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>

@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/23 17:43:14.367</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 06:22:09.745</modified_date>
+    <modified_date>2023/01/02 13:38:19.845</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -540,11 +540,6 @@
     <hop>
       <from>Random DoB values</from>
       <to>DoB VPDate</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix VPDates</from>
-      <to>Random DoB values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -693,11 +688,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Fix VPDates</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>UnionStartDate VPDate</from>
       <to>Map Place of Birth</to>
       <enabled>Y</enabled>
@@ -755,6 +745,46 @@
     <hop>
       <from>Map CurrentEducationLevel</from>
       <to>Current Employment</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Fix hmr_civil_id_dob</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_civil_id_dob</from>
+      <to>Fix hmr_maternal_dod</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_maternal_dod</from>
+      <to>Fix hmr_paternal_dod</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_paternal_dod</from>
+      <to>Fix hmr_new_crr_date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map MobileProvider1</from>
+      <to>Random DoB values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map MobileProvider2</from>
+      <to>Map MobileProvider1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_new_crr_date</from>
+      <to>null MobileProviders</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>null MobileProviders</from>
+      <to>Map MobileProvider2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -8494,8 +8524,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>704</yloc>
+      <xloc>1776</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8620,8 +8650,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1296</xloc>
-      <yloc>608</yloc>
+      <xloc>1952</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8805,8 +8835,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>272</yloc>
+      <xloc>1296</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8859,8 +8889,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
-      <yloc>704</yloc>
+      <xloc>1440</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8957,8 +8987,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1728</xloc>
-      <yloc>704</yloc>
+      <xloc>976</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8995,8 +9025,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>704</yloc>
+      <xloc>1600</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9030,54 +9060,98 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2448</xloc>
-      <yloc>704</yloc>
+      <xloc>1120</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fix VPDates</name>
-    <type>Formula</type>
+    <name>Fix hmr_civil_id_dob</name>
+    <type>ScriptValueMod</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <formula>
-      <field_name>b</field_name>
-      <formula_string>IF([hmr_civil_id_dob]="0000-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="9999-99-99";"19UU-UU-UU";IF([hmr_civil_id_dob]="1900-UU-UU";"19UU-UU-UU";IF([hmr_civil_id_dob]="2000-UU-UU";"20UU-UU-UU";IF([hmr_civil_id_dob]="NOT_FOUND";"19UU-UU-UU";[hmr_civil_id_dob])))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_civil_id_dob</replace_field>
-    </formula>
-    <formula>
-      <field_name>m</field_name>
-      <formula_string>IF([hmr_maternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_maternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_maternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_maternal_dod]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_maternal_dod</replace_field>
-    </formula>
-    <formula>
-      <field_name>p</field_name>
-      <formula_string>IF([hmr_paternal_dod]="0000-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="9999-99-99";"19UU-UU-UU";IF([hmr_paternal_dod]="1900-UU-UU";"19UU-UU-UU";IF([hmr_paternal_dod]="2000-UU-UU";"20UU-UU-UU";[hmr_paternal_dod]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_paternal_dod</replace_field>
-    </formula>
-    <formula>
-      <field_name>c</field_name>
-      <formula_string>IF([hmr_new_crr_date]="0000-UU-UU";"19UU-UU-UU";IF([hmr_new_crr_date]="9999-99-99";"19UU-UU-UU";IF([hmr_new_crr_date]="1900-UU-UU";"19UU-UU-UU";IF([hmr_new_crr_date]="2000-UU-UU";"20UU-UU-UU";[hmr_new_crr_date]))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_new_crr_date</replace_field>
-    </formula>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_civil_id_dob != null) {
+  dateStr=upper(hmr_civil_id_dob);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U" || yrPart == "org.") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_civil_id_dob
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_civil_id_dob</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -9087,7 +9161,310 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1376</xloc>
+      <xloc>1440</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_maternal_dod</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_maternal_dod != null) {
+  dateStr=upper(hmr_maternal_dod);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U" || yrPart == "org.") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  mdob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  mdob = hmr_maternal_dod
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>mdob</name>
+        <rename>hmr_maternal_dod</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1600</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_new_crr_date</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_new_crr_date != null) {
+  dateStr=upper(hmr_new_crr_date);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U" || yrPart == "org.") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  mdob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  mdob = hmr_new_crr_date
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>mdob</name>
+        <rename>hmr_new_crr_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1952</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_paternal_dod</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_paternal_dod != null) {
+  dateStr=upper(hmr_paternal_dod);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U" || yrPart == "org.") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  mdob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  mdob = hmr_paternal_dod
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>mdob</name>
+        <rename>hmr_paternal_dod</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1776</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -9148,8 +9525,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3040</xloc>
-      <yloc>704</yloc>
+      <xloc>1600</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9198,6 +9575,326 @@ Alert(str2);</jsScript_script>
     <GUI>
       <xloc>288</xloc>
       <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Citizenship</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>hmr_citizenship</field_to_use>
+    <target_field>Citizenship</target_field>
+    <non_match_default>??</non_match_default>
+    <fields>
+      <field>
+        <source_value>-999999999</source_value>
+        <target_value>??</target_value>
+      </field>
+      <field>
+        <source_value>1</source_value>
+        <target_value>ZA</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>AF</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>AL</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>DZ</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>AD</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>AO</target_value>
+      </field>
+      <field>
+        <source_value>8</source_value>
+        <target_value>AR</target_value>
+      </field>
+      <field>
+        <source_value>15</source_value>
+        <target_value>BD</target_value>
+      </field>
+      <field>
+        <source_value>20</source_value>
+        <target_value>BJ</target_value>
+      </field>
+      <field>
+        <source_value>24</source_value>
+        <target_value>BW</target_value>
+      </field>
+      <field>
+        <source_value>25</source_value>
+        <target_value>BR</target_value>
+      </field>
+      <field>
+        <source_value>28</source_value>
+        <target_value>BF</target_value>
+      </field>
+      <field>
+        <source_value>29</source_value>
+        <target_value>BI</target_value>
+      </field>
+      <field>
+        <source_value>31</source_value>
+        <target_value>CM</target_value>
+      </field>
+      <field>
+        <source_value>32</source_value>
+        <target_value>CA</target_value>
+      </field>
+      <field>
+        <source_value>40</source_value>
+        <target_value>CG</target_value>
+      </field>
+      <field>
+        <source_value>41</source_value>
+        <target_value>CD</target_value>
+      </field>
+      <field>
+        <source_value>43</source_value>
+        <target_value>CI</target_value>
+      </field>
+      <field>
+        <source_value>59</source_value>
+        <target_value>ET</target_value>
+      </field>
+      <field>
+        <source_value>67</source_value>
+        <target_value>GH</target_value>
+      </field>
+      <field>
+        <source_value>84</source_value>
+        <target_value>IT</target_value>
+      </field>
+      <field>
+        <source_value>89</source_value>
+        <target_value>KE</target_value>
+      </field>
+      <field>
+        <source_value>92</source_value>
+        <target_value>KR</target_value>
+      </field>
+      <field>
+        <source_value>99</source_value>
+        <target_value>LS</target_value>
+      </field>
+      <field>
+        <source_value>107</source_value>
+        <target_value>MW</target_value>
+      </field>
+      <field>
+        <source_value>110</source_value>
+        <target_value>ML</target_value>
+      </field>
+      <field>
+        <source_value>122</source_value>
+        <target_value>MZ</target_value>
+      </field>
+      <field>
+        <source_value>124</source_value>
+        <target_value>NA</target_value>
+      </field>
+      <field>
+        <source_value>131</source_value>
+        <target_value>NG</target_value>
+      </field>
+      <field>
+        <source_value>134</source_value>
+        <target_value>PK</target_value>
+      </field>
+      <field>
+        <source_value>146</source_value>
+        <target_value>RW</target_value>
+      </field>
+      <field>
+        <source_value>154</source_value>
+        <target_value>SN</target_value>
+      </field>
+      <field>
+        <source_value>162</source_value>
+        <target_value>SO</target_value>
+      </field>
+      <field>
+        <source_value>163</source_value>
+        <target_value>SS</target_value>
+      </field>
+      <field>
+        <source_value>168</source_value>
+        <target_value>SZ</target_value>
+      </field>
+      <field>
+        <source_value>174</source_value>
+        <target_value>TZ</target_value>
+      </field>
+      <field>
+        <source_value>183</source_value>
+        <target_value>UG</target_value>
+      </field>
+      <field>
+        <source_value>187</source_value>
+        <target_value>US</target_value>
+      </field>
+      <field>
+        <source_value>195</source_value>
+        <target_value>ZM</target_value>
+      </field>
+      <field>
+        <source_value>196</source_value>
+        <target_value>ZW</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map CurrentEducationLevel</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>hmr_current_education</field_to_use>
+    <target_field>CurrentEducationLevel</target_field>
+    <non_match_default>-1</non_match_default>
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>4</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>5</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>6</target_value>
+      </field>
+      <field>
+        <source_value>7</source_value>
+        <target_value>7</target_value>
+      </field>
+      <field>
+        <source_value>8</source_value>
+        <target_value>8</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>9</target_value>
+      </field>
+      <field>
+        <source_value>10</source_value>
+        <target_value>10</target_value>
+      </field>
+      <field>
+        <source_value>11</source_value>
+        <target_value>11</target_value>
+      </field>
+      <field>
+        <source_value>12</source_value>
+        <target_value>12</target_value>
+      </field>
+      <field>
+        <source_value>13</source_value>
+        <target_value>31</target_value>
+      </field>
+      <field>
+        <source_value>14</source_value>
+        <target_value>32</target_value>
+      </field>
+      <field>
+        <source_value>15</source_value>
+        <target_value>33</target_value>
+      </field>
+      <field>
+        <source_value>16</source_value>
+        <target_value>34</target_value>
+      </field>
+      <field>
+        <source_value>17</source_value>
+        <target_value>45</target_value>
+      </field>
+      <field>
+        <source_value>18</source_value>
+        <target_value>23</target_value>
+      </field>
+      <field>
+        <source_value>19</source_value>
+        <target_value>24</target_value>
+      </field>
+      <field>
+        <source_value>20</source_value>
+        <target_value>25</target_value>
+      </field>
+      <field>
+        <source_value>21</source_value>
+        <target_value>26</target_value>
+      </field>
+      <field>
+        <source_value>22</source_value>
+        <target_value>97</target_value>
+      </field>
+      <field>
+        <source_value>23</source_value>
+        <target_value>51</target_value>
+      </field>
+      <field>
+        <source_value>24</source_value>
+        <target_value>0</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1952</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9716,8 +10413,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>608</yloc>
+      <xloc>1600</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9778,8 +10475,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>608</yloc>
+      <xloc>1776</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9963,8 +10660,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>272</yloc>
+      <xloc>1120</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10019,7 +10716,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
+      <xloc>1120</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -10330,7 +11027,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1120</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -10412,8 +11109,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2304</xloc>
-      <yloc>704</yloc>
+      <xloc>976</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10445,8 +11142,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2048</xloc>
-      <yloc>704</yloc>
+      <xloc>688</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10630,8 +11327,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>272</yloc>
+      <xloc>976</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10671,8 +11368,50 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
+      <xloc>1440</xloc>
       <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>PregnancyStatus</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>hmr_pregnant</field_to_use>
+    <target_field>PregnancyStatus</target_field>
+    <non_match_default>0</non_match_default>
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>99</source_value>
+        <target_value>3</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10710,8 +11449,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>272</yloc>
+      <xloc>1440</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10731,32 +11470,8 @@ Alert(str2);</jsScript_script>
         <in_stream_name>hmr_new_crr_date</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
-        <replace_string>1078</replace_string>
-        <replace_by_string>1978</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_new_crr_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
         <replace_string>1700</replace_string>
         <replace_by_string>2000</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_new_crr_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>1068</replace_string>
-        <replace_by_string>1968</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -10773,7 +11488,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>1296</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -10807,8 +11522,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1440</xloc>
-      <yloc>832</yloc>
+      <xloc>1296</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10841,8 +11556,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1584</xloc>
-      <yloc>832</yloc>
+      <xloc>1120</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10943,8 +11658,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1440</xloc>
-      <yloc>704</yloc>
+      <xloc>1296</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11968,335 +12683,252 @@ Alert(str2);</jsScript_script>
       </field>
       <field>
         <name>interview__id</name>
-        <rename/>
       </field>
       <field>
         <name>hhr_register_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>register_members_roster__id</name>
-        <rename/>
       </field>
       <field>
         <name>IndividualUid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_surname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_first_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_second_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_detail</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_civil_id</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_civil_id_dob</name>
-        <rename/>
       </field>
       <field>
         <name>dob</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gender</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_has_maiden_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maiden_name</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_primary_tel</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_prim_tel_provider</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_alt_tel</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_atl_tel_provider</name>
-        <rename/>
       </field>
       <field>
         <name>Nationality</name>
-        <rename/>
       </field>
       <field>
         <name>Citizenship</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_head_relationship</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_nights_spend</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_is_mem_resident</name>
-        <rename/>
       </field>
       <field>
         <name>ResidentStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_member</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dsid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_surname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_firstname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_secondname</name>
-        <rename/>
       </field>
       <field>
         <name>MotherStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_maternal_dod</name>
-        <rename/>
       </field>
       <field>
         <name>maternalDoD</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_member</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dsid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_Surname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_firstname</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_secondname</name>
-        <rename/>
       </field>
       <field>
         <name>FatherStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_paternal_dod</name>
-        <rename/>
       </field>
       <field>
         <name>paternalDoD</name>
-        <rename/>
       </field>
       <field>
         <name>HighestSchoolLevel</name>
-        <rename/>
       </field>
       <field>
         <name>HighestNonSchoolLevel</name>
-        <rename/>
       </field>
       <field>
         <name>CurrentEducation</name>
-        <rename/>
       </field>
       <field>
         <name>CurrentEmployment</name>
-        <rename/>
       </field>
       <field>
         <name>EmploymentType</name>
-        <rename/>
       </field>
       <field>
         <name>Employer</name>
-        <rename/>
       </field>
       <field>
         <name>EmploymentSector</name>
-        <rename/>
       </field>
       <field>
         <name>Unemployment</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_oth_sector</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_oth_not_working</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gvt_grant</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_marital_state</name>
-        <rename/>
       </field>
       <field>
         <name>PartnershipStatus</name>
-        <rename/>
       </field>
       <field>
         <name>PregnancyStatus</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_reg_partner</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_partner_dsid</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_new_crr_date</name>
-        <rename/>
       </field>
       <field>
         <name>UnionStartDate</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_married</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_births</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_gender__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_children</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_daughters</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_sons</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_gave_birth_die</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_birth_die</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_gender__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_girls</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_live_die_boys</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_had_stillbirth</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__1</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__2</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_type__3</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_miscarriage_total</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_abortion_total</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_stillbirth_total</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_total_stillbirth_fin</name>
-        <rename/>
       </field>
       <field>
         <name>var_hmr_pgh_total_births</name>
-        <rename/>
       </field>
       <field>
         <name>CurrentEducationLevel</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -12496,8 +13128,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2720</xloc>
-      <yloc>704</yloc>
+      <xloc>1296</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12527,8 +13159,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>512</yloc>
+      <xloc>1120</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12880,8 +13512,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1584</xloc>
-      <yloc>704</yloc>
+      <xloc>1120</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12930,8 +13562,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1888</xloc>
-      <yloc>704</yloc>
+      <xloc>688</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -13115,8 +13747,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1376</xloc>
-      <yloc>272</yloc>
+      <xloc>688</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -13149,8 +13781,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2448</xloc>
-      <yloc>832</yloc>
+      <xloc>1120</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -13207,13 +13839,13 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2864</xloc>
-      <yloc>704</yloc>
+      <xloc>1440</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>PregnancyStatus</name>
+    <name>Map MobileProvider1</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -13223,246 +13855,14 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>hmr_pregnant</field_to_use>
-    <target_field>PregnancyStatus</target_field>
-    <non_match_default>0</non_match_default>
+    <field_to_use>hmr_prim_tel_provider</field_to_use>
+    <target_field/>
+    <non_match_default>9</non_match_default>
     <fields>
       <field>
-        <source_value>1</source_value>
-        <target_value>1</target_value>
+        <source_value>0</source_value>
+        <target_value>0</target_value>
       </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>99</source_value>
-        <target_value>3</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2192</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Citizenship</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_citizenship</field_to_use>
-    <target_field>Citizenship</target_field>
-    <non_match_default>??</non_match_default>
-    <fields>
-      <field>
-        <source_value>-999999999</source_value>
-        <target_value>??</target_value>
-      </field>
-      <field>
-        <source_value>1</source_value>
-        <target_value>ZA</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>AF</target_value>
-      </field>
-      <field>
-        <source_value>3</source_value>
-        <target_value>AL</target_value>
-      </field>
-      <field>
-        <source_value>4</source_value>
-        <target_value>DZ</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>AD</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>AO</target_value>
-      </field>
-      <field>
-        <source_value>8</source_value>
-        <target_value>AR</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>BD</target_value>
-      </field>
-      <field>
-        <source_value>20</source_value>
-        <target_value>BJ</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
-        <target_value>BW</target_value>
-      </field>
-      <field>
-        <source_value>25</source_value>
-        <target_value>BR</target_value>
-      </field>
-      <field>
-        <source_value>28</source_value>
-        <target_value>BF</target_value>
-      </field>
-      <field>
-        <source_value>29</source_value>
-        <target_value>BI</target_value>
-      </field>
-      <field>
-        <source_value>31</source_value>
-        <target_value>CM</target_value>
-      </field>
-      <field>
-        <source_value>32</source_value>
-        <target_value>CA</target_value>
-      </field>
-      <field>
-        <source_value>40</source_value>
-        <target_value>CG</target_value>
-      </field>
-      <field>
-        <source_value>41</source_value>
-        <target_value>CD</target_value>
-      </field>
-      <field>
-        <source_value>43</source_value>
-        <target_value>CI</target_value>
-      </field>
-      <field>
-        <source_value>59</source_value>
-        <target_value>ET</target_value>
-      </field>
-      <field>
-        <source_value>67</source_value>
-        <target_value>GH</target_value>
-      </field>
-      <field>
-        <source_value>84</source_value>
-        <target_value>IT</target_value>
-      </field>
-      <field>
-        <source_value>89</source_value>
-        <target_value>KE</target_value>
-      </field>
-      <field>
-        <source_value>92</source_value>
-        <target_value>KR</target_value>
-      </field>
-      <field>
-        <source_value>99</source_value>
-        <target_value>LS</target_value>
-      </field>
-      <field>
-        <source_value>107</source_value>
-        <target_value>MW</target_value>
-      </field>
-      <field>
-        <source_value>110</source_value>
-        <target_value>ML</target_value>
-      </field>
-      <field>
-        <source_value>122</source_value>
-        <target_value>MZ</target_value>
-      </field>
-      <field>
-        <source_value>124</source_value>
-        <target_value>NA</target_value>
-      </field>
-      <field>
-        <source_value>131</source_value>
-        <target_value>NG</target_value>
-      </field>
-      <field>
-        <source_value>134</source_value>
-        <target_value>PK</target_value>
-      </field>
-      <field>
-        <source_value>146</source_value>
-        <target_value>RW</target_value>
-      </field>
-      <field>
-        <source_value>154</source_value>
-        <target_value>SN</target_value>
-      </field>
-      <field>
-        <source_value>162</source_value>
-        <target_value>SO</target_value>
-      </field>
-      <field>
-        <source_value>163</source_value>
-        <target_value>SS</target_value>
-      </field>
-      <field>
-        <source_value>168</source_value>
-        <target_value>SZ</target_value>
-      </field>
-      <field>
-        <source_value>174</source_value>
-        <target_value>TZ</target_value>
-      </field>
-      <field>
-        <source_value>183</source_value>
-        <target_value>UG</target_value>
-      </field>
-      <field>
-        <source_value>187</source_value>
-        <target_value>US</target_value>
-      </field>
-      <field>
-        <source_value>195</source_value>
-        <target_value>ZM</target_value>
-      </field>
-      <field>
-        <source_value>196</source_value>
-        <target_value>ZW</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map CurrentEducationLevel</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>hmr_current_education</field_to_use>
-    <target_field>CurrentEducationLevel</target_field>
-    <non_match_default>-1</non_match_default>
-    <fields>
       <field>
         <source_value>1</source_value>
         <target_value>1</target_value>
@@ -13488,76 +13888,12 @@ Alert(str2);</jsScript_script>
         <target_value>6</target_value>
       </field>
       <field>
-        <source_value>7</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>8</source_value>
-        <target_value>8</target_value>
-      </field>
-      <field>
-        <source_value>9</source_value>
+        <source_value>98</source_value>
         <target_value>9</target_value>
       </field>
       <field>
-        <source_value>10</source_value>
-        <target_value>10</target_value>
-      </field>
-      <field>
-        <source_value>11</source_value>
-        <target_value>11</target_value>
-      </field>
-      <field>
-        <source_value>12</source_value>
-        <target_value>12</target_value>
-      </field>
-      <field>
-        <source_value>13</source_value>
-        <target_value>31</target_value>
-      </field>
-      <field>
-        <source_value>14</source_value>
-        <target_value>32</target_value>
-      </field>
-      <field>
-        <source_value>15</source_value>
-        <target_value>33</target_value>
-      </field>
-      <field>
-        <source_value>16</source_value>
-        <target_value>34</target_value>
-      </field>
-      <field>
-        <source_value>17</source_value>
-        <target_value>45</target_value>
-      </field>
-      <field>
-        <source_value>18</source_value>
-        <target_value>23</target_value>
-      </field>
-      <field>
-        <source_value>19</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>20</source_value>
-        <target_value>25</target_value>
-      </field>
-      <field>
-        <source_value>21</source_value>
-        <target_value>26</target_value>
-      </field>
-      <field>
-        <source_value>22</source_value>
-        <target_value>97</target_value>
-      </field>
-      <field>
-        <source_value>23</source_value>
-        <target_value>51</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
-        <target_value>0</target_value>
+        <source_value>99</source_value>
+        <target_value>9</target_value>
       </field>
     </fields>
     <attributes/>
@@ -13569,8 +13905,120 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1440</xloc>
-      <yloc>608</yloc>
+      <xloc>1600</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map MobileProvider2</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>hmr_atl_tel_provider</field_to_use>
+    <target_field/>
+    <non_match_default>9</non_match_default>
+    <fields>
+      <field>
+        <source_value>0</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>4</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>5</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>6</target_value>
+      </field>
+      <field>
+        <source_value>98</source_value>
+        <target_value>9</target_value>
+      </field>
+      <field>
+        <source_value>99</source_value>
+        <target_value>9</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1776</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>null MobileProviders</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <replaceAllByValue/>
+    <replaceAllMask/>
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>hmr_prim_tel_provider</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>hmr_atl_tel_provider</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1952</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/07 15:23:19.433</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 09:58:19.926</modified_date>
+    <modified_date>2023/01/02 06:02:05.527</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -1255,133 +1255,6 @@
     </GUI>
   </step>
   <step>
-    <name>ProtectedLocations</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <schema>ops</schema>
-    <table>ProtectedLocations</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>LocationUid</column_name>
-        <stream_name>LocationUid</stream_name>
-      </field>
-      <field>
-        <column_name>ExternalId</column_name>
-        <stream_name>Geocode</stream_name>
-      </field>
-      <field>
-        <column_name>SiteId</column_name>
-        <stream_name>SiteId</stream_name>
-      </field>
-      <field>
-        <column_name>SubPlaceId</column_name>
-        <stream_name>SubPlaceId</stream_name>
-      </field>
-      <field>
-        <column_name>BuildingId</column_name>
-        <stream_name>BuildingId</stream_name>
-      </field>
-      <field>
-        <column_name>CurrentOwner</column_name>
-        <stream_name>Owner</stream_name>
-      </field>
-      <field>
-        <column_name>Weekblock</column_name>
-        <stream_name>weekblock_1</stream_name>
-      </field>
-      <field>
-        <column_name>Floor</column_name>
-        <stream_name>Floor</stream_name>
-      </field>
-      <field>
-        <column_name>Unit</column_name>
-        <stream_name>Unit</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Valid coordinate</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Execute SQL script</send_true_to>
-    <send_false_to>Execute SQL script 2</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>Longitude</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>Latitude</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>ProtectedLocationInsertErrors</name>
     <type>TextFileOutput</type>
     <description/>
@@ -1663,6 +1536,133 @@
     <GUI>
       <xloc>768</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ProtectedLocations</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Saprin Ops</connection>
+    <schema>ops</schema>
+    <table>ProtectedLocations</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>LocationUid</column_name>
+        <stream_name>LocationUid</stream_name>
+      </field>
+      <field>
+        <column_name>SiteId</column_name>
+        <stream_name>SiteId</stream_name>
+      </field>
+      <field>
+        <column_name>SubPlaceId</column_name>
+        <stream_name>SubPlaceId</stream_name>
+      </field>
+      <field>
+        <column_name>BuildingId</column_name>
+        <stream_name>BuildingId</stream_name>
+      </field>
+      <field>
+        <column_name>Floor</column_name>
+        <stream_name>Floor</stream_name>
+      </field>
+      <field>
+        <column_name>Unit</column_name>
+        <stream_name>Unit</stream_name>
+      </field>
+      <field>
+        <column_name>ExternalId</column_name>
+        <stream_name>ExternalId</stream_name>
+      </field>
+      <field>
+        <column_name>CurrentOwner</column_name>
+        <stream_name>CurrentOwner</stream_name>
+      </field>
+      <field>
+        <column_name>Weekblock</column_name>
+        <stream_name>Weekblock</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Valid coordinate</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Execute SQL script</send_true_to>
+    <send_false_to>Execute SQL script 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Longitude</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Latitude</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

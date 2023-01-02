@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/31 17:02:31.479</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/01 16:31:11.794</modified_date>
+    <modified_date>2023/01/02 17:28:47.032</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -569,11 +569,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculator</from>
-      <to>Add ExtId</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add ExtId</from>
       <to>ExtId to DSID</to>
       <enabled>Y</enabled>
@@ -586,11 +581,6 @@
     <hop>
       <from>Merge join 2</from>
       <to>Not in selected households</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Not in selected households</from>
-      <to>Select values 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -624,16 +614,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select Individual Fields</from>
-      <to>IndividualData</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Individual Observation Fields</from>
-      <to>IndividualObservationData</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>MemberEpisode fields</from>
       <to>IndividualEpisodesData</to>
       <enabled>Y</enabled>
@@ -644,18 +624,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CurrentNodeId</from>
-      <to>Select Individual Fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Calculator</from>
       <to>Has Partner</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Has Partner</from>
-      <to>UnionStartEventUid</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -694,8 +664,148 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Union Fields</from>
+      <from>CurrentNodeId</from>
+      <to>DoB Estimated</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DoB Estimated</from>
+      <to>Select Individual Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DoB Estimated</from>
+      <to>DateEstimated = 1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DateEstimated = 1</from>
+      <to>Select Individual Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select Individual Fields</from>
+      <to>fix VPDates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix VPDates 2</from>
       <to>UnionData</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix VPDates</from>
+      <to>IndividualData</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Not in selected households</from>
+      <to>EndeventUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EventUid</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EndeventUid</from>
+      <to>Merge join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 3</from>
+      <to>Observation before birth</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Observations</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>EventUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Observation before birth</from>
+      <to>IndividualsWithObservationBeforeBirth</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Individual Observation Fields</from>
+      <to>ResidentStatus null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ResidentStatus null</from>
+      <to>IndividualObservationData</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Observation before birth</from>
+      <to>Null DoB</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Null DoB</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Null DoB</from>
+      <to>IndividualsWithoutDoB</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>Add ExtId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Start after Observation</from>
+      <to>Generate random value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate random value</from>
+      <to>fix UnionStartDate</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Union Fields</from>
+      <to>Start after Observation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Start after Observation</from>
+      <to>fix VPDates 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix UnionStartDate</from>
+      <to>Select values 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 7</from>
+      <to>fix VPDates 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Has Partner</from>
+      <to>Union Start is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Union Start is null</from>
+      <to>UnionStartEventUid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Union Start is null</from>
+      <to>IndividualsWithNoUnionStartDate</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -729,7 +839,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1680</xloc>
+      <xloc>2016</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
@@ -902,6 +1012,30 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>DateEstimated</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>BirthEventTypeId</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -912,8 +1046,170 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1936</xloc>
+      <xloc>2272</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DateEstimated = 1</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>DateEstimated</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2400</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DoB Estimated</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>DateEstimated = 1</send_true_to>
+    <send_false_to>Select Individual Fields</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>hmr_civil_id_dob</leftvalue>
+        <function>CONTAINS</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>U</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2400</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>EndeventUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>EndeventUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>EventUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>EventUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1030,8 +1326,86 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1792</xloc>
+      <xloc>2128</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Generate random value</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>r</name>
+        <type>random number</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2496</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Has Partner</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Union Start is null</send_true_to>
+    <send_false_to>Ignore</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>PartnerUid</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>PartnerUid</leftvalue>
+            <function>&lt;></function>
+            <rightvalue>IndividualUid</rightvalue>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1424</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1211,6 +1585,31 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </GUI>
   </step>
   <step>
+    <name>Ignore</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Individual Observation Fields</name>
     <type>SelectValues</type>
     <description/>
@@ -1315,7 +1714,7 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2320</xloc>
+      <xloc>2976</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1375,7 +1774,7 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2032</xloc>
+      <xloc>2144</xloc>
       <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1419,6 +1818,381 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     <GUI>
       <xloc>480</xloc>
       <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>IndividualsWithObservationBeforeBirth</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${OutputDirectory}\DataIntegrity\IndividualsWithObservationBeforeBirth</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>tab</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_surname</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_first_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_second_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_civil_id_dob</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dob</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_gender</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ObservationDate</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1520</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>IndividualsWithoutDoB</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${OutputDirectory}\DataIntegrity\IndividualsWithoutDoB</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>tab</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_surname</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_first_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_second_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_civil_id_dob</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dob</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_gender</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1408</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Married</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>Married</field_name>
+      <formula_string>IF([hmr_married] = 1;1;0)</formula_string>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field/>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1600</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1698,6 +2472,40 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </GUI>
   </step>
   <step>
+    <name>Merge join 3</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>EndeventUid</step1>
+    <step2>EventUid</step2>
+    <keys_1>
+      <key>EndeventUid</key>
+    </keys_1>
+    <keys_2>
+      <key>EventUid</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Not in selected households</name>
     <type>FilterRows</type>
     <description/>
@@ -1709,7 +2517,7 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       <schema_name/>
     </partitioning>
     <send_true_to>Members of Households not in Mapping files</send_true_to>
-    <send_false_to>Select values 2</send_false_to>
+    <send_false_to>EndeventUid</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1729,6 +2537,164 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     <GUI>
       <xloc>1024</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Null DoB</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>IndividualsWithoutDoB</send_true_to>
+    <send_false_to>Select values 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>dob</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Observation before birth</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>IndividualsWithObservationBeforeBirth</send_true_to>
+    <send_false_to>Null DoB</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>ObservationDate</leftvalue>
+        <function>&lt;</function>
+        <rightvalue>dob</rightvalue>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Observations</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\Observations.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ResidentStatus null</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <replaceAllByValue/>
+    <replaceAllMask/>
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>ResidentStatus</name>
+        <value>-1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>MaritalStatus</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>PartnershipStatus</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>PregnancyStatus</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1968</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1761,7 +2727,10 @@ trunc(1234.9); // gives back 1234</jsScript_script>
         <name>BirthEventUid</name>
       </field>
       <field>
-        <name>ObservationEventUid</name>
+        <name>DateEstimated</name>
+      </field>
+      <field>
+        <name>BirthEventTypeId</name>
       </field>
       <field>
         <name>hmr_civil_id_dob</name>
@@ -1770,6 +2739,9 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       <field>
         <name>dob</name>
         <rename>BirthEventDate</rename>
+      </field>
+      <field>
+        <name>ObservationEventUid</name>
       </field>
       <field>
         <name>EndeventUid</name>
@@ -1865,7 +2837,7 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2144</xloc>
+      <xloc>2656</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1924,6 +2896,9 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       <remove>
         <name>HouseholdUid_1</name>
       </remove>
+      <remove>
+        <name>EventUid</name>
+      </remove>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1940,43 +2915,8 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field/>
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description/>
-    <fields>
-      <field>
-        <name>ChildUid</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>576</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>UnionStartEventUid</name>
-    <type>RandomValue</type>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1987,9 +2927,12 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>UnionStartEventUid</name>
-        <type>random uuid</type>
+        <name>EventUid</name>
       </field>
+      <field>
+        <name>ObservationDate</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2000,13 +2943,44 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>736</yloc>
+      <xloc>848</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Has Partner</name>
+    <name>Select values 7</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>r</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2720</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Start after Observation</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -2016,26 +2990,14 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>UnionStartEventUid</send_true_to>
-    <send_false_to>Ignore</send_false_to>
+    <send_true_to>Generate random value</send_true_to>
+    <send_false_to>fix VPDates 2</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>PartnerUid</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>PartnerUid</leftvalue>
-            <function>&lt;></function>
-            <rightvalue>IndividualUid</rightvalue>
-          </condition>
-        </conditions>
+        <leftvalue>UnionStartDate</leftvalue>
+        <function>&gt;</function>
+        <rightvalue>ObservationDate</rightvalue>
       </condition>
     </compare>
     <attributes/>
@@ -2047,66 +3009,8 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Ignore</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Married</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>Married</field_name>
-      <formula_string>IF([hmr_married] = 1;1;0)</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1600</xloc>
-      <yloc>736</yloc>
+      <xloc>2304</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2132,11 +3036,9 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </field>
       <field>
         <name>UnionStartEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>UnionStartEventTypeId</name>
-        <rename/>
       </field>
       <field>
         <name>hmr_new_crr_date</name>
@@ -2144,15 +3046,12 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </field>
       <field>
         <name>UnionStartDate</name>
-        <rename/>
       </field>
       <field>
         <name>UnionStartEstimated</name>
-        <rename/>
       </field>
       <field>
         <name>ObservationEventUid</name>
-        <rename/>
       </field>
       <field>
         <name>EndeventUid</name>
@@ -2160,7 +3059,9 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </field>
       <field>
         <name>Married</name>
-        <rename/>
+      </field>
+      <field>
+        <name>ObservationDate</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2174,7 +3075,37 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>2160</xloc>
-      <yloc>736</yloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>UnionData</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${OutputDirectory}\UnionData.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2848</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2225,7 +3156,107 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>1744</xloc>
-      <yloc>736</yloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>UnionStartEstimated = 1</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>UnionStartEstimated</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1920</xloc>
+      <yloc>1024</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>UnionStartEventUid</name>
+    <type>RandomValue</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>UnionStartEventUid</name>
+        <type>random uuid</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1424</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field/>
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description/>
+    <fields>
+      <field>
+        <name>ChildUid</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2269,13 +3300,13 @@ trunc(1234.9); // gives back 1234</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>1920</xloc>
-      <yloc>736</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>UnionStartEstimated = 1</name>
-    <type>SetValueConstant</type>
+    <name>fix UnionStartDate</name>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2284,13 +3315,54 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var days = trunc(r * 365) * -1;
+var s = dateAdd(ObservationDate,"d",days)</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>dateAdd_Sample</jsScript_name>
+        <jsScript_script>// Add's the given number to  the given date Value.
+//
+// Usage:
+// dateAdd(var,var,var);
+// 1: Date - The Variable with the Date.
+// 2: String - The Type which represents the value
+// to add.
+// y - Years
+// m - Months
+// d - Days
+// w - Weeks
+// wd - Workingdays
+// hh - Hours
+// mi - Minutes
+// ss - Seconds
+// 3: Numeric - The Value to add.
+// 
+// 2006-11-15
+//
+var d1 = new Date();
+Alert(dateAdd(d1, "y", 1));
+Alert(dateAdd(d1, "m", 4));
+Alert(dateAdd(d1, "d", 5));
+Alert(dateAdd(d1, "wd", 5));</jsScript_script>
+      </jsScript>
+    </jsScripts>
     <fields>
       <field>
-        <name>UnionStartEstimated</name>
-        <value>1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>s</name>
+        <rename>UnionStartDate</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
       </field>
     </fields>
     <attributes/>
@@ -2302,14 +3374,14 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1920</xloc>
-      <yloc>848</yloc>
+      <xloc>2720</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>UnionData</name>
-    <type>CubeOutput</type>
+    <name>fix VPDates</name>
+    <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2318,11 +3390,20 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file>
-      <name>${OutputDirectory}\UnionData.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
+    <fields>
+      <field>
+        <in_stream_name>BirthVPDate</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>-</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2332,7 +3413,258 @@ trunc(1234.9); // gives back 1234</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2368</xloc>
+      <xloc>2832</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>fix VPDates 2</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>StartVPDate</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>-</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2720</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Union Start is null</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>IndividualsWithNoUnionStartDate</send_true_to>
+    <send_false_to>UnionStartEventUid</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>UnionStartDate</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1424</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>IndividualsWithNoUnionStartDate</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${OutputDirectory}\DataIntegrity\IndividualsWithNoUnionStartDate</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>tab</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>interview_key</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_surname</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_first_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_second_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_civil_id_dob</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dob</name>
+        <type>Date</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_gender</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency>R</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hmr_reg_partner</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1184</xloc>
       <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>

@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>P02-01 Populate Staffmembers</name>
+    <name>P04-06 Update Respondents</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -426,13 +426,34 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/10/26 15:55:00.628</created_date>
+    <created_date>2023/01/02 07:40:52.766</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/02 06:12:22.840</modified_date>
+    <modified_date>2023/01/02 15:01:37.152</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Only use available individuals</note>
+      <xloc>144</xloc>
+      <yloc>304</yloc>
+      <width>241</width>
+      <heigth>34</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Saprin Ops</name>
@@ -503,283 +524,38 @@
   </connection>
   <order>
     <hop>
-      <from>Insert / update StaffMembers</from>
-      <to>Blocking step</to>
+      <from>Update LastRespondentUid</from>
+      <to>HouseholdRespondentUpdateErrors</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Blocking step</from>
-      <to>Split Fullname</to>
+      <from>IndividualData</from>
+      <to>IndividualUid</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Interviewers.cube</from>
-      <to>Insert / update StaffMembers</to>
+      <from>HouseholdData</from>
+      <to>LastRespondentUid</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Surname null</from>
-      <to>Set Surname -> Unknown</to>
+      <from>LastRespondentUid</from>
+      <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split Fullname</from>
-      <to>String operations</to>
+      <from>IndividualUid</from>
+      <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Surname null</from>
-      <to>First Name null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>First Name null</from>
-      <to>Insert / update ProtectedStaffMembers</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set Surname -> Unknown</from>
-      <to>First Name null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>String operations</from>
-      <to>Surname null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>First Name null</from>
-      <to>FirstNames -> Unknown</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>FirstNames -> Unknown</from>
-      <to>Insert / update ProtectedStaffMembers</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Insert / update StaffMembers</from>
-      <to>StaffMemberInsertErrors</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Insert / update ProtectedStaffMembers</from>
-      <to>ProtectedStaffMemberInsertErrors</to>
+      <from>Merge join</from>
+      <to>Update LastRespondentUid</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Blocking step</name>
-    <type>BlockingStep</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <pass_all_rows>Y</pass_all_rows>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>block</prefix>
-    <cache_size>5000</cache_size>
-    <compress>Y</compress>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>First Name null</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>FirstNames -> Unknown</send_true_to>
-    <send_false_to>Insert / update ProtectedStaffMembers</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>FirstNames</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1072</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>FirstNames -> Unknown</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>FirstNames</name>
-        <value>Unknown</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1072</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update ProtectedStaffMembers</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>dbo</schema>
-      <table>ProtectedStaffMembers</table>
-      <key>
-        <name>FieldworkerUid</name>
-        <field>StaffMemberUid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>StaffMemberUid</name>
-        <rename>FieldworkerUid</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>UserId</name>
-        <rename>FieldworkerId</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>Surname</name>
-        <rename>Surname</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>FirstName</name>
-        <rename>FirstNames</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update StaffMembers</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Saprin Ops</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>dbo</schema>
-      <table>StaffMembers</table>
-      <key>
-        <name>FieldworkerUid</name>
-        <field>StaffMemberUid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>StaffMemberUid</name>
-        <rename>FieldworkerUid</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>IsActive</name>
-        <rename>IsActive</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>NodeId</name>
-        <rename>NodeId</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Interviewers.cube</name>
+    <name>HouseholdData</name>
     <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -790,7 +566,7 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${OutputDirectory}\Interviewers.cube</name>
+      <name>D:\Data\GRT-I\ETLOutput\HouseholdData.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -803,13 +579,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>80</yloc>
+      <xloc>160</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ProtectedStaffMemberInsertErrors</name>
+    <name>HouseholdRespondentUpdateErrors</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -827,13 +603,13 @@
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding>windows-1252</encoding>
+    <encoding/>
     <endedLine/>
     <fileNameInField>N</fileNameInField>
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${OutputDirectory}\Errors\ProtectedStaffMemberInsertErrors</name>
+      <name>${OutputDirectory}\Errors\HouseholdRespondentUpdateErrors</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>tab</extention>
@@ -851,7 +627,7 @@
     </file>
     <fields>
       <field>
-        <name>FieldworkerId</name>
+        <name>HouseholdUid</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -863,7 +639,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>Surname</name>
+        <name>StartEventUid</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -875,7 +651,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FirstNames</name>
+        <name>EndeventUid</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -887,19 +663,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>SupervisorId</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>InterviewsCompleted</name>
+        <name>CurrentNodeId</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
@@ -911,7 +675,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>FieldworkerUid</name>
+        <name>ContactNumber</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -923,31 +687,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>NodeId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>IsActive</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Error</name>
+        <name>LastRespondentTypeId</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -959,247 +699,12 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>ErrorFld</name>
+        <name>LastRespondentUid</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1568</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set Surname -> Unknown</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>Surname</name>
-        <value>Unknown</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Split Fullname</name>
-    <type>FieldSplitter</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <splitfield>FieldworkerName</splitfield>
-    <delimiter> </delimiter>
-    <enclosure/>
-    <fields>
-      <field>
-        <name>Surname</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
-      </field>
-      <field>
-        <name>FirstNames</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>StaffMemberInsertErrors</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>windows-1252</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${OutputDirectory}\Errors\StaffMemberInsertErrors</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>tab</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
-    <fields>
-      <field>
-        <name>FieldworkerId</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FieldworkerName</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>SupervisorId</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>InterviewsCompleted</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FieldworkerUid</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>NodeId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>IsActive</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -1251,14 +756,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>192</yloc>
+      <xloc>1104</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
+    <name>Update LastRespondentUid</name>
+    <type>Update</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1267,32 +772,96 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <connection>Saprin Ops</connection>
+    <skip_lookup>N</skip_lookup>
+    <commit>100</commit>
+    <use_batch>N</use_batch>
+    <error_ignored>N</error_ignored>
+    <ignore_flag_field/>
+    <lookup>
+      <schema>dbo</schema>
+      <table>Households</table>
+      <key>
+        <name>HouseholdUid</name>
+        <field>HouseholdUid</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>LastRespondentUid</name>
+        <rename>LastRespondentUid</rename>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>IndividualData</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>D:\Data\GRT-I\ETLOutput\IndividualData.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>IndividualUid</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <in_stream_name>Surname</in_stream_name>
-        <out_stream_name/>
-        <trim_type/>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
-      </field>
-      <field>
-        <in_stream_name>FirstNames</in_stream_name>
-        <out_stream_name/>
-        <trim_type/>
-        <lower_upper>lower</lower_upper>
-        <padding_type/>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>Y</init_cap>
-        <mask_xml/>
-        <digits/>
-        <remove_special_characters/>
+        <name>IndividualUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
       </field>
     </fields>
     <attributes/>
@@ -1304,14 +873,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>80</yloc>
+      <xloc>360</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Surname null</name>
-    <type>FilterRows</type>
+    <name>LastRespondentUid</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1320,16 +889,23 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Set Surname -> Unknown</send_true_to>
-    <send_false_to>First Name null</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>Surname</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>LastRespondentUid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1339,27 +915,49 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>80</yloc>
+      <xloc>352</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>LastRespondentUid</step1>
+    <step2>IndividualUid</step2>
+    <keys_1>
+      <key>LastRespondentUid</key>
+    </keys_1>
+    <keys_2>
+      <key>IndividualUid</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
     <error>
-      <source_step>Insert / update ProtectedStaffMembers</source_step>
-      <target_step>ProtectedStaffMemberInsertErrors</target_step>
-      <is_enabled>Y</is_enabled>
-      <nr_valuename/>
-      <descriptions_valuename>Error</descriptions_valuename>
-      <fields_valuename>ErrorFld</fields_valuename>
-      <codes_valuename>ErrorCode</codes_valuename>
-      <max_errors/>
-      <max_pct_errors/>
-      <min_pct_rows/>
-    </error>
-    <error>
-      <source_step>Insert / update StaffMembers</source_step>
-      <target_step>StaffMemberInsertErrors</target_step>
+      <source_step>Update LastRespondentUid</source_step>
+      <target_step>HouseholdRespondentUpdateErrors</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename>Error</descriptions_valuename>

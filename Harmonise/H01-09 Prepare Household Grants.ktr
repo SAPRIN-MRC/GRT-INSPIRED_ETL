@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/28 09:23:02.712</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/30 07:12:27.171</modified_date>
+    <modified_date>2023/01/02 16:37:32.730</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -548,23 +548,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>String operations</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Fix VPDates</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Random Date values</from>
       <to>old_age_start VPDate</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix VPDates</from>
-      <to>Random Date values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -808,16 +793,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 4</from>
-      <to>Generate Uids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Generate Uids</from>
-      <to>﻿interview__key</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>﻿interview__key</from>
       <to>Select values 5</to>
       <enabled>Y</enabled>
@@ -825,6 +800,61 @@
     <hop>
       <from>Select values 5</from>
       <to>HouseholdMemberGrants</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>﻿interview__key</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>Fix hmr_old_age_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_old_age_start</from>
+      <to>Fix hmr_disability_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_disability_start</from>
+      <to>Fix hmr_child_supp_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_child_supp_start</from>
+      <to>Fix hmr_care_dep_date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_care_dep_date</from>
+      <to>Fix hmr_foster_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_foster_start</from>
+      <to>Fix hmr_war_vet_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_war_vet_start</from>
+      <to>Fix hmr_grant_in_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_grant_in_start</from>
+      <to>Fix hmr_social_belief_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_social_belief_start</from>
+      <to>Fix hmr_education_grant_start</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix hmr_education_grant_start</from>
+      <to>Random Date values</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1133,8 +1163,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>640</yloc>
+      <xloc>448</xloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8623,112 +8653,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>1200</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix VPDates</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>b</field_name>
-      <formula_string>IF([hmr_child_supp_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_child_supp_start]="9999-99-99";"19UU-UU-UU";IF([hmr_child_supp_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_child_supp_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_child_supp_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_child_supp_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_child_supp_start]="1200-UU-UU";"2000-UU-UU";[hmr_child_supp_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_child_supp_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>c</field_name>
-      <formula_string>IF([hmr_disability_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_disability_start]="9999-99-99";"19UU-UU-UU";IF([hmr_disability_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_disability_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_disability_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_disability_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_disability_start]="1200-UU-UU";"2000-UU-UU";[hmr_disability_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_disability_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>f</field_name>
-      <formula_string>IF([hmr_foster_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_foster_start]="9999-99-99";"19UU-UU-UU";IF([hmr_foster_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_foster_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_foster_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_foster_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_foster_start]="1200-UU-UU";"2000-UU-UU";[hmr_foster_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_foster_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>g</field_name>
-      <formula_string>IF([hmr_old_age_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_old_age_start]="9999-99-99";"19UU-UU-UU";IF([hmr_old_age_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_old_age_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_old_age_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_old_age_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_old_age_start]="1200-UU-UU";"2000-UU-UU";[hmr_old_age_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_old_age_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>i</field_name>
-      <formula_string>IF([hmr_grant_in_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_grant_in_start]="9999-99-99";"19UU-UU-UU";IF([hmr_grant_in_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_grant_in_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_grant_in_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_grant_in_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_grant_in_start]="1200-UU-UU";"2000-UU-UU";[hmr_grant_in_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_grant_in_start</replace_field>
-    </formula>
-    <formula>
-      <field_name>j</field_name>
-      <formula_string>IF([hmr_social_belief_start]="0000-UU-UU";"19UU-UU-UU";IF([hmr_social_belief_start]="9999-99-99";"19UU-UU-UU";IF([hmr_social_belief_start]="1900-UU-UU";"19UU-UU-UU";IF([hmr_social_belief_start]="2000-UU-UU";"20UU-UU-UU";IF([hmr_social_belief_start]="NOT_FOUND";"19UU-UU-UU";  IF([hmr_social_belief_start]="9999-UU-UU";"20UU-UU-UU";IF([hmr_social_belief_start]="1200-UU-UU";"2000-UU-UU";[hmr_social_belief_start])))))))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>hmr_social_belief_start</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Generate Uids</name>
-    <type>RandomValue</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>StartEventUid</name>
-        <type>random uuid</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1456</xloc>
-      <yloc>688</yloc>
+      <xloc>880</xloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8757,8 +8683,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1920</xloc>
-      <yloc>688</yloc>
+      <xloc>1904</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8849,107 +8775,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>hmr_care_dep_date</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2920</replace_string>
-        <replace_by_string>2020</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_education_grant_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2029</replace_string>
-        <replace_by_string>2020</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2916</replace_string>
-        <replace_by_string>2016</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2917</replace_string>
-        <replace_by_string>2017</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_old_age_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>1700</replace_string>
-        <replace_by_string>19UU</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hmr_social_belief_start</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>2029</replace_string>
-        <replace_by_string>2019</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
-      <yloc>144</yloc>
+      <xloc>688</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9747,8 +9574,58 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
-      <yloc>688</yloc>
+      <xloc>1296</xloc>
+      <yloc>960</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿interview__key</name>
+        <rename>interview_key</rename>
+      </field>
+      <field>
+        <name>interview__id</name>
+      </field>
+      <field>
+        <name>hhr_register_roster__id</name>
+      </field>
+      <field>
+        <name>register_members_roster__id</name>
+      </field>
+      <field>
+        <name>SupportTypeId</name>
+      </field>
+      <field>
+        <name>StartDate</name>
+      </field>
+      <field>
+        <name>StartDateVP</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1728</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9782,8 +9659,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>400</yloc>
+      <xloc>1040</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9817,8 +9694,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>496</yloc>
+      <xloc>1040</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9852,8 +9729,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>595</yloc>
+      <xloc>1040</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9887,8 +9764,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>688</yloc>
+      <xloc>1040</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9922,8 +9799,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>768</yloc>
+      <xloc>1040</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9957,8 +9834,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>864</yloc>
+      <xloc>1040</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9992,8 +9869,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>944</yloc>
+      <xloc>1040</xloc>
+      <yloc>1216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10027,8 +9904,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>1024</yloc>
+      <xloc>1040</xloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10062,8 +9939,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>1120</yloc>
+      <xloc>1040</xloc>
+      <yloc>1392</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10240,8 +10117,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>400</yloc>
+      <xloc>880</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10274,8 +10151,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>496</yloc>
+      <xloc>880</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10308,8 +10185,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>864</yloc>
+      <xloc>880</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10342,8 +10219,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>688</yloc>
+      <xloc>880</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10376,8 +10253,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>768</yloc>
+      <xloc>880</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10410,8 +10287,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>592</yloc>
+      <xloc>880</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10444,8 +10321,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>944</yloc>
+      <xloc>880</xloc>
+      <yloc>1216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10478,8 +10355,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>1024</yloc>
+      <xloc>880</xloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10512,8 +10389,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>1120</yloc>
+      <xloc>880</xloc>
+      <yloc>1392</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10697,8 +10574,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1296</xloc>
-      <yloc>240</yloc>
+      <xloc>1280</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10882,8 +10759,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>240</yloc>
+      <xloc>1088</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11067,8 +10944,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>240</yloc>
+      <xloc>896</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11252,8 +11129,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>320</yloc>
+      <xloc>688</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11437,8 +11314,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>240</yloc>
+      <xloc>1456</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11622,8 +11499,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>320</yloc>
+      <xloc>1200</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11666,8 +11543,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>400</yloc>
+      <xloc>688</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11710,8 +11587,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>496</yloc>
+      <xloc>688</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11754,8 +11631,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>592</yloc>
+      <xloc>688</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11798,8 +11675,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>688</yloc>
+      <xloc>688</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11842,8 +11719,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>768</yloc>
+      <xloc>688</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11886,8 +11763,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>864</yloc>
+      <xloc>688</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11930,8 +11807,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>944</yloc>
+      <xloc>688</xloc>
+      <yloc>1216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11974,8 +11851,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>1024</yloc>
+      <xloc>688</xloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12018,8 +11895,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>1120</yloc>
+      <xloc>688</xloc>
+      <yloc>1392</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12062,8 +11939,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>1204</yloc>
+      <xloc>688</xloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12247,8 +12124,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
+      <xloc>688</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12432,8 +12309,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>320</yloc>
+      <xloc>944</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12617,8 +12494,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>320</yloc>
+      <xloc>1456</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12675,56 +12552,97 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1584</xloc>
-      <yloc>688</yloc>
+      <xloc>1568</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 5</name>
-    <type>SelectValues</type>
+    <name>Fix hmr_old_age_start</name>
+    <type>ScriptValueMod</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_old_age_start != null) {
+  dateStr=upper(hmr_old_age_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_old_age_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
     <fields>
       <field>
-        <name>﻿interview__key</name>
-        <rename>interview_key</rename>
+        <name>dob</name>
+        <rename>hmr_old_age_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
       </field>
-      <field>
-        <name>interview__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>hhr_register_roster__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>register_members_roster__id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SupportTypeId</name>
-        <rename/>
-      </field>
-      <field>
-        <name>StartDate</name>
-        <rename/>
-      </field>
-      <field>
-        <name>StartDateVP</name>
-        <rename/>
-      </field>
-      <field>
-        <name>StartEventUid</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -12735,8 +12653,816 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1744</xloc>
-      <yloc>688</yloc>
+      <xloc>912</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_disability_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_disability_start != null) {
+  dateStr=upper(hmr_disability_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_disability_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_disability_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_child_supp_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_child_supp_start != null) {
+  dateStr=upper(hmr_child_supp_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_child_supp_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_child_supp_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_care_dep_date</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_care_dep_date != null) {
+  dateStr=upper(hmr_care_dep_date);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_care_dep_date
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_care_dep_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1520</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_foster_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_foster_start != null) {
+  dateStr=upper(hmr_foster_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_foster_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_foster_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1520</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_war_vet_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_war_vet_start != null) {
+  dateStr=upper(hmr_war_vet_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_war_vet_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_war_vet_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_grant_in_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_grant_in_start != null) {
+  dateStr=upper(hmr_grant_in_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_grant_in_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_grant_in_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_social_belief_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_social_belief_start != null) {
+  dateStr=upper(hmr_social_belief_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_social_belief_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_social_belief_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_education_grant_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_education_grant_start != null) {
+  dateStr=upper(hmr_education_grant_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_education_grant_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_education_grant_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
