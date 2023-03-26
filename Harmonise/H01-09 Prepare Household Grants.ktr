@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2022/12/28 09:23:02.712</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/01/02 16:37:32.730</modified_date>
+    <modified_date>2023/03/26 07:44:39.363</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -808,11 +808,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>String operations</from>
-      <to>Fix hmr_old_age_start</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fix hmr_old_age_start</from>
       <to>Fix hmr_disability_start</to>
       <enabled>Y</enabled>
@@ -855,6 +850,16 @@
     <hop>
       <from>Fix hmr_education_grant_start</from>
       <to>Random Date values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>Fix Length</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix Length</from>
+      <to>Fix hmr_old_age_start</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -8659,6 +8664,913 @@
     </GUI>
   </step>
   <step>
+    <name>Fix hmr_care_dep_date</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_care_dep_date != null) {
+  dateStr=upper(hmr_care_dep_date);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_care_dep_date
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_care_dep_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1520</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_child_supp_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_child_supp_start != null) {
+  dateStr=upper(hmr_child_supp_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_child_supp_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_child_supp_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_disability_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_disability_start != null) {
+  dateStr=upper(hmr_disability_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_disability_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_disability_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_education_grant_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_education_grant_start != null) {
+  dateStr=upper(hmr_education_grant_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_education_grant_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_education_grant_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_foster_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_foster_start != null) {
+  dateStr=upper(hmr_foster_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_foster_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_foster_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1520</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_grant_in_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_grant_in_start != null) {
+  dateStr=upper(hmr_grant_in_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_grant_in_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_grant_in_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_old_age_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if(hmr_old_age_start != null) {
+  dateStr=upper(hmr_old_age_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_old_age_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>rpad_Sample</jsScript_name>
+        <jsScript_script>// Padds the string to the right with the given character for the specified length
+// 
+// Usage:
+// rpad(var,var,var);
+// 1. String - The String to Pad
+// 2. Char - The Char to Pad
+// 3. Number - The Length for the padding
+//
+// 2006-11-15
+//
+var str1= "Hello World!";
+Alert("Input:" + str1);
+Alert("Rpad:" + rpad(str1, "x",20));</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_old_age_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_social_belief_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_social_belief_start != null) {
+  dateStr=upper(hmr_social_belief_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_social_belief_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_social_belief_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix hmr_war_vet_start</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+  var dateStr="";
+  var yrPart="";
+  var moPart="";
+  var dyPart="";
+if (hmr_war_vet_start != null) {
+  dateStr=upper(hmr_war_vet_start);
+  yrPart=substr(dateStr,0,4);
+  moPart=substr(dateStr,5,2);
+  dyPart=substr(dateStr,8,2);
+  if (yrPart &lt; "1900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
+    yrPart = "20"+substr(yrPart,2,2)
+  }
+  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
+    yrPart = "19"+substr(yrPart,2,2)
+  }
+  if (yrPart == "1900" &amp; moPart == "UU") {
+    yrPart = "19UU"
+  }
+  if (yrPart == "200E") {
+    yrPart = "2003"
+  }
+  if (yrPart == "9999" || yrPart == "999U") {
+    yrPart = "19UU"
+  }
+  if (moPart == "99") {
+    moPart = "UU"
+  }
+  if (dyPart == "99") {
+    dyPart = "UU"
+  }
+  dob = yrPart + "-" + moPart + "-" + dyPart;
+}
+else {
+  dob = hmr_war_vet_start
+}</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>substr_Sample</jsScript_name>
+        <jsScript_script>// Perform the substring function
+// 
+// Usage:
+// substr(var, from);
+// substr(var, from, to);
+//
+// 2007-01-25
+//
+var str1= "Hello Pentaho!";
+var str2= substr(str1, 6);
+var str3= substr(str1, 6, 7);
+Alert("Input : " + str1);
+Alert("From position 6: " + str2);
+Alert("From position 6 for 7 long : " + str3);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>dob</name>
+        <rename>hmr_war_vet_start</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>HouseholdMemberGrants</name>
     <type>CubeOutput</type>
     <description/>
@@ -12558,92 +13470,88 @@ Alert(str2);</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Fix hmr_old_age_start</name>
-    <type>ScriptValueMod</type>
+    <name>Fix Length</name>
+    <type>Formula</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if(hmr_old_age_start != null) {
-  dateStr=upper(hmr_old_age_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_old_age_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_old_age_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
+    <formula>
+      <field_name>nS</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_old_age_start]));LEN([hmr_old_age_start])&lt;10);CONCATENATE([hmr_old_age_start];REPT("U";10-LEN([hmr_old_age_start])));[hmr_old_age_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_old_age_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS2</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_disability_start]));LEN([hmr_disability_start])&lt;10);CONCATENATE([hmr_disability_start];REPT("U";10-LEN([hmr_disability_start])));[hmr_disability_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_disability_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS3</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_child_supp_start]));LEN([hmr_child_supp_start])&lt;10);CONCATENATE([hmr_child_supp_start];REPT("U";10-LEN([hmr_child_supp_start])));[hmr_child_supp_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_child_supp_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS4</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_care_dep_date]));LEN([hmr_care_dep_date])&lt;10);CONCATENATE([hmr_care_dep_date];REPT("U";10-LEN([hmr_care_dep_date])));[hmr_care_dep_date])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_care_dep_date</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS5</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_education_grant_start]));LEN([hmr_education_grant_start])&lt;10);CONCATENATE([hmr_education_grant_start];REPT("U";10-LEN([hmr_education_grant_start])));[hmr_education_grant_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_education_grant_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS6</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_social_belief_start]));LEN([hmr_social_belief_start])&lt;10);CONCATENATE([hmr_social_belief_start];REPT("U";10-LEN([hmr_social_belief_start])));[hmr_social_belief_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_social_belief_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS7</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_grant_in_start]));LEN([hmr_grant_in_start])&lt;10);CONCATENATE([hmr_grant_in_start];REPT("U";10-LEN([hmr_grant_in_start])));[hmr_grant_in_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_grant_in_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS8</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_war_vet_start]));LEN([hmr_war_vet_start])&lt;10);CONCATENATE([hmr_war_vet_start];REPT("U";10-LEN([hmr_war_vet_start])));[hmr_war_vet_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_war_vet_start</replace_field>
+    </formula>
+    <formula>
+      <field_name>nS9</field_name>
+      <formula_string>IF(AND(NOT(ISBLANK([hmr_foster_start]));LEN([hmr_foster_start])&lt;10);CONCATENATE([hmr_foster_start];REPT("U";10-LEN([hmr_foster_start])));[hmr_foster_start])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>hmr_foster_start</replace_field>
+    </formula>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -12653,816 +13561,8 @@ Alert("From position 6 for 7 long : " + str3);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
+      <xloc>800</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_disability_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_disability_start != null) {
-  dateStr=upper(hmr_disability_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_disability_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_disability_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_child_supp_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_child_supp_start != null) {
-  dateStr=upper(hmr_child_supp_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_child_supp_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_child_supp_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1312</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_care_dep_date</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_care_dep_date != null) {
-  dateStr=upper(hmr_care_dep_date);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_care_dep_date
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_care_dep_date</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1520</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_foster_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_foster_start != null) {
-  dateStr=upper(hmr_foster_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_foster_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_foster_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1520</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_war_vet_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_war_vet_start != null) {
-  dateStr=upper(hmr_war_vet_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_war_vet_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_war_vet_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1312</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_grant_in_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_grant_in_start != null) {
-  dateStr=upper(hmr_grant_in_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_grant_in_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_grant_in_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_social_belief_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_social_belief_start != null) {
-  dateStr=upper(hmr_social_belief_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_social_belief_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_social_belief_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>912</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix hmr_education_grant_start</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-  var dateStr="";
-  var yrPart="";
-  var moPart="";
-  var dyPart="";
-if (hmr_education_grant_start != null) {
-  dateStr=upper(hmr_education_grant_start);
-  yrPart=substr(dateStr,0,4);
-  moPart=substr(dateStr,5,2);
-  dyPart=substr(dateStr,8,2);
-  if (yrPart &lt; "1900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9999") {
-    yrPart = "20"+substr(yrPart,2,2)
-  }
-  if (yrPart > "2022" &amp; yrPart &lt; "9900") {
-    yrPart = "19"+substr(yrPart,2,2)
-  }
-  if (yrPart == "1900" &amp; moPart == "UU") {
-    yrPart = "19UU"
-  }
-  if (yrPart == "200E") {
-    yrPart = "2003"
-  }
-  if (yrPart == "9999" || yrPart == "999U") {
-    yrPart = "19UU"
-  }
-  if (moPart == "99") {
-    moPart = "UU"
-  }
-  if (dyPart == "99") {
-    dyPart = "UU"
-  }
-  dob = yrPart + "-" + moPart + "-" + dyPart;
-}
-else {
-  dob = hmr_education_grant_start
-}</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>substr_Sample</jsScript_name>
-        <jsScript_script>// Perform the substring function
-// 
-// Usage:
-// substr(var, from);
-// substr(var, from, to);
-//
-// 2007-01-25
-//
-var str1= "Hello Pentaho!";
-var str2= substr(str1, 6);
-var str3= substr(str1, 6, 7);
-Alert("Input : " + str1);
-Alert("From position 6: " + str2);
-Alert("From position 6 for 7 long : " + str3);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>dob</name>
-        <rename>hmr_education_grant_start</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
