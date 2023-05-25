@@ -428,63 +428,13 @@
     <created_user>-</created_user>
     <created_date>2022/10/05 14:51:19.571</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/12/30 05:06:51.110</modified_date>
+    <modified_date>2023/05/25 13:27:05.660</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <order>
-    <hop>
-      <from>Atteridgeville</from>
-      <to>Geocode cut</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Geocode cut</from>
-      <to>Main Dwelling only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Main Dwelling only</from>
-      <to>Drop</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Main Dwelling only</from>
-      <to>Select values 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Hillbrow_Mapping North</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Hillbrow_Mapping South</from>
-      <to>Select values 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 3</from>
-      <to>InterviewKey</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Melusi</from>
-      <to>InterviewKey</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>InterviewKey</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 4</from>
-      <to>InterviewKey</to>
-      <enabled>Y</enabled>
-    </hop>
     <hop>
       <from>Hillbrow floor and apartment numbers</from>
       <to>interview__key</to>
@@ -511,13 +461,68 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split fields</from>
-      <to>Generate LocationUid</to>
+      <from>Generate LocationUid</from>
+      <to>Select values 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Generate LocationUid</from>
-      <to>Select values 2</to>
+      <from>Hillbrow_Mapping</from>
+      <to>Add BuildingName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add BuildingName</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>InterviewKey</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Melusi</from>
+      <to>Add BuildingName 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add BuildingName 2</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>InterviewKey</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Atteridgeville</from>
+      <to>Add BuildingName 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>InterviewKey</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add BuildingName 3</from>
+      <to>Null if</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Null if</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split fields</from>
+      <to>Null if 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Null if 2</from>
+      <to>Generate LocationUid</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -548,7 +553,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>${MappingData}\Atteridgeville_Mapping.xlsx</name>
+      <name>${MappingData}\ATTERIDGEVILLE GTI MASTER.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -556,7 +561,7 @@
     </file>
     <fields>
       <field>
-        <name>RecId</name>
+        <name>ID</name>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -568,11 +573,11 @@
         <group/>
       </field>
       <field>
-        <name>Geocode</name>
-        <type>String</type>
+        <name>LONGITUDE</name>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -580,11 +585,11 @@
         <group/>
       </field>
       <field>
-        <name>InterviewKey</name>
-        <type>String</type>
+        <name>LATITUDE</name>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -592,11 +597,59 @@
         <group/>
       </field>
       <field>
-        <name>Site</name>
+        <name>GEOCODE</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>DWELLING TYPE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>IMAGE DATE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>SITE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>SUB-PLACE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -605,7 +658,7 @@
       </field>
       <field>
         <name>FCA</name>
-        <type>Integer</type>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -616,68 +669,8 @@
         <group/>
       </field>
       <field>
-        <name>WeekBlock</name>
+        <name>WEEKBLOCK</name>
         <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>SubPlace</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>BuildingName</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>DwellingType</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>ImageDate</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Longitude</name>
-        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -688,8 +681,8 @@
         <group/>
       </field>
       <field>
-        <name>Latitude</name>
-        <type>Number</type>
+        <name>interview__key</name>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -741,31 +734,6 @@
     </GUI>
   </step>
   <step>
-    <name>Drop</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Generate LocationUid</name>
     <type>RandomValue</type>
     <description/>
@@ -791,47 +759,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1176</xloc>
+      <xloc>1296</xloc>
       <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Geocode cut</name>
-    <type>StringCut</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>Geocode</in_stream_name>
-        <out_stream_name>Dwelling</out_stream_name>
-        <cut_from>0</cut_from>
-        <cut_to>6</cut_to>
-      </field>
-      <field>
-        <in_stream_name>Geocode</in_stream_name>
-        <out_stream_name>SubDwelling</out_stream_name>
-        <cut_from>7</cut_from>
-        <cut_to>10</cut_to>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1019,7 +948,7 @@
     </GUI>
   </step>
   <step>
-    <name>Hillbrow_Mapping North</name>
+    <name>Hillbrow_Mapping</name>
     <type>ExcelInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1053,7 +982,7 @@
     </file>
     <fields>
       <field>
-        <name>RecId</name>
+        <name>ID</name>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1065,11 +994,11 @@
         <group/>
       </field>
       <field>
-        <name>Geocode</name>
-        <type>String</type>
+        <name>LONGITUDE</name>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -1077,11 +1006,11 @@
         <group/>
       </field>
       <field>
-        <name>InterviewKey</name>
-        <type>String</type>
+        <name>LATITUDE</name>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -1089,11 +1018,59 @@
         <group/>
       </field>
       <field>
-        <name>Site</name>
+        <name>GEOCODE</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>DWELLING TYPE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>IMAGE DATE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>SITE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>SUB-PLACE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -1113,103 +1090,7 @@
         <group/>
       </field>
       <field>
-        <name>WeekBlock</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>SubPlace</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>BuildingName</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>DwellingType</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>ImageDate</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Longitude</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Latitude</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Block</name>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Building Status</name>
+        <name>WEEKBLOCK</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1221,7 +1102,7 @@
         <group/>
       </field>
       <field>
-        <name>Dwelling status</name>
+        <name>interview__key</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1235,7 +1116,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>North</name>
+        <name>Sheet1</name>
         <startrow>0</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -1269,262 +1150,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Hillbrow_Mapping South</name>
-    <type>ExcelInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <header>Y</header>
-    <noempty>Y</noempty>
-    <stoponempty>N</stoponempty>
-    <filefield/>
-    <sheetfield/>
-    <sheetrownumfield/>
-    <rownumfield/>
-    <sheetfield/>
-    <filefield/>
-    <limit>0</limit>
-    <encoding/>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>N</accept_filenames>
-    <accept_field/>
-    <accept_stepname/>
-    <file>
-      <name>${MappingData}\Hillbrow_Mapping.xlsx</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>RecId</name>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Geocode 2</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>InterviewKey</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Site</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>FCA</name>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>WeekBlock</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>SubPlace</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>BuildingName</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>DwellingType</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>ImageDate</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Longitude</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Latitude</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Block</name>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Building Status</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Dwelling status</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-    </fields>
-    <sheets>
-      <sheet>
-        <name>South</name>
-        <startrow>0</startrow>
-        <startcol>0</startcol>
-      </sheet>
-    </sheets>
-    <strict_types>N</strict_types>
-    <error_ignored>N</error_ignored>
-    <error_line_skipped>N</error_line_skipped>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <spreadsheet_type>POI</spreadsheet_type>
-    <password>Encrypted </password>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>432</yloc>
+      <yloc>354</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1579,50 +1205,6 @@
     </GUI>
   </step>
   <step>
-    <name>Main Dwelling only</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Select values 3</send_true_to>
-    <send_false_to>Drop</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>SubDwelling</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>001</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Melusi</name>
     <type>ExcelInput</type>
     <description/>
@@ -1649,12 +1231,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>${MappingData}\Melusi_Mapping.xlsx</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name/>
+      <name>${MappingData}\MELUSI GEOCODES MASTER.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1662,7 +1239,7 @@
     </file>
     <fields>
       <field>
-        <name>RecId</name>
+        <name>ID</name>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1674,11 +1251,11 @@
         <group/>
       </field>
       <field>
-        <name>Geocode</name>
-        <type>String</type>
+        <name>LONGITUDE</name>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -1686,11 +1263,11 @@
         <group/>
       </field>
       <field>
-        <name>InterviewKey</name>
-        <type>String</type>
+        <name>LATITUDE</name>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -1698,11 +1275,59 @@
         <group/>
       </field>
       <field>
-        <name>Site</name>
+        <name>GEOCODE</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>DWELLING TYPE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>IMAGE DATE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>SITE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>SUB-PLACE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
         <format/>
         <currency/>
@@ -1722,68 +1347,8 @@
         <group/>
       </field>
       <field>
-        <name>WeekBlock</name>
+        <name>WEEKBLOCK</name>
         <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>SubPlace</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>BuildingName</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>DwellingType</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>ImageDate</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Longitude</name>
-        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1794,8 +1359,8 @@
         <group/>
       </field>
       <field>
-        <name>Latitude</name>
-        <type>Number</type>
+        <name>interview__key</name>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1881,87 +1446,6 @@
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>RecId</name>
-      </field>
-      <field>
-        <name>Geocode</name>
-      </field>
-      <field>
-        <name>InterviewKey</name>
-      </field>
-      <field>
-        <name>Site</name>
-      </field>
-      <field>
-        <name>FCA</name>
-      </field>
-      <field>
-        <name>WeekBlock</name>
-      </field>
-      <field>
-        <name>SubPlace</name>
-      </field>
-      <field>
-        <name>BuildingName</name>
-      </field>
-      <field>
-        <name>DwellingType</name>
-      </field>
-      <field>
-        <name>ImageDate</name>
-      </field>
-      <field>
-        <name>Longitude</name>
-      </field>
-      <field>
-        <name>Latitude</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>WeekBlock</name>
-        <rename>WeekBlock</rename>
-        <type>String</type>
-        <length>5</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type>normal</storage_type>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select values 2</name>
     <type>SelectValues</type>
     <description/>
@@ -1975,53 +1459,103 @@
     <fields>
       <field>
         <name>RecId</name>
+        <rename/>
       </field>
       <field>
         <name>LocationUid</name>
+        <rename/>
       </field>
       <field>
         <name>Geocode</name>
+        <rename/>
       </field>
       <field>
         <name>InterviewKey</name>
+        <rename/>
       </field>
       <field>
         <name>Site</name>
+        <rename/>
       </field>
       <field>
         <name>FCA</name>
+        <rename/>
       </field>
       <field>
         <name>SubPlace</name>
+        <rename/>
       </field>
       <field>
-        <name>BuildingName</name>
+        <name>bs_building_name</name>
+        <rename>BuildingName</rename>
       </field>
       <field>
         <name>DwellingType</name>
+        <rename/>
       </field>
       <field>
         <name>ImageDate</name>
+        <rename/>
       </field>
       <field>
         <name>Longitude</name>
+        <rename/>
       </field>
       <field>
         <name>Latitude</name>
+        <rename/>
       </field>
       <field>
         <name>floor_number</name>
+        <rename/>
       </field>
       <field>
         <name>unit_number</name>
+        <rename/>
       </field>
       <field>
         <name>weekblock_1</name>
+        <rename/>
       </field>
       <field>
         <name>weekblock_2</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>weekblock_1</name>
+        <rename>weekblock_1</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>weekblock_2</name>
+        <rename>weekblock_2</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2032,172 +1566,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1332</xloc>
+      <xloc>1456</xloc>
       <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>RecId</name>
-      </field>
-      <field>
-        <name>Dwelling</name>
-        <rename>Geocode</rename>
-      </field>
-      <field>
-        <name>InterviewKey</name>
-      </field>
-      <field>
-        <name>Site</name>
-      </field>
-      <field>
-        <name>FCA</name>
-      </field>
-      <field>
-        <name>WeekBlock</name>
-      </field>
-      <field>
-        <name>SubPlace</name>
-      </field>
-      <field>
-        <name>BuildingName</name>
-      </field>
-      <field>
-        <name>DwellingType</name>
-      </field>
-      <field>
-        <name>ImageDate</name>
-      </field>
-      <field>
-        <name>Longitude</name>
-      </field>
-      <field>
-        <name>Latitude</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>WeekBlock</name>
-        <rename>WeekBlock</rename>
-        <type>String</type>
-        <length>5</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type>normal</storage_type>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>RecId</name>
-      </field>
-      <field>
-        <name>Geocode 2</name>
-        <rename>Geocode</rename>
-      </field>
-      <field>
-        <name>InterviewKey</name>
-      </field>
-      <field>
-        <name>Site</name>
-      </field>
-      <field>
-        <name>FCA</name>
-      </field>
-      <field>
-        <name>WeekBlock</name>
-      </field>
-      <field>
-        <name>SubPlace</name>
-      </field>
-      <field>
-        <name>BuildingName</name>
-      </field>
-      <field>
-        <name>DwellingType</name>
-      </field>
-      <field>
-        <name>ImageDate</name>
-      </field>
-      <field>
-        <name>Longitude</name>
-      </field>
-      <field>
-        <name>Latitude</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>WeekBlock</name>
-        <rename>WeekBlock</rename>
-        <type>String</type>
-        <length>5</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type>normal</storage_type>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2226,7 +1596,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
+      <xloc>1616</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2235,7 +1605,7 @@
     <name>Split fields</name>
     <type>FieldSplitter</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -2250,7 +1620,7 @@
         <name>weekblock_1</name>
         <id/>
         <idrem>N</idrem>
-        <type>Integer</type>
+        <type>String</type>
         <format/>
         <group/>
         <decimal/>
@@ -2265,7 +1635,7 @@
         <name>weekblock_2</name>
         <id/>
         <idrem>N</idrem>
-        <type>Integer</type>
+        <type>String</type>
         <format/>
         <group/>
         <decimal/>
@@ -2330,6 +1700,430 @@
     <GUI>
       <xloc>864</xloc>
       <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ID</name>
+        <rename>RecId</rename>
+      </field>
+      <field>
+        <name>GEOCODE</name>
+        <rename>Geocode</rename>
+      </field>
+      <field>
+        <name>interview__key</name>
+        <rename>InterviewKey</rename>
+      </field>
+      <field>
+        <name>SITE</name>
+        <rename>Site</rename>
+      </field>
+      <field>
+        <name>FCA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WEEKBLOCK</name>
+        <rename>WeekBlock</rename>
+      </field>
+      <field>
+        <name>SUB-PLACE</name>
+        <rename>SubPlace</rename>
+      </field>
+      <field>
+        <name>BuildingName</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DWELLING TYPE</name>
+        <rename>DwellingType</rename>
+      </field>
+      <field>
+        <name>IMAGE DATE</name>
+        <rename>ImageDate</rename>
+      </field>
+      <field>
+        <name>LONGITUDE</name>
+        <rename>Longitude</rename>
+      </field>
+      <field>
+        <name>LATITUDE</name>
+        <rename>Latitude</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add BuildingName</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>BuildingName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>354</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add BuildingName 2</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>BuildingName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ID</name>
+        <rename>RecId</rename>
+      </field>
+      <field>
+        <name>GEOCODE</name>
+        <rename>Geocode</rename>
+      </field>
+      <field>
+        <name>interview__key</name>
+        <rename>InterviewKey</rename>
+      </field>
+      <field>
+        <name>SITE</name>
+        <rename>Site</rename>
+      </field>
+      <field>
+        <name>FCA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WEEKBLOCK</name>
+        <rename>WeekBlock</rename>
+      </field>
+      <field>
+        <name>SUB-PLACE</name>
+        <rename>SubPlace</rename>
+      </field>
+      <field>
+        <name>BuildingName</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DWELLING TYPE</name>
+        <rename>DwellingType</rename>
+      </field>
+      <field>
+        <name>IMAGE DATE</name>
+        <rename>ImageDate</rename>
+      </field>
+      <field>
+        <name>LONGITUDE</name>
+        <rename>Longitude</rename>
+      </field>
+      <field>
+        <name>LATITUDE</name>
+        <rename>Latitude</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add BuildingName 3</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>BuildingName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ID</name>
+        <rename>RecId</rename>
+      </field>
+      <field>
+        <name>GEOCODE</name>
+        <rename>Geocode</rename>
+      </field>
+      <field>
+        <name>interview__key</name>
+        <rename>InterviewKey</rename>
+      </field>
+      <field>
+        <name>SITE</name>
+        <rename>Site</rename>
+      </field>
+      <field>
+        <name>FCA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WEEKBLOCK</name>
+        <rename>WeekBlock</rename>
+      </field>
+      <field>
+        <name>SUB-PLACE</name>
+        <rename>SubPlace</rename>
+      </field>
+      <field>
+        <name>BuildingName</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DWELLING TYPE</name>
+        <rename>DwellingType</rename>
+      </field>
+      <field>
+        <name>IMAGE DATE</name>
+        <rename>ImageDate</rename>
+      </field>
+      <field>
+        <name>LONGITUDE</name>
+        <rename>Longitude</rename>
+      </field>
+      <field>
+        <name>LATITUDE</name>
+        <rename>Latitude</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>FCA</name>
+        <rename>FCA</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Null if</name>
+    <type>NullIf</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>FCA</name>
+        <value>x</value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Null if 2</name>
+    <type>NullIf</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>weekblock_1</name>
+        <value>x</value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
